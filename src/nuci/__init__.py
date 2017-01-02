@@ -8,7 +8,7 @@
 import logging
 from xml.etree import cElementTree as ET
 
-from foris.nuci.client import dispatch
+from foris.nuci.client import dispatch, netconf
 from ncclient.operations import TimeoutExpiredError
 from ncclient.operations import RPCError
 
@@ -24,3 +24,14 @@ def get_client_config():
         return openvpn.Download.from_element(ET.fromstring(data.xml)).configuration
     except (RPCError, TimeoutExpiredError):
         return None
+
+
+def get_openvpn_ca():
+    try:
+        data = netconf.get(filter=("subtree", openvpn.CaGen.openvpn_filter())).data_ele
+        for elem in data.iter():
+            if elem.tag == openvpn.CaGen.qual_tag("cas"):
+                return openvpn.CaGen.from_element(elem)
+    except (RPCError, TimeoutExpiredError):
+        return None
+    return None

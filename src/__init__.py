@@ -16,7 +16,7 @@ from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
 
-from .nuci import get_client_config
+from .nuci import get_client_config, get_openvpn_ca
 
 
 class OpenvpnConfigHandler(BaseConfigHandler):
@@ -61,6 +61,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
     def render(self, **kwargs):
         kwargs['PLUGIN_NAME'] = OpenvpnPlugin.PLUGIN_NAME
         kwargs['PLUGIN_STYLES'] = OpenvpnPlugin.PLUGIN_STYLES
+        kwargs['ca'] = get_openvpn_ca()
         return super(OpenvpnConfigPage, self).render(**kwargs)
 
 

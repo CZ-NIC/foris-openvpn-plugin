@@ -14,6 +14,7 @@ client_name_regexp = r'[a-zA-Z0-9_.-]+'
 re_client_name = re.compile(client_name_regexp)
 
 OPENVPN_CLIENT_URI = "http://www.nic.cz/ns/router/openvpn-client"
+CAGEN_URI = "http://www.nic.cz/ns/router/ca-gen"
 
 
 class Download(YinElement):
@@ -44,6 +45,68 @@ class Download(YinElement):
     @property
     def key(self):
         return "download-config"
+
+
+class CaGen(YinElement):
+    tag = "ca-gen"
+    NS_URI = CAGEN_URI
+
+    def __init__(self, data):
+        super(CaGen, self).__init__()
+        self.data = data
+
+    @property
+    def missing(self):
+        return True if self.data['certs'] else False
+
+    @property
+    def generating(self):
+        if self.data['dhparams'] and self.data['dhparams']['generating']:
+            return True
+        for cert in self.data['certs']:
+            if cert['status'] == 'generating':
+                return True
+
+        return False
+
+    @staticmethod
+    def openvpn_filter():
+        cas_element = ET.Element(CaGen.qual_tag("cas"))
+        ca_element = ET.SubElement(cas_element, "ca")
+        name_element = ET.SubElement(ca_element, "name")
+        name_element.text = "openvpn"
+        return cas_element
+
+    @staticmethod
+    def from_element(element):
+        for ca_element in element.findall(CaGen.qual_tag("ca")):
+            # handle only openvpn ca
+            if ca_element.find(CaGen.qual_tag("name")).text != "openvpn":
+                continue
+            res = {'certs': [], 'dhparams': {}, 'crl': None}
+            for cert_element in ca_element.findall(CaGen.qual_tag("cert")):
+                status = cert_element.find(CaGen.qual_tag("status")).text
+                record = {
+                    'name': cert_element.find(CaGen.qual_tag("name")).text,
+                    'type': cert_element.find(CaGen.qual_tag("type")).text,
+                    'status': status,
+                }
+
+                if not status == "generating":
+                    record['key_path'] = cert_element.find(CaGen.qual_tag("key")).text
+                    record['cert_path'] = cert_element.find(CaGen.qual_tag("cert")).text
+
+                res['certs'].append(record)
+            dhparams_node = ca_element.find(CaGen.qual_tag("dhparams"))
+            if dhparams_node:
+                res['dhparams']['path'] = dhparams_node.find(CaGen.qual_tag("file")).text
+                res['dhparams']['generating'] = \
+                    False if dhparams_node.find(CaGen.qual_tag("generating")) is None else True
+            crl_node = ca_element.find(CaGen.qual_tag("crl"))
+            if crl_node:
+                res['crl'] = crl_node.text
+
+            return CaGen(res)
 
 
 ####################################################################################################
