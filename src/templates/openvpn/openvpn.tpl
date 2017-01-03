@@ -14,7 +14,7 @@
   <h3>{{ trans("No certificates") }}</h3>
   <p>
   {{ trans("Currently there are no certificates generated for the openvpn server. To proceed you need to generate the certificates.") }}
-  <form method='post' action="TODO">
+  <form method='post' action="{{ url("config_action", page_name="openvpn", action="generate-ca") }}">
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     <button name="download-config" type="submit">{{ trans("Generate Certificates") }}</button>
   </form>

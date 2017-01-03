@@ -16,7 +16,7 @@ from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
 
-from .nuci import get_client_config, get_openvpn_ca
+from .nuci import generate_ca, get_client_config, get_openvpn_ca
 
 
 class OpenvpnConfigHandler(BaseConfigHandler):
@@ -49,6 +49,18 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         bottle.response.set_header("Content-Length", len(openvpn_config))
         return openvpn_config
 
+    def _action_generate_ca(self):
+        """Call RPC to generate CA for openvpn server
+
+        :return: redirect to plugin's main page
+        """
+        if generate_ca():
+            messages.success(_("Started to generate certificates for the openvpn server."))
+        else:
+            messages.error(_("Failed to generate certificates for the openvpn server."))
+
+        bottle.redirect(reverse("config_page", page_name="openvpn"))
+
     def call_action(self, action):
         if bottle.request.method != 'POST':
             # all actions here require POST
@@ -56,6 +68,8 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             bottle.redirect(reverse("config_page", page_name="openvpn"))
         if action == "download-config":
             return self._action_download_config()
+        elif action == "generate-ca":
+            return self._action_generate_ca()
         raise bottle.HTTPError(404, "Unknown action.")
 
     def render(self, **kwargs):

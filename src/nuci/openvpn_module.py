@@ -33,9 +33,8 @@ class Download(YinElement):
 
     @staticmethod
     def rpc_download_config():
-        download_tag = Download.qual_tag(Download.tag)
 
-        element = ET.Element(download_tag)
+        element = ET.Element(Download.qual_tag(Download.tag))
         cert_tag = Download.qual_tag("cert-name")
         cert_elem = ET.SubElement(element, cert_tag)
         cert_elem.text = "turris"  # client name is turris
@@ -56,8 +55,12 @@ class CaGen(YinElement):
         self.data = data
 
     @property
+    def key(self):
+        return "ca-gen"
+
+    @property
     def missing(self):
-        return True if self.data['certs'] else False
+        return False if self.data['certs'] else True
 
     @property
     def generating(self):
@@ -108,6 +111,23 @@ class CaGen(YinElement):
 
             return CaGen(res)
 
+    @staticmethod
+    def rpc_generate_certificates():
+        root = ET.Element(CaGen.qual_tag("generate"))
+        ET.SubElement(root, CaGen.qual_tag("background"))
+        ca_element = ET.SubElement(root, CaGen.qual_tag("ca"))
+        ET.SubElement(ca_element, CaGen.qual_tag("name")).text = 'openvpn'  # CA name
+        ET.SubElement(ca_element, CaGen.qual_tag("new"))
+        ET.SubElement(ca_element, CaGen.qual_tag("dhparams"))
+        server_element = ET.SubElement(ca_element, CaGen.qual_tag("cert"))
+        ET.SubElement(server_element, CaGen.qual_tag("name")).text = 'turris'
+        ET.SubElement(server_element, CaGen.qual_tag("type")).text = 'server'
+        client_cert = ET.SubElement(ca_element, CaGen.qual_tag("cert"))
+        ET.SubElement(client_cert, CaGen.qual_tag("name")).text = 'turris'
+        ET.SubElement(client_cert, CaGen.qual_tag("type")).text = 'client'
+
+        return root
 
 ####################################################################################################
 ET.register_namespace("openvpn", Download.NS_URI)
+ET.register_namespace("ca-gen", CaGen.NS_URI)

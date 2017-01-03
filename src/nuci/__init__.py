@@ -35,3 +35,11 @@ def get_openvpn_ca():
     except (RPCError, TimeoutExpiredError):
         return None
     return None
+
+
+def generate_ca():
+    try:
+        dispatch(openvpn.CaGen.rpc_generate_certificates())
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
