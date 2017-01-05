@@ -8,7 +8,7 @@
 import logging
 from xml.etree import cElementTree as ET
 
-from foris.nuci.client import dispatch, netconf
+from foris.nuci.client import dispatch, netconf, edit_config
 from ncclient.operations import TimeoutExpiredError
 from ncclient.operations import RPCError
 
@@ -43,3 +43,19 @@ def generate_ca():
         return True
     except (RPCError, TimeoutExpiredError):
         return False
+
+
+def update_configs(enabled):
+    try:
+        edit_config(openvpn.Config.prepare_edit_config(enabled))
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
+def get_configuration():
+    try:
+        data = netconf.get(filter=("subtree", openvpn.Config.get_filter())).data_ele
+        return openvpn.Config.from_element(data)
+    except (RPCError, TimeoutExpiredError):
+        return None
