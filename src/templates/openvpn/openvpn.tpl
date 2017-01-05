@@ -38,6 +38,7 @@
     %end
     <button name="apply" type="submit">{{ trans("Apply") }}</button>
   </form>
+  %if config_form.data['enabled']:
   <h3>{{ trans("Client configuration") }}</h3>
   <p>
     {{ trans("We assume that you have the openvpn server running on your router. The client configuration differs a bit based on your operating system. Be sure to check the configuration before you use it as a client configuration of your device. Especially check whether the public IP address matches your router.") }}
@@ -51,5 +52,6 @@
   <p>
     {{ trans("To apply this configuration on the client you need store it in the openvpn config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN\\config\\turris.ovpn) and restart the openvpn client.") }}
   </p>
+  %end
 %end
 </div>
