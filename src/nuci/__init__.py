@@ -47,15 +47,15 @@ def generate_ca():
 
 def update_configs(enabled):
     try:
-        edit_config(openvpn.Config.prepare_edit_config(enabled))
+        # read lan
+        data = netconf.get(filter=("subtree", openvpn.LAN.lan_network_filter())).data_ele
+        lan_config = openvpn.LAN.from_element(data)
+        if not lan_config:
+            return False
+        # update config
+        edit_config(
+            openvpn.Config.prepare_edit_config(enabled, lan_config.network, lan_config.netmask)
+        )
         return True
     except (RPCError, TimeoutExpiredError):
         return False
-
-
-def get_configuration():
-    try:
-        data = netconf.get(filter=("subtree", openvpn.Config.get_filter())).data_ele
-        return openvpn.Config.from_element(data)
-    except (RPCError, TimeoutExpiredError):
-        return None

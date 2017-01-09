@@ -14,8 +14,11 @@ from foris.nuci.modules.base import YinElement
 client_name_regexp = r'[a-zA-Z0-9_.-]+'
 re_client_name = re.compile(client_name_regexp)
 
+from ..utils import normalize_subnet_4
+
 OPENVPN_CLIENT_URI = "http://www.nic.cz/ns/router/openvpn-client"
 CAGEN_URI = "http://www.nic.cz/ns/router/ca-gen"
+UCI_RAW = "http://www.nic.cz/ns/router/uci-raw"
 
 
 class Download(YinElement):
@@ -134,6 +137,7 @@ class CaGen(YinElement):
 
 class Config(YinElement):
     tag = "config"
+    NS_URI = UCI_RAW
 
     IF_NAME = "tun_turris"
     PORT = "1194"
@@ -150,11 +154,11 @@ class Config(YinElement):
 
     @staticmethod
     def enabled_preproc(data):
-        if data.find_child('uci.network.openvpn_turris_interface') \
-                and data.find_child('uci.firewall.openvpn_turris_rule') \
-                and data.find_child('uci.firewall.openvpn_turris_zone') \
-                and data.find_child('uci.firewall.openvpn_turris_forward_lan_in') \
-                and data.find_child('uci.firewall.openvpn_turris_forward_lan_out') \
+        if data.find_child('uci.network.vpn_turris') \
+                and data.find_child('uci.firewall.vpn_turris_rule') \
+                and data.find_child('uci.firewall.vpn_turris') \
+                and data.find_child('uci.firewall.vpn_turris_forward_lan_in') \
+                and data.find_child('uci.firewall.vpn_turris_forward_lan_out') \
                 and data.find_child('uci.openvpn.server_turris'):
             return True
         else:
@@ -165,7 +169,7 @@ class Config(YinElement):
         uci = uci_raw.Uci()
         network_conf = uci_raw.Config("network")
         uci.add(network_conf)
-        network_conf.add(uci_raw.Section("openvpn_turris_interface", "interface"))
+        network_conf.add(uci_raw.Section("vpn_turris", "interface"))
 
         firewall_conf = uci_raw.Config("firewall")
         uci.add(firewall_conf)  # get the whole firewall config - unable to filter
@@ -177,13 +181,13 @@ class Config(YinElement):
         return uci.get_xml()
 
     @staticmethod
-    def prepare_edit_config(enabled):
+    def prepare_edit_config(enabled, network, netmask):
         uci = uci_raw.Uci()
 
         # network config
         network_conf = uci_raw.Config("network")
         uci.add(network_conf)
-        interface_section = uci_raw.Section("openvpn_turris_interface", "interface")
+        interface_section = uci_raw.Section("vpn_turris", "interface")
         network_conf.add_replace(interface_section) if enabled else \
             network_conf.add_removal(interface_section)
         interface_section.add(uci_raw.Option("ifname", Config.IF_NAME))
@@ -193,33 +197,36 @@ class Config(YinElement):
         # firewall config
         firewall_conf = uci_raw.Config("firewall")
         uci.add(firewall_conf)
-        rule_section = uci_raw.Section("openvpn_turris_rule", "rule")
+        rule_section = uci_raw.Section("vpn_turris_rule", "rule")
         firewall_conf.add_replace(rule_section) if enabled else \
             firewall_conf.add_removal(rule_section)
+        rule_section.add(uci_raw.Option("name", "vpn_turris_rule"))
         rule_section.add(uci_raw.Option("target", "ACCEPT"))
         rule_section.add(uci_raw.Option("proto", Config.PROTO))
         rule_section.add(uci_raw.Option("src", "wan"))
         rule_section.add(uci_raw.Option("dest_port", Config.PORT))
-        zone_section = uci_raw.Section("openvpn_turris_zone", "zone")
+        zone_section = uci_raw.Section("vpn_turris", "zone")
         firewall_conf.add_replace(zone_section) if enabled else \
             firewall_conf.add_removal(zone_section)
-        zone_section.add(uci_raw.Option("name", "openvpn_turris_zone"))
-        zone_section.add(uci_raw.Option("network", "openvpn_turris_interface"))
+        zone_section.add(uci_raw.Option("name", "vpn_turris"))
+        network_list = uci_raw.List("network")
+        network_list.add(uci_raw.Value(0, "vpn_turris"))
+        zone_section.add(network_list)
         zone_section.add(uci_raw.Option("input", "ACCEPT"))
         zone_section.add(uci_raw.Option("forward", "REJECT"))
         zone_section.add(uci_raw.Option("output", "ACCEPT"))
         zone_section.add(uci_raw.Option("masq", "1"))
-        forward_lan_in_section = uci_raw.Section("openvpn_turris_forward_lan_in", "forwarding")
+        forward_lan_in_section = uci_raw.Section("vpn_turris_forward_lan_in", "forwarding")
         firewall_conf.add_replace(forward_lan_in_section) if enabled else \
             firewall_conf.add_removal(forward_lan_in_section)
-        forward_lan_in_section.add(uci_raw.Option("src", "openvpn_turris_zone"))
+        forward_lan_in_section.add(uci_raw.Option("src", "vpn_turris"))
         forward_lan_in_section.add(uci_raw.Option("dest", "lan"))
-        forward_lan_out_section = uci_raw.Section("openvpn_turris_forward_lan_out", "forwarding")
+        forward_lan_out_section = uci_raw.Section("vpn_turris_forward_lan_out", "forwarding")
         firewall_conf.add_replace(forward_lan_out_section) if enabled else \
             firewall_conf.add_removal(forward_lan_out_section)
         forward_lan_out_section.add(uci_raw.Option("src", "lan"))
-        forward_lan_out_section.add(uci_raw.Option("dest", "openvpn_turris_zone"))
-        # TODO we could optionally add openvpn_turris_zone -> wan forwarding
+        forward_lan_out_section.add(uci_raw.Option("dest", "vpn_turris"))
+        # TODO we could optionally add openvpn_turris -> wan forwarding
 
         # openvpn config
         openvpn_conf = uci_raw.Config("openvpn")
@@ -247,8 +254,44 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("status", "/tmp/openvpn-status.log"))
         server_section.add(uci_raw.Option("verb", "3"))
         server_section.add(uci_raw.Option("mute", "20"))
+        routes = uci_raw.List("push")
+        routes.add(
+            uci_raw.Value(0, "route %s %s" % (normalize_subnet_4(network, netmask), netmask)))
+        server_section.add(routes)
 
         return uci.get_xml()
+
+
+class LAN(YinElement):
+    tag = "config"
+    NS_URI = UCI_RAW
+
+    def __init__(self, network, netmask):
+        super(LAN, self).__init__()
+        self.network = network
+        self.netmask = netmask
+
+    @staticmethod
+    def from_element(element):
+
+        uci_element = element.find(LAN.qual_tag("uci"))
+        uci = uci_raw.Uci.from_element(uci_element)
+        network = uci.find_child('network.lan.ipaddr')
+        netmask = uci.find_child('network.lan.netmask')
+
+        if not network or not netmask:
+            return None
+
+        return LAN(network.value, netmask.value)
+
+    @staticmethod
+    def lan_network_filter():
+        uci = uci_raw.Uci()
+        network_conf = uci_raw.Config("network")
+        uci.add(network_conf)
+        network_conf.add(uci_raw.Section("lan", "interface"))
+        return uci.get_xml()
+
 
 ####################################################################################################
 ET.register_namespace("openvpn", Download.NS_URI)
