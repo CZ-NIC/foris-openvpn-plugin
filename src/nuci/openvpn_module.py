@@ -36,9 +36,11 @@ class Download(YinElement):
     def rpc_download_config():
 
         element = ET.Element(Download.qual_tag(Download.tag))
-        cert_tag = Download.qual_tag("cert-name")
-        cert_elem = ET.SubElement(element, cert_tag)
+        cert_elem = ET.SubElement(element, Download.qual_tag("cert-name"))
         cert_elem.text = "turris"  # client name is turris
+
+        cert_elem = ET.SubElement(element, Download.qual_tag("config-name"))
+        cert_elem.text = "server_turris"  # config name is server_turris
 
         return element
 
