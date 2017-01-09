@@ -38,6 +38,9 @@
     %end
     <button name="apply" type="submit">{{ trans("Apply") }}</button>
   </form>
+  <p>
+  {{! trans("Note that when you use <strong>Apply</strong> button you might lose the connection to the router for a while. This means that you might need <strong>reopen this page</strong> manually.") }}
+  </p>
   %if config_form.data['enabled']:
   <h3>{{ trans("Client configuration") }}</h3>
   <p>
