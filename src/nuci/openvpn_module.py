@@ -227,6 +227,7 @@ class Config(YinElement):
         server_section = uci_raw.Section("server_turris", "openvpn")
         openvpn_conf.add_replace(server_section) if enabled else \
             openvpn_conf.add_removal(server_section)
+        server_section.add(uci_raw.Option("enabled", "1"))
         server_section.add(uci_raw.Option("port", Config.PORT))
         server_section.add(uci_raw.Option("proto", Config.PROTO))
         server_section.add(uci_raw.Option("dev", Config.IF_NAME))

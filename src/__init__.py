@@ -51,7 +51,7 @@ class OpenvpnConfigHandler(BaseConfigHandler):
                         )
                     )
             else:
-                messages.success(
+                messages.error(
                     _('Failed to %s openvpn configuration.') % (
                         _('enable') if enabled else 'disable'
                     )
