@@ -31,6 +31,9 @@
   <p>
   {{ trans("You need to have your server properly configured (including firewall rules and network devices). To do so you need to apply the configuration provided by openvpn plugin. Note that the configuration might be in conflict with our existing configuration. So if you are going to use this plugin for setting the openvpn server remove or disable any previous configuration.") }}
   </p>
+  <p>
+  {{! trans("It is also assumed that you have more or less standard network configuration (notably <strong>wan</strong> and <strong>lan</strong> interfaces are present).") }}
+  </p>
   <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form">
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     %for field in config_form.active_fields:
