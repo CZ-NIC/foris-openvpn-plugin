@@ -23,7 +23,7 @@
 %elif ca.missing or ca.generating:
   <h3>{{ trans("Generating certificates") }}</h3>
   <p>
-  {{ trans("The certificates necessary for the openvpn server are being generated. This could take a while. You can try to speed up the proces by generating some extra network traffic. This should add more entropy to the random number generator.") }}
+  {{ trans("The certificates necessary for the openvpn server are being generated. This could take a quite long time (up to 30 minutes). You can try to visit this page later. ") }}
   </p>
 
 %else:
