@@ -32,3 +32,19 @@ def normalize_subnet_4(ip_address, mask):
     :return ip address: str
     """
     return ip_num_to_str_4(ip_str_to_num_4(ip_address) & ip_str_to_num_4(mask))
+
+
+def mask_to_prefix_4(mask):
+    """ 255.255.255.0 -> 24
+    :param mask: str
+    :return prefix: int
+    """
+    return "{0:b}".format(ip_str_to_num_4(mask)).count("1")
+
+
+def prefix_to_mask_4(subnet):
+    """ 255.255.255.0 -> 24
+    :param prefix: int
+    :return mask: str
+    """
+    return ip_num_to_str_4(int('1' * subnet + '0' * (32 - subnet), 2))

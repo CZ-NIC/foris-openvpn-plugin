@@ -14,7 +14,7 @@ from foris.nuci.modules.base import YinElement
 client_name_regexp = r'[a-zA-Z0-9_.-]+'
 re_client_name = re.compile(client_name_regexp)
 
-from ..utils import normalize_subnet_4
+from ..utils import normalize_subnet_4, mask_to_prefix_4
 
 OPENVPN_CLIENT_URI = "http://www.nic.cz/ns/router/openvpn-client"
 CAGEN_URI = "http://www.nic.cz/ns/router/ca-gen"
@@ -142,15 +142,12 @@ class Config(YinElement):
     IF_NAME = "tun_turris"
     PORT = "1194"
     PROTO = "udp"
-    NETWORK = "10.111.0.0 255.255.255.0"
+    DEFAULT_MASK = "255.255.255.0"
+    DEFAULT_NETWORK = "10.111.111.0"
 
     @property
     def key(self):
         return Config.tag
-
-    def __init__(self, network_enabled, firewall_enabled, openvpn_enabled):
-        super(Config, self).__init__()
-        self.enabled = network_enabled and firewall_enabled and openvpn_enabled
 
     @staticmethod
     def enabled_preproc(data):
@@ -163,6 +160,30 @@ class Config(YinElement):
             return True
         else:
             return False
+
+    @staticmethod
+    def network_preproc(data):
+        # default values
+        address = Config.DEFAULT_NETWORK
+        prefix = mask_to_prefix_4(Config.DEFAULT_MASK)
+
+        network_node = data.find_child('uci.openvpn.server_turris.server')
+        if network_node:
+            network_data = network_node.value.split()
+            if len(network_data) == 0:
+                address, mask = Config.DEFAULT_NETWORK, Config.DEFAULT_SUBNET
+            elif len(network_data) == 1:
+                address, mask = network_data[0], Config.DEFAULT_SUBNET
+            else:
+                address, mask = network_data[0], network_data[1]
+            try:
+                address = normalize_subnet_4(address, mask)
+                prefix = mask_to_prefix_4(mask)
+            except ValueError:
+                address = Config.DEFAULT_NETWORK
+                prefix = mask_to_prefix_4(Config.DEFAULT_MASK)
+
+        return "%s/%d" % (address, prefix)
 
     @staticmethod
     def openvpn_filter():
@@ -181,7 +202,7 @@ class Config(YinElement):
         return uci.get_xml()
 
     @staticmethod
-    def prepare_edit_config(enabled, network, netmask):
+    def prepare_edit_config(enabled, network, netmask, route_network, route_netmask):
         uci = uci_raw.Uci()
 
         # network config
@@ -242,7 +263,7 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("cert", "/etc/ssl/ca/openvpn/server-turris.crt"))
         server_section.add(uci_raw.Option("key", "/etc/ssl/ca/openvpn/server-turris.key"))
         server_section.add(uci_raw.Option("dh", "/etc/ssl/ca/openvpn/dhparam.pem"))
-        server_section.add(uci_raw.Option("server", Config.NETWORK))  # TODO config option
+        server_section.add(uci_raw.Option("server", "%s %s" % (network, netmask)))
         server_section.add(uci_raw.Option("ifconfig_pool_persist", "/tmp/ipp.txt"))
         #server_section.add(uci_raw.Option("client_to_client", "1")) # TODO config option
         server_section.add(uci_raw.Option("duplicate_cn", "1"))  # TODO we could use more cert -> remove
@@ -255,8 +276,9 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("verb", "3"))
         server_section.add(uci_raw.Option("mute", "20"))
         routes = uci_raw.List("push")
-        routes.add(
-            uci_raw.Value(0, "route %s %s" % (normalize_subnet_4(network, netmask), netmask)))
+        routes.add(uci_raw.Value(
+            0, "route %s %s" % (normalize_subnet_4(route_network, route_netmask), route_netmask))
+        )
         server_section.add(routes)
 
         return uci.get_xml()

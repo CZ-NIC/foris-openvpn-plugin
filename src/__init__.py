@@ -11,12 +11,14 @@ import bottle
 
 from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.fapi import ForisForm
-from foris.form import Checkbox
+from foris.form import Checkbox, Textbox
 from foris.plugins import ForisPlugin
 from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
+from foris.validators import IPv4Prefix
 from .nuci import openvpn
+from .utils import prefix_to_mask_4
 
 from .nuci import (
     generate_ca, get_client_config, get_openvpn_ca, update_configs
@@ -35,10 +37,18 @@ class OpenvpnConfigHandler(BaseConfigHandler):
             Checkbox, name="enabled", label=_("Configuration enabled"),
             nuci_preproc=openvpn.Config.enabled_preproc
         )
+        config_section.add_field(
+            Textbox, name="network", label=_("Openvpn network"),
+            nuci_preproc=openvpn.Config.network_preproc,
+            validators=[IPv4Prefix()],
+            hint=_(
+                "This network should be different than any network directly reachable from the router and the clients."),
+        )
 
         def form_callback(data):
             enabled = data['enabled']
-            if update_configs(enabled):
+            network, prefix = data['network'].split("/")
+            if update_configs(enabled, network, prefix_to_mask_4(int(prefix))):
                 # get openvpn server config
                 ca = get_openvpn_ca()
                 if not ca or ca.missing or ca.generating:
@@ -93,30 +103,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         return bottle.redirect(reverse("config_page", page_name="openvpn"))
 
-    def _action_update_configuration(self):
-        # get openvpn server config
-        ca = get_openvpn_ca()
-
-        if not ca or ca.missing or ca.generating:
-            messages.error(_("Can't apply the configuration. Certificates are missing."))
-            # ca is missing or generating, can't apply the configuration
-        else:
-            enabled = True if bottle.request.POST.get('enabled') == "1" else False
-            if update_configs(enabled):
-                messages.success(
-                    _('Openvpn server configuration was successfully %s.') % (
-                        _('enabled') if enabled else 'disabled'
-                    )
-                )
-            else:
-                messages.success(
-                    _('Failed to %s openvpn configuration.') % (
-                        _('enable') if enabled else 'disable'
-                    )
-                )
-
-        return bottle.redirect(reverse("config_page", page_name="openvpn"))
-
     def call_action(self, action):
         if bottle.request.method != 'POST':
             # all actions here require POST
@@ -126,8 +112,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             return self._action_download_config()
         elif action == "generate-ca":
             return self._action_generate_ca()
-        elif action == "update-configuration":
-            return self._action_update_configuration()
         raise bottle.HTTPError(404, "Unknown action.")
 
     def render(self, **kwargs):

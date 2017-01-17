@@ -44,6 +44,20 @@
   <p>
   {{! trans("Note that when you use <strong>Apply</strong> button you might lose the connection to the router for a while. This means that you might need <strong>reopen this page</strong> manually.") }}
   </p>
+  <script>
+    $(document).ready(function() {
+        $('#field-enabled_1').click(function () {
+            if ($(this).prop('checked')) {
+                $('#field-network').parent().show();
+            } else {
+                $('#field-network').parent().hide();
+            }
+        });
+        %if not config_form.data['enabled']:
+        $('#field-network').parent().hide();
+        %end
+    });
+  </script>
   %if config_form.data['enabled']:
   <h3>{{ trans("Client configuration") }}</h3>
   <p>
