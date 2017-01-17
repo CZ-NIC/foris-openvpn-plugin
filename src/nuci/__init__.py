@@ -18,9 +18,9 @@ from . import openvpn_module as openvpn
 logger = logging.getLogger(__name__)
 
 
-def get_client_config():
+def get_client_config(name):
     try:
-        data = dispatch(openvpn.Download.rpc_download_config())
+        data = dispatch(openvpn.Download.rpc_download_config(name))
         return openvpn.Download.from_element(ET.fromstring(data.xml)).configuration
     except (RPCError, TimeoutExpiredError):
         return None
@@ -39,7 +39,15 @@ def get_openvpn_ca():
 
 def generate_ca():
     try:
-        dispatch(openvpn.CaGen.rpc_generate_certificates())
+        dispatch(openvpn.CaGen.rpc_generate_ca())
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
+def generate_client(name):
+    try:
+        dispatch(openvpn.CaGen.rpc_generate_client(name))
         return True
     except (RPCError, TimeoutExpiredError):
         return False

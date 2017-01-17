@@ -8,6 +8,7 @@
 import re
 from xml.etree import cElementTree as ET
 
+from foris.core import gettext_dummy as _
 from foris.nuci.modules import uci_raw
 from foris.nuci.modules.base import YinElement
 
@@ -36,11 +37,11 @@ class Download(YinElement):
         return Download(configuration_node.text)
 
     @staticmethod
-    def rpc_download_config():
+    def rpc_download_config(name):
 
         element = ET.Element(Download.qual_tag(Download.tag))
         cert_elem = ET.SubElement(element, Download.qual_tag("cert-name"))
-        cert_elem.text = "turris"  # client name is turris
+        cert_elem.text = name
 
         cert_elem = ET.SubElement(element, Download.qual_tag("config-name"))
         cert_elem.text = "server_turris"  # config name is server_turris
@@ -55,6 +56,11 @@ class Download(YinElement):
 class CaGen(YinElement):
     tag = "ca-gen"
     NS_URI = CAGEN_URI
+
+    CLIENT_STATUS_ACTIVE = _("active")
+    CLIENT_STATUS_REVOKED = _("revoked")
+    CLIENT_STATUS_EXPIRED = _("expired")
+    CLIENT_STATUS_GENERATING = _("generating")
 
     def __init__(self, data):
         super(CaGen, self).__init__()
@@ -118,7 +124,7 @@ class CaGen(YinElement):
             return CaGen(res)
 
     @staticmethod
-    def rpc_generate_certificates():
+    def rpc_generate_ca():
         root = ET.Element(CaGen.qual_tag("generate"))
         ET.SubElement(root, CaGen.qual_tag("background"))
         ca_element = ET.SubElement(root, CaGen.qual_tag("ca"))
@@ -128,8 +134,17 @@ class CaGen(YinElement):
         server_element = ET.SubElement(ca_element, CaGen.qual_tag("cert"))
         ET.SubElement(server_element, CaGen.qual_tag("name")).text = 'turris'
         ET.SubElement(server_element, CaGen.qual_tag("type")).text = 'server'
+
+        return root
+
+    @staticmethod
+    def rpc_generate_client(name):
+        root = ET.Element(CaGen.qual_tag("generate"))
+        ET.SubElement(root, CaGen.qual_tag("background"))
+        ca_element = ET.SubElement(root, CaGen.qual_tag("ca"))
+        ET.SubElement(ca_element, CaGen.qual_tag("name")).text = 'openvpn'
         client_cert = ET.SubElement(ca_element, CaGen.qual_tag("cert"))
-        ET.SubElement(client_cert, CaGen.qual_tag("name")).text = 'turris'
+        ET.SubElement(client_cert, CaGen.qual_tag("name")).text = name
         ET.SubElement(client_cert, CaGen.qual_tag("type")).text = 'client'
 
         return root
@@ -266,7 +281,7 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("server", "%s %s" % (network, netmask)))
         server_section.add(uci_raw.Option("ifconfig_pool_persist", "/tmp/ipp.txt"))
         #server_section.add(uci_raw.Option("client_to_client", "1")) # TODO config option
-        server_section.add(uci_raw.Option("duplicate_cn", "1"))  # TODO we could use more cert -> remove
+        server_section.add(uci_raw.Option("duplicate_cn", "0"))
         server_section.add(uci_raw.Option("keepalive", "10 120"))
         # TODO might be nice to generate tls_auth as well
         server_section.add(uci_raw.Option("comp_lzo", "yes"))

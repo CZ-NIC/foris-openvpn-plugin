@@ -16,12 +16,12 @@ from foris.plugins import ForisPlugin
 from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
-from foris.validators import IPv4Prefix
+from foris.validators import IPv4Prefix, LenRange, RegExp
 from .nuci import openvpn
 from .utils import prefix_to_mask_4
 
 from .nuci import (
-    generate_ca, get_client_config, get_openvpn_ca, update_configs
+    generate_ca, generate_client, get_client_config, get_openvpn_ca, update_configs
 )
 
 
@@ -75,19 +75,36 @@ class OpenvpnConfigHandler(BaseConfigHandler):
 class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
     template = "openvpn/openvpn.tpl"
 
+    def _prepare_render_args(self, arguments, client_form=None, ca=None):
+        """ Prepare the arguments for the template.
+        :param arguments: target variable
+        :type arguments: dict
+        """
+        arguments['PLUGIN_NAME'] = OpenvpnPlugin.PLUGIN_NAME
+        arguments['PLUGIN_STYLES'] = OpenvpnPlugin.PLUGIN_STYLES
+        arguments['ca'] = ca if ca else get_openvpn_ca()
+        arguments['config_form'] = self.form
+        arguments['client_form'] = client_form if client_form else self.get_client_form()
+        arguments['client_certs'] = [
+            e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
+        ]
+
     def _action_download_config(self):
         """Handle POST requesting download of the openvpn client config
 
         :return: response with token with appropriate HTTP headers
         """
-        openvpn_config = get_client_config()
+        openvpn_config = get_client_config(self.data['download-config'])
         if not openvpn_config:
             messages.error(_("Unable to get openvpn client config."))
             bottle.redirect(reverse("config_page", page_name="openvpn"))
 
         bottle.response.set_header("Content-Type", "text/plain")
         # TODO .ovpn for windows
-        bottle.response.set_header("Content-Disposition", 'attachment; filename="turris.conf')
+        bottle.response.set_header(
+            "Content-Disposition", 'attachment; filename="turris-%s.conf"'
+            % self.data['download-config']
+        )
         bottle.response.set_header("Content-Length", len(openvpn_config))
         return openvpn_config
 
@@ -97,11 +114,25 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         :return: redirect to plugin's main page
         """
         if generate_ca():
-            messages.success(_("Started to generate certificates for the openvpn server."))
+            messages.success(_("Started to generate CA for the openvpn server."))
         else:
-            messages.error(_("Failed to generate certificates for the openvpn server."))
+            messages.error(_("Failed to generate CA for the openvpn server."))
 
         return bottle.redirect(reverse("config_page", page_name="openvpn"))
+
+    def _action_generate_client(self):
+        """Call RPC to generate a client for openvpn server
+
+        :return: redirect to plugin's main page
+        """
+        form = self.get_client_form(bottle.request.POST)
+        if form.save():
+            messages.success(_("Started to generate client certificate for the openvpn server."))
+            return bottle.redirect(reverse("config_page", page_name="openvpn"))
+        else:
+            kwargs = {}
+            self._prepare_render_args(kwargs, client_form=form)
+            return super(OpenvpnConfigPage, self).render(**kwargs)
 
     def call_action(self, action):
         if bottle.request.method != 'POST':
@@ -112,13 +143,42 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             return self._action_download_config()
         elif action == "generate-ca":
             return self._action_generate_ca()
+        elif action == "generate-client":
+            return self._action_generate_client()
         raise bottle.HTTPError(404, "Unknown action.")
 
+    def get_client_form(self, data=None):
+        client_form = ForisForm("openvpn", data)
+        main_section = client_form.add_section(
+            name="name", title=None,
+        )
+        main_section.add_field(
+            Textbox, name="client_name", label=_("Client name"), required=True,
+            hint=_("The display name for the client. It must be shorter than 64 characters "
+                   "and must contain only alphanumeric characters, dots, dashes and "
+                   "underscores."),
+            validators=[
+                RegExp(_("Client name is invalid."), r'[a-zA-Z0-9_.-]+'), LenRange(1, 63)]
+        )
+
+        def form_callback(data):
+            if generate_client(data['client_name']):
+                messages.success(
+                    _("Started to generate client '%(name)s' for the openvpn server.")
+                    % dict(name=data['client_name'])
+                )
+            else:
+                messages.error(
+                    _("Failed to generate client '%s(name)s' for the openvpn server.")
+                    % dict(name=data['client_name'])
+                )
+            return bottle.redirect(reverse("config_page", page_name="openvpn"))
+
+        client_form.add_callback(form_callback)
+        return client_form
+
     def render(self, **kwargs):
-        kwargs['PLUGIN_NAME'] = OpenvpnPlugin.PLUGIN_NAME
-        kwargs['PLUGIN_STYLES'] = OpenvpnPlugin.PLUGIN_STYLES
-        kwargs['ca'] = get_openvpn_ca()
-        kwargs['config_form'] = self.form
+        self._prepare_render_args(kwargs)
         return super(OpenvpnConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):

@@ -13,17 +13,17 @@
 %if not ca:
   <h3>{{ trans("No certificates") }}</h3>
   <p>
-  {{ trans("Currently there are no certificates generated for the openvpn server. To proceed you need to generate the certificates.") }}
+  {{ trans("Currently there is currently no certificate authority(CA) generated for the openvpn server. To proceed you need to generate the CA.") }}
   <form method='post' action="{{ url("config_action", page_name="openvpn", action="generate-ca") }}">
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-    <button name="download-config" type="submit">{{ trans("Generate Certificates") }}</button>
+    <button name="download-config" type="submit">{{ trans("Generate CA") }}</button>
   </form>
   </p>
 
 %elif ca.missing or ca.generating:
-  <h3>{{ trans("Generating certificates") }}</h3>
+  <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
-  {{ trans("The certificates necessary for the openvpn server are being generated. This could take a quite long time (up to 30 minutes). You can try to visit this page later. ") }}
+  {{ trans("The CA necessary for the openvpn server is being generated. This could take a quite long time (up to 30 minutes). You can try to visit this page later. ") }}
   </p>
 
 %else:
@@ -59,15 +59,46 @@
     });
   </script>
   %if config_form.data['enabled']:
-  <h3>{{ trans("Client configuration") }}</h3>
+  <h3>{{ trans("Clients") }}</h3>
   <p>
     {{ trans("We assume that you have the openvpn server running on your router. The client configuration differs a bit based on your operating system. Be sure to check the configuration before you use it as a client configuration of your device. Especially check whether the public IP address matches your router.") }}
   </p>
+
+    <h4>{{ trans("New client") }}</h4>
+
+    <form action="{{ url("config_action", page_name="openvpn", action="generate-client") }}" method="post" class="config-form">
+      <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+      %for field in client_form.active_fields:
+          %include("_field.tpl", field=field)
+      %end
+      <button type="submit" name="send">{{ trans("Create") }}</button>
+    </form>
+
   <p>
+    %if client_certs:
   <form method='post' action='{{ url("config_action", page_name="openvpn", action="download-config") }}'>
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-    <button name="download-config" type="submit">{{ trans("Download Configuration") }}</button>
+    <table class="openvpn-clients">
+      <thead>
+        <tr>
+          <th>{{ trans("Client") }}</th>
+          <th>{{ trans("Status") }}</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    %for cert in client_certs:
+        <tr>
+          <td>{{ cert["name"] }}</td>
+          <td>{{ trans(cert['status']) }}</td>
+          <td><button name="download-config" value="{{ cert["name"] }}" type="submit">{{ trans("Get Config") }}</button></td>
+        </tr>
+    %end
+      </tbody>
+    </table>
   </form>
+    %end
   </p>
   <p>
     {{ trans("To apply this configuration on the client you need store it in the openvpn config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN\\config\\turris.ovpn) and restart the openvpn client.") }}
