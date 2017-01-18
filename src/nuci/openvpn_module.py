@@ -61,6 +61,7 @@ class CaGen(YinElement):
     CLIENT_STATUS_REVOKED = _("revoked")
     CLIENT_STATUS_EXPIRED = _("expired")
     CLIENT_STATUS_GENERATING = _("generating")
+    CLIENT_STATUS_LOST = _("lost")
 
     def __init__(self, data):
         super(CaGen, self).__init__()
@@ -107,7 +108,7 @@ class CaGen(YinElement):
                     'status': status,
                 }
 
-                if not status == "generating":
+                if status == "active":
                     record['key_path'] = cert_element.find(CaGen.qual_tag("key")).text
                     record['cert_path'] = cert_element.find(CaGen.qual_tag("cert")).text
 

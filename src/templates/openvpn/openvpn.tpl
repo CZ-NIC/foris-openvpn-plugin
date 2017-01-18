@@ -92,7 +92,11 @@
         <tr>
           <td>{{ cert["name"] }}</td>
           <td>{{ trans(cert['status']) }}</td>
-          <td><button name="download-config" value="{{ cert["name"] }}" type="submit">{{ trans("Get Config") }}</button></td>
+          <td>
+            %if cert['status'] == 'active':
+            <button name="download-config" value="{{ cert["name"] }}" type="submit">{{ trans("Get Config") }}</button>
+            %end
+          </td>
         </tr>
     %end
       </tbody>
