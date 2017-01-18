@@ -39,6 +39,12 @@
     %for field in config_form.active_fields:
         %include("_field.tpl", field=field)
     %end
+    %if config_form.data['enabled']:
+       <div class="row config-readonly"><label>&nbsp;</label><input value="{{ current['network'] }}" readonly /></div>
+       <div class="row config-readonly"><label>Device</label><input value="{{ current['device'] }}" readonly /></div>
+       <div class="row config-readonly"><label>Protocol</label><input value="{{ current['protocol'] }}" readonly /></div>
+       <div class="row config-readonly"><label>Port</label><input value="{{ current['port'] }}" readonly /></div>
+    %end
     <button name="apply" type="submit">{{ trans("Apply") }}</button>
   </form>
   <p>
@@ -49,12 +55,15 @@
         $('#field-enabled_1').click(function () {
             if ($(this).prop('checked')) {
                 $('#field-network').parent().show();
+                $('.config-readonly').show();
             } else {
                 $('#field-network').parent().hide();
+                $('.config-readonly').hide();
             }
         });
         %if not config_form.data['enabled']:
         $('#field-network').parent().hide();
+        $('.config-readonly').hide();
         %end
     });
   </script>

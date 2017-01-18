@@ -38,11 +38,13 @@ class OpenvpnConfigHandler(BaseConfigHandler):
             nuci_preproc=openvpn.Config.enabled_preproc
         )
         config_section.add_field(
-            Textbox, name="network", label=_("Openvpn network"),
+            Textbox, name="network", label=_("OpenVPN network"),
             nuci_preproc=openvpn.Config.network_preproc,
             validators=[IPv4Prefix()],
             hint=_(
-                "This network should be different than any network directly reachable from the router and the clients."),
+                "This network should be different than any network directly "
+                "reachable from the router and the clients."
+            ),
         )
 
         def form_callback(data):
@@ -88,6 +90,18 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['client_certs'] = [
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
         ] if arguments['ca'] else []
+
+        # prepare current settings to display
+        current = {}
+        if self.form.data['enabled']:
+            current['network'] = openvpn.Config.network_preproc(self.form.nuci_config)
+            current['device'] = self.form.nuci_config.find_child(
+                'uci.openvpn.server_turris.dev').value
+            current['protocol'] = self.form.nuci_config.find_child(
+                'uci.openvpn.server_turris.proto').value
+            current['port'] = self.form.nuci_config.find_child(
+                'uci.openvpn.server_turris.port').value
+            arguments['current'] = current
 
     def _action_download_config_or_revoke(self):
         if 'revoke-client' in self.data:
