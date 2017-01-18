@@ -87,7 +87,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['client_form'] = client_form if client_form else self.get_client_form()
         arguments['client_certs'] = [
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
-        ]
+        ] if arguments['ca'] else []
 
     def _action_download_config(self):
         """Handle POST requesting download of the openvpn client config

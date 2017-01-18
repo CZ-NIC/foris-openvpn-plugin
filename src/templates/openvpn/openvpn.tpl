@@ -11,9 +11,9 @@
 %include("_messages.tpl")
 
 %if not ca:
-  <h3>{{ trans("No certificates") }}</h3>
+  <h3>{{ trans("No certifite authority") }}</h3>
   <p>
-  {{ trans("Currently there is currently no certificate authority(CA) generated for the openvpn server. To proceed you need to generate the CA.") }}
+  {{ trans("Currently there is no openvpn certificate authority(CA). A CA is required to generate client certificates to authenticate to the openvpn server. To proceed you need to generate it first.") }}
   <form method='post' action="{{ url("config_action", page_name="openvpn", action="generate-ca") }}">
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     <button name="download-config" type="submit">{{ trans("Generate CA") }}</button>
@@ -23,7 +23,7 @@
 %elif ca.missing or ca.generating:
   <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
-  {{ trans("The CA necessary for the openvpn server is being generated. This could take a quite long time (up to 30 minutes). You can try to visit this page later. ") }}
+  {{ trans("The CA necessary for the openvpn server is being generated. This could take a quite long time (up to 30 minutes). Please try to visit this page later. ") }}
   </p>
 
 %else:
