@@ -96,6 +96,9 @@
             %if cert['status'] == 'active':
             <button name="download-config" value="{{ cert["name"] }}" type="submit">{{ trans("Get Config") }}</button>
             %end
+            %if cert['status'] != 'revoked':
+            <button name="revoke-client" value="{{ cert["serial"] }}" type="submit">{{ trans("Revoke") }}</button>
+            %end
           </td>
         </tr>
     %end

@@ -21,7 +21,7 @@ from .nuci import openvpn
 from .utils import prefix_to_mask_4
 
 from .nuci import (
-    generate_ca, generate_client, get_client_config, get_openvpn_ca, update_configs
+    generate_ca, generate_client, get_client_config, get_openvpn_ca, revoke_client, update_configs
 )
 
 
@@ -89,6 +89,24 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
         ] if arguments['ca'] else []
 
+    def _action_download_config_or_revoke(self):
+        if 'revoke-client' in self.data:
+            return self._action_revoke()
+        elif 'download-config' in self.data:
+            return self._action_download_config()
+        raise bottle.HTTPError(404, "Invalid action.")
+
+    def _action_revoke(self):
+        """Handle POST requesting revoking client certificate config
+
+        :return: response with token with appropriate HTTP headers
+        """
+        if revoke_client(self.data['revoke-client']):
+            messages.success(_("The client certificate was successfully revoked."))
+        else:
+            messages.error(_("Failed to revoke the client certificate."))
+        return bottle.redirect(reverse("config_page", page_name="openvpn"))
+
     def _action_download_config(self):
         """Handle POST requesting download of the openvpn client config
 
@@ -140,7 +158,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             messages.error("Wrong HTTP method.")
             bottle.redirect(reverse("config_page", page_name="openvpn"))
         if action == "download-config":
-            return self._action_download_config()
+            return self._action_download_config_or_revoke()
         elif action == "generate-ca":
             return self._action_generate_ca()
         elif action == "generate-client":

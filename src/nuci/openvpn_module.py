@@ -104,6 +104,7 @@ class CaGen(YinElement):
                 status = cert_element.find(CaGen.qual_tag("status")).text
                 record = {
                     'name': cert_element.find(CaGen.qual_tag("name")).text,
+                    'serial': cert_element.find(CaGen.qual_tag("serial")).text,
                     'type': cert_element.find(CaGen.qual_tag("type")).text,
                     'status': status,
                 }
@@ -148,6 +149,14 @@ class CaGen(YinElement):
         ET.SubElement(client_cert, CaGen.qual_tag("name")).text = name
         ET.SubElement(client_cert, CaGen.qual_tag("type")).text = 'client'
 
+        return root
+
+    @staticmethod
+    def rpc_revoke_client(serial):
+        root = ET.Element(CaGen.qual_tag("revoke"))
+        ca_element = ET.SubElement(root, CaGen.qual_tag("ca"))
+        ET.SubElement(ca_element, CaGen.qual_tag("name")).text = 'openvpn'
+        ET.SubElement(ca_element, CaGen.qual_tag("cert")).text = serial
         return root
 
 

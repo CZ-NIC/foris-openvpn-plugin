@@ -68,3 +68,11 @@ def update_configs(enabled, network, netmask):
         return True
     except (RPCError, TimeoutExpiredError):
         return False
+
+
+def revoke_client(serial):
+    try:
+        dispatch(openvpn.CaGen.rpc_revoke_client(serial))
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
