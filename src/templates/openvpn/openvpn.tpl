@@ -35,19 +35,29 @@
   <p>
   {{! trans("It is also assumed that you have more or less standard network configuration (notably <strong>wan</strong> and <strong>lan</strong> interfaces are present).") }}
   </p>
-  <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form">
-    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+  <table class="opevpn-settings">
+    <tr><td>
+      <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form">
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     %for field in config_form.active_fields:
         %include("_field.tpl", field=field)
     %end
+        <button name="apply" type="submit">{{ trans("Apply") }}</button>
+      </form>
+    </td><td>
+    <div class="openvpn-config-current">
     %if config_form.data['enabled']:
-       <div class="row config-readonly"><label>&nbsp;</label><input value="{{ current['network'] }}" readonly /></div>
-       <div class="row config-readonly"><label>Device</label><input value="{{ current['device'] }}" readonly /></div>
-       <div class="row config-readonly"><label>Protocol</label><input value="{{ current['protocol'] }}" readonly /></div>
-       <div class="row config-readonly"><label>Port</label><input value="{{ current['port'] }}" readonly /></div>
+      <table class="openvpn-current-settings">
+       <tr><th colspan="2"><strong>Current settings</strong></th></tr>
+       <tr><td>{{ trans("Network:") }}</td><td>{{ current['network'] }}</td></tr>
+       <tr><td>{{ trans("Device:") }}</td><td>{{ current['device'] }}</td></tr>
+       <tr><td>{{ trans("Protocol:") }}</td><td>{{ current['protocol'] }}</td></tr>
+       <tr><td>{{ trans("Port:") }}</td><td>{{ current['port'] }}</td></tr>
+      </table>
     %end
-    <button name="apply" type="submit">{{ trans("Apply") }}</button>
-  </form>
+    </div>
+    </td></tr>
+    </table>
   <p>
   {{! trans("Note that when you use <strong>Apply</strong> button you might lose the connection to the router for a while. This means that you might need <strong>reopen this page</strong> manually.") }}
   </p>
@@ -56,15 +66,15 @@
         $('#field-enabled_1').click(function () {
             if ($(this).prop('checked')) {
                 $('#field-network').parent().show();
-                $('.config-readonly').show();
+                $('.openvpn-config-current').show();
             } else {
                 $('#field-network').parent().hide();
-                $('.config-readonly').hide();
+                $('.openvpn-config-current').hide();
             }
         });
         %if not config_form.data['enabled']:
         $('#field-network').parent().hide();
-        $('.config-readonly').hide();
+        $('.openvpn-config-current').hide();
         %end
     });
   </script>
