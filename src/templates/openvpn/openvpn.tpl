@@ -25,6 +25,7 @@
   <p>
   {{ trans("The CA necessary for the openvpn server is being generated. This could take a quite long time (up to 30 minutes). Please try to visit this page later. ") }}
   </p>
+  <center><img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"></center>
 
 %else:
   <h3>{{ trans("Server configuration") }}</h3>
