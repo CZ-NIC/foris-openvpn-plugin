@@ -18,9 +18,9 @@ from . import openvpn_module as openvpn
 logger = logging.getLogger(__name__)
 
 
-def get_client_config(name):
+def get_client_config(serial):
     try:
-        data = dispatch(openvpn.Download.rpc_download_config(name))
+        data = dispatch(openvpn.Download.rpc_download_config(serial))
         return openvpn.Download.from_element(ET.fromstring(data.xml)).configuration
     except (RPCError, TimeoutExpiredError):
         return None
@@ -55,7 +55,7 @@ def generate_client(name):
 
 def update_configs(
         enabled, network, netmask,
-        cert_path="/etc/ssl/ca/openvpn/01.pem", key_path="/etc/ssl/ca/openvpn/01.key"):
+        cert_path="/etc/ssl/ca/openvpn/01.crt", key_path="/etc/ssl/ca/openvpn/01.key"):
     try:
         # read lan
         data = netconf.get(filter=("subtree", openvpn.LAN.lan_network_filter())).data_ele

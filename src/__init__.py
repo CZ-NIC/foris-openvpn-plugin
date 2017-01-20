@@ -143,10 +143,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         bottle.response.set_header("Content-Type", "text/plain")
         # TODO .ovpn for windows
-        bottle.response.set_header(
-            "Content-Disposition", 'attachment; filename="turris-%s.conf"'
-            % self.data['download-config']
-        )
+        bottle.response.set_header("Content-Disposition", 'attachment; filename="turris.conf"')
         bottle.response.set_header("Content-Length", len(openvpn_config))
         return openvpn_config
 

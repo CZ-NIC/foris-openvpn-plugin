@@ -37,11 +37,11 @@ class Download(YinElement):
         return Download(configuration_node.text)
 
     @staticmethod
-    def rpc_download_config(name):
+    def rpc_download_config(serial):
 
         element = ET.Element(Download.qual_tag(Download.tag))
-        cert_elem = ET.SubElement(element, Download.qual_tag("cert-name"))
-        cert_elem.text = name
+        cert_elem = ET.SubElement(element, Download.qual_tag("cert-serial"))
+        cert_elem.text = serial
 
         cert_elem = ET.SubElement(element, Download.qual_tag("config-name"))
         cert_elem.text = "server_turris"  # config name is server_turris
@@ -362,5 +362,5 @@ class LAN(YinElement):
 
 
 ####################################################################################################
-ET.register_namespace("openvpn", Download.NS_URI)
+ET.register_namespace("openvpn-client", Download.NS_URI)
 ET.register_namespace("ca-gen", CaGen.NS_URI)

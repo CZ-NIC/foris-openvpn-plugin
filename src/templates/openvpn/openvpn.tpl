@@ -114,7 +114,7 @@
           <td>{{ trans(cert['status']) }}</td>
           <td>
             %if cert['status'] == 'active':
-            <button name="download-config" value="{{ cert["name"] }}" type="submit">{{ trans("Get Config") }}</button>
+            <button name="download-config" value="{{ cert["serial"] }}" type="submit">{{ trans("Get Config") }}</button>
             %end
             %if cert['status'] not in ['revoked', 'generating']:
             <button name="revoke-client" value="{{ cert["serial"] }}" type="submit">{{ trans("Revoke") }}</button>
