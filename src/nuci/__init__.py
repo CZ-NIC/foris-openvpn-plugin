@@ -53,7 +53,9 @@ def generate_client(name):
         return False
 
 
-def update_configs(enabled, network, netmask):
+def update_configs(
+        enabled, network, netmask,
+        cert_path="/etc/ssl/ca/openvpn/01.pem", key_path="/etc/ssl/ca/openvpn/01.key"):
     try:
         # read lan
         data = netconf.get(filter=("subtree", openvpn.LAN.lan_network_filter())).data_ele
@@ -61,10 +63,9 @@ def update_configs(enabled, network, netmask):
         if not lan_config:
             return False
         # update config
-        edit_config(
-            openvpn.Config.prepare_edit_config(
-                enabled, network, netmask, lan_config.network, lan_config.netmask)
-        )
+        edit_config(openvpn.Config.prepare_edit_config(
+            enabled, network, netmask, lan_config.network, lan_config.netmask, cert_path, key_path
+        ))
         return True
     except (RPCError, TimeoutExpiredError):
         return False

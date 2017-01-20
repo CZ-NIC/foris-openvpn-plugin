@@ -76,14 +76,33 @@ class CaGen(YinElement):
         return False if self.data['certs'] else True
 
     @property
-    def generating(self):
-        if self.data['dhparams'] and self.data['dhparams']['generating']:
-            return True
-        for cert in self.data['certs']:
-            if cert['status'] == 'generating':
-                return True
+    def ca_ready(self):
+        # ca missing
+        if self.missing:
+            return False
 
-        return False
+        # At least one root certificate is ready
+        if not [e for e in self.data['certs'] if e['type'] == 'root' and
+                e['status'] != 'generating']:
+            return False
+
+        # test dhparams
+        if not self.data['dhparams'] or self.data['dhparams']['generating']:
+            return False
+
+        # At least one server certificate is ready
+        if not [e for e in self.data['certs'] if e['type'] == 'server' and
+                e['status'] != 'generating']:
+            return False
+
+        return True
+
+    def get_paths(self, cert_type):
+        res = []
+        for cert in self.data['certs']:
+            if cert['type'] == cert_type and cert['status'] == 'active':
+                res.append((cert['cert_path'], cert['key_path']))
+        return res
 
     @staticmethod
     def openvpn_filter():
@@ -227,7 +246,8 @@ class Config(YinElement):
         return uci.get_xml()
 
     @staticmethod
-    def prepare_edit_config(enabled, network, netmask, route_network, route_netmask):
+    def prepare_edit_config(
+            enabled, network, netmask, route_network, route_netmask, cert_path, key_path):
         uci = uci_raw.Uci()
 
         # network config
@@ -285,8 +305,9 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("proto", Config.PROTO))
         server_section.add(uci_raw.Option("dev", Config.IF_NAME))
         server_section.add(uci_raw.Option("ca", "/etc/ssl/ca/openvpn/ca.crt"))
-        server_section.add(uci_raw.Option("cert", "/etc/ssl/ca/openvpn/server-turris.crt"))
-        server_section.add(uci_raw.Option("key", "/etc/ssl/ca/openvpn/server-turris.key"))
+        server_section.add(uci_raw.Option("crl_verify", "/etc/ssl/ca/openvpn/ca.crl"))
+        server_section.add(uci_raw.Option("cert", cert_path))
+        server_section.add(uci_raw.Option("key", key_path))
         server_section.add(uci_raw.Option("dh", "/etc/ssl/ca/openvpn/dhparam.pem"))
         server_section.add(uci_raw.Option("server", "%s %s" % (network, netmask)))
         server_section.add(uci_raw.Option("ifconfig_pool_persist", "/tmp/ipp.txt"))

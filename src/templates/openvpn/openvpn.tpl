@@ -20,7 +20,7 @@
   </form>
   </p>
 
-%elif ca.missing or ca.generating:
+%elif not ca.ca_ready:
   <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
   {{ trans("The CA necessary for the openvpn server is being generated. This could take a quite long time (up to 30 minutes). Please try to visit this page later. ") }}
@@ -36,7 +36,7 @@
   {{! trans("It is also assumed that you have more or less standard network configuration (notably <strong>wan</strong> and <strong>lan</strong> interfaces are present).") }}
   </p>
   <table class="opevpn-settings">
-    <tr><td>
+    <tbody><tr><td>
       <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     %for field in config_form.active_fields:
@@ -56,7 +56,7 @@
       </table>
     %end
     </div>
-    </td></tr>
+    </td></tr></tbody>
     </table>
   <p>
   {{! trans("Note that when you use <strong>Apply</strong> button you might lose the connection to the router for a while. This means that you might need <strong>reopen this page</strong> manually.") }}
@@ -116,7 +116,7 @@
             %if cert['status'] == 'active':
             <button name="download-config" value="{{ cert["name"] }}" type="submit">{{ trans("Get Config") }}</button>
             %end
-            %if cert['status'] != 'revoked':
+            %if cert['status'] not in ['revoked', 'generating']:
             <button name="revoke-client" value="{{ cert["serial"] }}" type="submit">{{ trans("Revoke") }}</button>
             %end
           </td>

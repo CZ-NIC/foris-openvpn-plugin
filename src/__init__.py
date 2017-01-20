@@ -50,24 +50,34 @@ class OpenvpnConfigHandler(BaseConfigHandler):
         def form_callback(data):
             enabled = data['enabled']
             network, prefix = data['network'].split("/")
-            if update_configs(enabled, network, prefix_to_mask_4(int(prefix))):
-                # get openvpn server config
+            mask = prefix_to_mask_4(int(prefix))
+
+            if enabled:
+                # get ca status
                 ca = get_openvpn_ca()
-                if not ca or ca.missing or ca.generating:
+                if not ca or not ca.ca_ready:
                     messages.error(_("Can't apply the configuration. Certificates are missing."))
                     # ca is missing or generating, can't apply the configuration
-                else:
-                    messages.success(
-                        _('Openvpn server configuration was successfully %s.') % (
-                            _('enabled') if enabled else 'disabled'
-                        )
+                    return "none", None
+                # when ca is ready it should contain at least one server certicate
+                cert_path, key_path = ca.get_paths('server')[0]
+                paths = dict(cert_path=cert_path, key_path=key_path)
+            else:
+                paths = dict()  # use default paths
+
+            if update_configs(enabled, network, mask, **paths):
+                messages.success(
+                    _('Openvpn server configuration was successfully %s.') % (
+                        _('enabled') if enabled else _('disabled')
                     )
+                )
             else:
                 messages.error(
                     _('Failed to %s openvpn configuration.') % (
-                        _('enable') if enabled else 'disable'
+                        _('enable') if enabled else _('disable')
                     )
                 )
+
             return "none", None
 
         form.add_callback(form_callback)
