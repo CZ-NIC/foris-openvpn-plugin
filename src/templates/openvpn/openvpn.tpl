@@ -48,7 +48,7 @@
     <div class="openvpn-config-current">
     %if config_form.data['enabled']:
       <table class="openvpn-current-settings">
-       <tr><th colspan="2"><strong>Current settings</strong></th></tr>
+       <tr><th colspan="2"><strong>{{ trans("Current settings") }}</strong></th></tr>
        <tr><td>{{ trans("Network:") }}</td><td>{{ current['network'] }}</td></tr>
        <tr><td>{{ trans("Device:") }}</td><td>{{ current['device'] }}</td></tr>
        <tr><td>{{ trans("Protocol:") }}</td><td>{{ current['protocol'] }}</td></tr>

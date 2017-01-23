@@ -1,0 +1,248 @@
+# Foris - web administration interface for OpenWrt based on NETCONF
+# Copyright (C) 2016 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Stepan Henek <stepan.henek@nic.cz>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Foris OpenVPN plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-23 17:20+0100\n"
+"PO-Revision-Date: 2017-01-23 16:41+0100\n"
+"Last-Translator: Stepan Henek<stepan.henek@nic.cz>\n"
+"Language-Team: Czech <>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "Configuration enabled"
+msgstr "Konfigurace povolena"
+
+msgid "OpenVPN network"
+msgstr "OpenVPN síť"
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+"Tato síť by měla být jiná, než jakákoliv síť přímo dosažitelná z routeru a "
+"klientů."
+
+msgid "Can't apply the configuration. Certificates are missing."
+msgstr "Nepodařilo se zavést konfiguraci. Chybí certifikáty."
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr "Konfigurace OpenVPN serveru byla úspěšně %s."
+
+msgid "enabled"
+msgstr "povolena"
+
+msgid "disabled"
+msgstr "zakázána"
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr "Nepodařilo se %s konfiguraci OpenVPN serveru."
+
+msgid "enable"
+msgstr "povolit"
+
+msgid "disable"
+msgstr "zakázat"
+
+msgid "The client certificate was successfully revoked."
+msgstr "Klientský certifikát byl úspěšně revokován."
+
+msgid "Failed to revoke the client certificate."
+msgstr "Nepodařilo se revokovat klientský certifikát."
+
+msgid "Unable to get OpenVPN client config."
+msgstr "Nepodařilo se stáhnout konfiguraci pro OpenVPN klienta."
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr "Začínám generovat CA pro OpenVPN server."
+
+msgid "Failed to generate CA for the OpenVPN server."
+msgstr "Nepodařilo se vygenerovat CA pro OpenVPN server."
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr "Začínám generovat klientský certifikát pro OpenVPN server."
+
+msgid "Client name"
+msgstr "Jméno klienta"
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Zobrazované jméno klienta. Musí být kratší než 64 znaků a může obsahovat "
+"pouze alfanumerické znaky, tečky, pomlčky a podtržítka."
+
+msgid "Client name is invalid."
+msgstr "Jméno klienta je neplatné."
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr "Začínám generovat klienta '%(name)s' pro OpenVPN server."
+
+#, python-format
+msgid "Failed to generate client '%s(name)s' for the OpenVPN server."
+msgstr "Nepodařilo se vygenerovat klienta '%s(name)s' pro OpenVPN server."
+
+msgid "No certifite authority"
+msgstr "Chybí certifikační autorita"
+
+msgid ""
+"Currently there is no OpenVPN certificate authority(CA). A CA is required to "
+"generate client certificates to authenticate to the OpenVPN server. To "
+"proceed you need to generate it first."
+msgstr ""
+"V současné době se na routeru nenachází žádná certifikační autorita(CA) pro "
+"OpenVPN. CA je nezbytná pro generování klientských certifikátu, které se "
+"použijí k autentizaci proti OpenVPN serveru. Pokud si přejete pokračovat, "
+"musíte ji napřed vygenerovat."
+
+msgid "Generate CA"
+msgstr "Generovat CA"
+
+msgid "Generating certificate authority"
+msgstr "Generuji certifikační autoritu"
+
+msgid ""
+"The CA necessary for the OpenVPN server is being generated. This could take "
+"a quite long time (up to 30 minutes). Please try to visit this page later. "
+msgstr ""
+"Certifikační autorita nezbytná pro OpenVPN server se generuje. Tohle může "
+"trvat poměrně dlouho (až 30 minut). Prosím navštivte tuto stránku později."
+
+msgid "Loading..."
+msgstr "Načítám..."
+
+msgid "Server configuration"
+msgstr "Nastavení serveru"
+
+msgid ""
+"You need to have your server properly configured (including firewall rules "
+"and network devices). To do so you need to apply the configuration provided "
+"by the OpenVPN plugin. Note that the configuration might be in conflict with "
+"your existing configuration. So please disable your existing OpenVPN server "
+"configuration first."
+msgstr ""
+"Je nezbytné mít váš server správně nakonfigurován (včetne firewallových "
+"pravidel a síťových zařízení). To můžete provést tak, že zavedete "
+"konfiguraci poskytovanou OpenVPN pluginem. Tato konfigurace může ovšem být "
+"nekompatibilní se stávající konfigurací OpenVPN serveru. Zakažte proto "
+"prosím napřed stávající konfiguraci OpenVPN serveru. "
+
+msgid ""
+"It is also assumed that you have more or less standard network configuration "
+"(notably <strong>wan</strong> and <strong>lan</strong> interfaces are "
+"present)."
+msgstr ""
+"Plugin počítá s tím, že je na routeru víceméně standardně nastavena síť "
+"(konkrétně počítá s přítomnost <strong>wan</strong> and <strong>lan</strong> "
+"zařízení)."
+
+msgid "Apply"
+msgstr "Použít"
+
+msgid "Current settings"
+msgstr "Aktuální nastavení"
+
+msgid "Network:"
+msgstr "Síť:"
+
+msgid "Device:"
+msgstr "Zařízení:"
+
+msgid "Protocol:"
+msgstr "Protokol:"
+
+msgid "Port:"
+msgstr "Port:"
+
+msgid ""
+"Note that when you use <strong>Apply</strong> button you might lose the "
+"connection to the router for a while. This means that you might need "
+"<strong>reopen this page</strong> manually."
+msgstr ""
+"Pozn. jakmile použijete tlačítko <strong>Apply</strong> přijdete na chvilku "
+"o konektivitu k routeru. To znamená, že možná budete muset <strong>znovu "
+"otevřít tuto stránku</strong>."
+
+msgid "Clients"
+msgstr "Klienti"
+
+msgid ""
+"We assume that you have the OpenVPN server running on your router. The "
+"client configuration differs a bit based on your operating system. Be sure "
+"to check the configuration before you use it as a client configuration of "
+"your device. Especially check whether the public IP address matches your "
+"router."
+msgstr ""
+"Předpokládáme, že na vašem routeru běží funkční OpenVPN server. Nastavení "
+"klienta se může trochu lišit v závislosti na vašem operačním systému. "
+"Zkontrolujte raději nastavení než se je pokusíte nahrát na klienta. Hlavně "
+"zkontrolujte IP adresu, na kterou se klient bude připojovat."
+
+msgid "New client"
+msgstr "Nový klient"
+
+msgid "Create"
+msgstr "Vytvořit"
+
+msgid "Client"
+msgstr "Klient"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Get Config"
+msgstr "Stáhni konfiguraci"
+
+msgid "Revoke"
+msgstr "Revokuj"
+
+msgid ""
+"To apply this configuration on the client you need store it in the OpenVPN "
+"config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN"
+"\\config\\turris.ovpn) and restart the OpenVPN client."
+msgstr ""
+"Konfiguraci klienta zavedete většinou tak, že ji nahrajete do konfiguračního "
+"adresáře (/etc/openvpn/turris.conf nebo C:\\Program Files\\OpenVPN\\config"
+"\\turris.ovpn) a restartujete OpenVPN klienta."
+
+msgid "active"
+msgstr "aktivní"
+
+msgid "revoked"
+msgstr "revokovaný"
+
+msgid "expired"
+msgstr "prošlý"
+
+msgid "generating"
+msgstr "generovaný"
+
+msgid "lost"
+msgstr "ztracený"
