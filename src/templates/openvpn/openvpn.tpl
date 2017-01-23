@@ -13,7 +13,7 @@
 %if not ca:
   <h3>{{ trans("No certifite authority") }}</h3>
   <p>
-  {{ trans("Currently there is no openvpn certificate authority(CA). A CA is required to generate client certificates to authenticate to the openvpn server. To proceed you need to generate it first.") }}
+  {{ trans("Currently there is no OpenVPN certificate authority(CA). A CA is required to generate client certificates to authenticate to the OpenVPN server. To proceed you need to generate it first.") }}
   <form method='post' action="{{ url("config_action", page_name="openvpn", action="generate-ca") }}">
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     <button name="download-config" type="submit">{{ trans("Generate CA") }}</button>
@@ -23,14 +23,14 @@
 %elif not ca.ca_ready:
   <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
-  {{ trans("The CA necessary for the openvpn server is being generated. This could take a quite long time (up to 30 minutes). Please try to visit this page later. ") }}
+  {{ trans("The CA necessary for the OpenVPN server is being generated. This could take a quite long time (up to 30 minutes). Please try to visit this page later. ") }}
   </p>
   <center><img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"></center>
 
 %else:
   <h3>{{ trans("Server configuration") }}</h3>
   <p>
-  {{ trans("You need to have your server properly configured (including firewall rules and network devices). To do so you need to apply the configuration provided by openvpn plugin. Note that the configuration might be in conflict with your existing configuration. So please disable your existing openvpn server configuration first.") }}
+  {{ trans("You need to have your server properly configured (including firewall rules and network devices). To do so you need to apply the configuration provided by the OpenVPN plugin. Note that the configuration might be in conflict with your existing configuration. So please disable your existing OpenVPN server configuration first.") }}
   </p>
   <p>
   {{! trans("It is also assumed that you have more or less standard network configuration (notably <strong>wan</strong> and <strong>lan</strong> interfaces are present).") }}
@@ -81,7 +81,7 @@
   %if config_form.data['enabled']:
   <h3>{{ trans("Clients") }}</h3>
   <p>
-    {{ trans("We assume that you have the openvpn server running on your router. The client configuration differs a bit based on your operating system. Be sure to check the configuration before you use it as a client configuration of your device. Especially check whether the public IP address matches your router.") }}
+    {{ trans("We assume that you have the OpenVPN server running on your router. The client configuration differs a bit based on your operating system. Be sure to check the configuration before you use it as a client configuration of your device. Especially check whether the public IP address matches your router.") }}
   </p>
 
     <h4>{{ trans("New client") }}</h4>
@@ -128,7 +128,7 @@
     %end
   </p>
   <p>
-    {{ trans("To apply this configuration on the client you need store it in the openvpn config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN\\config\\turris.ovpn) and restart the openvpn client.") }}
+    {{ trans("To apply this configuration on the client you need store it in the OpenVPN config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN\\config\\turris.ovpn) and restart the OpenVPN client.") }}
   </p>
   %end
 %end

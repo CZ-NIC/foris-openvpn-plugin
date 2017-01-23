@@ -26,7 +26,7 @@ from .nuci import (
 
 
 class OpenvpnConfigHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Openvpn")
+    userfriendly_title = gettext("OpenVPN")
 
     def get_form(self):
 
@@ -67,13 +67,13 @@ class OpenvpnConfigHandler(BaseConfigHandler):
 
             if update_configs(enabled, network, mask, **paths):
                 messages.success(
-                    _('Openvpn server configuration was successfully %s.') % (
+                    _('OpenVPN server configuration was successfully %s.') % (
                         _('enabled') if enabled else _('disabled')
                     )
                 )
             else:
                 messages.error(
-                    _('Failed to %s openvpn configuration.') % (
+                    _('Failed to %s OpenVPN server configuration.') % (
                         _('enable') if enabled else _('disable')
                     )
                 )
@@ -138,7 +138,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         """
         openvpn_config = get_client_config(self.data['download-config'])
         if not openvpn_config:
-            messages.error(_("Unable to get openvpn client config."))
+            messages.error(_("Unable to get OpenVPN client config."))
             bottle.redirect(reverse("config_page", page_name="openvpn"))
 
         bottle.response.set_header("Content-Type", "text/plain")
@@ -153,9 +153,9 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         :return: redirect to plugin's main page
         """
         if generate_ca():
-            messages.success(_("Started to generate CA for the openvpn server."))
+            messages.success(_("Started to generate CA for the OpenVPN server."))
         else:
-            messages.error(_("Failed to generate CA for the openvpn server."))
+            messages.error(_("Failed to generate CA for the OpenVPN server."))
 
         return bottle.redirect(reverse("config_page", page_name="openvpn"))
 
@@ -166,7 +166,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         """
         form = self.get_client_form(bottle.request.POST)
         if form.save():
-            messages.success(_("Started to generate client certificate for the openvpn server."))
+            messages.success(_("Started to generate client certificate for the OpenVPN server."))
             return bottle.redirect(reverse("config_page", page_name="openvpn"))
         else:
             kwargs = {}
@@ -203,12 +203,12 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         def form_callback(data):
             if generate_client(data['client_name']):
                 messages.success(
-                    _("Started to generate client '%(name)s' for the openvpn server.")
+                    _("Started to generate client '%(name)s' for the OpenVPN server.")
                     % dict(name=data['client_name'])
                 )
             else:
                 messages.error(
-                    _("Failed to generate client '%s(name)s' for the openvpn server.")
+                    _("Failed to generate client '%s(name)s' for the OpenVPN server.")
                     % dict(name=data['client_name'])
                 )
             return bottle.redirect(reverse("config_page", page_name="openvpn"))
