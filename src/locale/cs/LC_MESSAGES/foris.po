@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-23 17:20+0100\n"
+"POT-Creation-Date: 2017-01-24 15:12+0100\n"
 "PO-Revision-Date: 2017-01-23 16:41+0100\n"
 "Last-Translator: Stepan Henek<stepan.henek@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -87,6 +87,14 @@ msgstr "Nepodařilo se vygenerovat CA pro OpenVPN server."
 
 msgid "Started to generate client certificate for the OpenVPN server."
 msgstr "Začínám generovat klientský certifikát pro OpenVPN server."
+
+#, fuzzy
+msgid "The OpenVPN CA was successfully deleted."
+msgstr "Klientský certifikát byl úspěšně revokován."
+
+#, fuzzy
+msgid "Failed to detete the OpenVPN CA."
+msgstr "Nepodařilo se vygenerovat CA pro OpenVPN server."
 
 msgid "Client name"
 msgstr "Jméno klienta"
@@ -231,6 +239,28 @@ msgstr ""
 "Konfiguraci klienta zavedete většinou tak, že ji nahrajete do konfiguračního "
 "adresáře (/etc/openvpn/turris.conf nebo C:\\Program Files\\OpenVPN\\config"
 "\\turris.ovpn) a restartujete OpenVPN klienta."
+
+msgid "Delete CA"
+msgstr "Smazat CA"
+
+msgid ""
+"You can't delete the CA while the OpenVPN server is enabled. To delete the CA "
+"you need to disable the server configuration first."
+msgstr ""
+"Nemůžete smazat CA dokud je konfigurace OpenVPN serveru povolena. "
+"Pokud chcete smazat CA musíte napřed zakázat konfiguraci serveru. "
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this CA "
+"will be useless and if you wanted to use this plugin, you'd need to generate "
+"a new CA first."
+msgstr ""
+"Můžete smazat celou CA. To znamená, že všechny certifikáty vydané touhle CA "
+"budou nepoužitelné. Pokud byste chtěl(a) tento plugin opět používat, "
+"budete si muset vygenerovat novou CA."
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr "Opavdu si přejete smazat CA pro OpenVPN?"
 
 msgid "active"
 msgstr "aktivní"

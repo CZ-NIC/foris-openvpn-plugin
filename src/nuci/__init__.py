@@ -45,6 +45,14 @@ def generate_ca():
         return False
 
 
+def delete_ca():
+    try:
+        dispatch(openvpn.CaGen.rpc_delete_ca())
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
 def generate_client(name):
     try:
         dispatch(openvpn.CaGen.rpc_generate_client(name))

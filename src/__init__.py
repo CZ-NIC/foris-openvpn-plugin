@@ -21,7 +21,8 @@ from .nuci import openvpn
 from .utils import prefix_to_mask_4
 
 from .nuci import (
-    generate_ca, generate_client, get_client_config, get_openvpn_ca, revoke_client, update_configs
+    delete_ca, generate_ca, generate_client, get_client_config, get_openvpn_ca, revoke_client,
+    update_configs,
 )
 
 
@@ -173,6 +174,18 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             self._prepare_render_args(kwargs, client_form=form)
             return super(OpenvpnConfigPage, self).render(**kwargs)
 
+    def _action_delete_ca(self):
+        """Call RPC to delete the CA of the openvpn server
+
+        :return: redirect to plugin's main page
+        """
+        if delete_ca():
+            messages.success(_("The OpenVPN CA was successfully deleted."))
+        else:
+            messages.success(_("Failed to detete the OpenVPN CA."))
+
+        return bottle.redirect(reverse("config_page", page_name="openvpn"))
+
     def call_action(self, action):
         if bottle.request.method != 'POST':
             # all actions here require POST
@@ -184,6 +197,8 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             return self._action_generate_ca()
         elif action == "generate-client":
             return self._action_generate_client()
+        elif action == "delete-ca":
+            return self._action_delete_ca()
         raise bottle.HTTPError(404, "Unknown action.")
 
     def get_client_form(self, data=None):

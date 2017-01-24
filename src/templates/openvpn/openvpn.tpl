@@ -131,5 +131,28 @@
     {{ trans("To apply this configuration on the client you need store it in the OpenVPN config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN\\config\\turris.ovpn) and restart the OpenVPN client.") }}
   </p>
   %end
+  <h3>{{ trans("Delete CA") }}</h3>
+  <p>
+    %if config_form.data['enabled']:
+      {{ trans("You can't delete the CA while the OpenVPN server is enabled. To delete the CA you need to disable the server configuration first.") }}
+    %else:
+      {{ trans("You can delete the whole CA. Note that all the cerificates issued by this CA will be useless and if you wanted to use this plugin, you'd need to generate a new CA first.") }}
+    <form action="{{ url("config_action", page_name="openvpn", action="delete-ca") }}" method="post" id="delete-ca-form">
+      <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+      <button type="submit" name="send" id="reset-ca-submit">{{ trans("Delete CA") }}</button>
+    </form>
+    <script>
+      $(document).ready(function() {
+          $('#delete-ca-form').on('click', function(e) {
+              var answer = confirm("{{ trans("Are you sure you want to delete the OpenVPN CA?") }}");
+              if (!answer) {
+                e.preventDefault();
+              }
+          });
+      });
+    </script>
+    %end
+  </p>
 %end
+
 </div>

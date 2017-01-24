@@ -159,6 +159,12 @@ class CaGen(YinElement):
         return root
 
     @staticmethod
+    def rpc_delete_ca():
+        root = ET.Element(CaGen.qual_tag("delete-ca"))
+        ET.SubElement(root, CaGen.qual_tag("ca")).text = 'openvpn'
+        return root
+
+    @staticmethod
     def rpc_generate_client(name):
         root = ET.Element(CaGen.qual_tag("generate"))
         ET.SubElement(root, CaGen.qual_tag("background"))
