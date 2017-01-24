@@ -1,5 +1,5 @@
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2016 CZ.NIC, z. s. p. o. <https://www.nic.cz>
+# Copyright (C) 2017 CZ.NIC, z. s. p. o. <https://www.nic.cz>
 #
 # Foris is distributed under the terms of GNU General Public License v3.
 # You should have received a copy of the GNU General Public License
