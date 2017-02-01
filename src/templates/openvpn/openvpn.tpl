@@ -23,18 +23,22 @@
 %elif not ca.ca_ready:
   <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
-  {{ trans("The CA necessary for the OpenVPN server is being generated. This could take a quite long time (up to 30 minutes). Please try to visit this page later. ") }}
+  {{ trans("The CA necessary for the OpenVPN server is being generated. The time required for generating CA way differ. It could take up to 30 minutes. Please try to reload this page lager.") }}
   </p>
   <center><img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"></center>
+  <br/>
+  <center><form><button name="reload-page" type="submit">{{ trans("Reload page") }}</button></form></center>
 
 %else:
   <h3>{{ trans("Server configuration") }}</h3>
-  <p>
-  {{ trans("You need to have your server properly configured (including firewall rules and network devices). To do so you need to apply the configuration provided by the OpenVPN plugin. Note that the configuration might be in conflict with your existing configuration. So please disable your existing OpenVPN server configuration first.") }}
-  </p>
-  <p>
-  {{! trans("It is also assumed that you have more or less standard network configuration (notably <strong>wan</strong> and <strong>lan</strong> interfaces are present).") }}
-  </p>
+  <span>{{ trans("To work properly OpenVPN plugin needs:") }}</span>
+  <ul class="points">
+    <li>{{ trans("public IP address (preferably static)") }}</li>
+    <li>{{ trans("standard network settings (WAN and LAN devices present)") }}</li>
+  </ul>
+  <h4>{{ trans("Previous settings") }}</h4>
+  <p>{{! trans("If you haven't tried to set up OpenVPN server on our router yet, you can safely proceed to <strong>\"Apply configuration\"</strong> button.") }}</p>
+  <p>{{ trans("Otherwise if you've tried to set up OpenVPN outside this plugin, there is a chance that your configuration might collide with the configuration created by this plugin. Therefore you might need to disable the old configuration first.") }}</p>
   <table class="opevpn-settings">
     <tbody><tr><td>
       <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form">
@@ -42,7 +46,7 @@
     %for field in config_form.active_fields:
         %include("_field.tpl", field=field)
     %end
-        <button name="apply" type="submit">{{ trans("Apply") }}</button>
+        <button name="apply" type="submit">{{ trans("Apply configuration") }}</button>
       </form>
     </td><td>
     <div class="openvpn-config-current">
@@ -59,7 +63,7 @@
     </td></tr></tbody>
     </table>
   <p>
-  {{! trans("Note that when you use <strong>Apply</strong> button you might lose the connection to the router for a while. This means that you might need <strong>reopen this page</strong> manually.") }}
+  {{! trans("Note that when you trigger <strong>\"Apply configuration\"</strong> button you might lose the connection to the router for a while. This means that you might need to reopen this admin page again.") }}
   </p>
   <script>
     $(document).ready(function() {
@@ -79,12 +83,8 @@
     });
   </script>
   %if config_form.data['enabled']:
-  <h3>{{ trans("Clients") }}</h3>
-  <p>
-    {{ trans("We assume that you have the OpenVPN server running on your router. The client configuration differs a bit based on your operating system. Be sure to check the configuration before you use it as a client configuration of your device. Especially check whether the public IP address matches your router.") }}
-  </p>
-
-    <h4>{{ trans("New client") }}</h4>
+  <h3>{{ trans("Client configuration") }}</h3>
+    <p>{{ trans("Here you can create and revoke the client capability to connect to your OpenVPN network.") }}</p>
 
     <form action="{{ url("config_action", page_name="openvpn", action="generate-client") }}" method="post" class="config-form">
       <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
@@ -128,7 +128,11 @@
     %end
   </p>
   <p>
-    {{ trans("To apply this configuration on the client you need store it in the OpenVPN config directory (as /etc/openvpn/turris.conf or C:\\Program Files\\OpenVPN\\config\\turris.ovpn) and restart the OpenVPN client.") }}
+    {{ trans("Be sure to check, that the server IP address provided in you configuration file actually matches the public IP address of your router.") }}
+  </p>
+
+  <p>
+    {{ trans("To apply the client configuration you need to download it and put it into the OpenVPN config directory or you might try to open it using your OpenVPN client directly. You might need to restart your client afterwards.") }}
   </p>
   %end
   <h3>{{ trans("Delete CA") }}</h3>
