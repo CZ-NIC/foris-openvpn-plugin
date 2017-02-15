@@ -19,6 +19,7 @@ from foris.utils import messages, reverse
 from foris.validators import IPv4Prefix, LenRange, RegExp
 from .nuci import openvpn
 from .utils import prefix_to_mask_4
+from .ubus import create_session, grant_listen
 
 from .nuci import (
     delete_ca, generate_ca, generate_client, get_client_config, get_openvpn_ca, revoke_client,
@@ -101,6 +102,12 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['client_certs'] = [
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
         ] if arguments['ca'] else []
+
+        # set the session for ubus
+        session = create_session() or ""
+        granted = grant_listen(session)
+        arguments['ubus_session'] = session
+        arguments['ubus_ready'] = granted
 
         # prepare current settings to display
         current = {}
@@ -200,6 +207,16 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         elif action == "delete-ca":
             return self._action_delete_ca()
         raise bottle.HTTPError(404, "Unknown action.")
+
+    def call_ajax_action(self, action):
+        if action == "update-clients":
+            bottle.response.set_header("Content-Type", "text/html")
+            ca = get_openvpn_ca()
+            client_certs = [
+                e for e in ca.data.get('certs', []) if e['type'] == 'client'
+            ] if ca else []
+            return bottle.template("openvpn/_clients", client_certs=client_certs)
+        raise ValueError("Unknown AJAX action.")
 
     def get_client_form(self, data=None):
         client_form = ForisForm("openvpn", data)

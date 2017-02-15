@@ -98,32 +98,7 @@
     %if client_certs:
   <form method='post' action='{{ url("config_action", page_name="openvpn", action="download-config") }}'>
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-    <table class="openvpn-clients">
-      <thead>
-        <tr>
-          <th>{{ trans("Client") }}</th>
-          <th>{{ trans("Status") }}</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-    %for cert in client_certs:
-        <tr>
-          <td>{{ cert["name"] }}</td>
-          <td>{{ trans(cert['status']) }}</td>
-          <td>
-            %if cert['status'] == 'active':
-            <button name="download-config" value="{{ cert["serial"] }}" type="submit">{{ trans("Get Config") }}</button>
-            %end
-            %if cert['status'] not in ['revoked', 'generating']:
-            <button name="revoke-client" value="{{ cert["serial"] }}" type="submit">{{ trans("Revoke") }}</button>
-            %end
-          </td>
-        </tr>
-    %end
-      </tbody>
-    </table>
+    % include('openvpn/_clients.tpl', client_certs=client_certs)
   </form>
     %end
   </p>
@@ -158,5 +133,134 @@
     %end
   </p>
 %end
+
+<meta name="ubus-session" content="{{ ubus_session }}">
+<meta name="ubus-ready" content="{{ ubus_ready }}">
+
+<script>
+    var ws;
+    var parse_ca_gen = function (ca_gen_data) {
+      var elements = ca_gen_data[0].split(" ");
+      // trimm elements
+      elements.map(function (element) {
+        return element.trim();
+      });
+      // skip empty
+      elements.filter(function (element) {
+        return element;
+      });
+      var prev = "";
+      var result = [];
+
+      elements.forEach(function (element) {
+        switch (prev) {
+          case "new_ca":
+            result.push({name: element, new: true, actions: []});
+            prev = "";
+            return;
+          case "switch":
+            result.push({name: element, new: false, actions: []});
+            prev = "";
+            return;
+          case "gen_client":
+            if (result.length > 0) {
+              result[result.length - 1].actions.push({name: element, action: "new_client"});
+            }
+            prev = "";
+            return;
+          case "revoke":
+            if (result.length > 0) {
+              result[result.length - 1].actions.push({name: element, action: "revoke"});
+            }
+            prev = "";
+            return;
+          default:
+            prev = element;
+        };
+      });
+      return result;
+    };
+
+    var process_ca_gen = function(parsed_data) {
+      // openvpn CA only
+      parsed_data.filter(function (element) {
+        return element.name == "openvpn";
+      });
+      // Go through ca
+      parsed_data.forEach(function (ca) {
+        // a new CA was generated, try to reaload the Window
+        if (ca.new === true) {
+            window.location.reload()
+        }
+        // process actions
+        ca.actions.forEach(function (action) {
+          switch (action.action) {
+            case "revoke":
+              renew_clients();
+              return;
+            case "new_client":
+              renew_clients();
+              return;
+          };
+        });
+      });
+    };
+
+    var renew_clients = function() {
+      $.get('{{ url("config_ajax", page_name="openvpn") }}', {action: "update-clients"})
+        .done(function(response, status, xhr) {
+          if (xhr.status == 200) {
+            // Redraw
+            $("#openvpn-clients").replaceWith(response);
+          } else {
+            // Logout or other
+            window.location.reload();
+          }
+        })
+        .fail(function(xhr) {
+            if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                window.location.replace(xhr.responseJSON.loginUrl);
+                return;
+            }
+        });
+    };
+
+    $(document).ready(function() {
+      var protocol = window.location.protocol == "http:" ? "ws:" : "wss:";
+      var port = window.location.protocol == "http:" ? "9080" : "9443";
+      var token = $("meta[name=ubus-session]").attr("content");
+      var url = protocol + "//" + window.location.hostname + ":" + port + "/" + token;
+
+      // Connect to Web Socket
+      ws = new WebSocket(url);
+
+      // Set event handlers.
+      ws.onopen = function() {
+      // register for lookup
+        ws.send(JSON.stringify({"action": "register", "params": {"kinds": ["ca-gen"]}}));
+      };
+
+      ws.onmessage = function(e) {
+        console.log("onmessage: " + e.data);
+        var parsed = JSON.parse(e.data);
+        if (parsed['ca-gen'] && parsed['ca-gen']['finished']) {
+          // parse data
+          var input = parse_ca_gen(parsed['ca-gen']['finished']);
+          // perform appropriate action
+          process_ca_gen(input);
+        };
+      };
+
+      ws.onclose = function() {
+        // TDB WS closed
+        console.log("Disconnected from websocket server.");
+      };
+
+      ws.onerror = function(e) {
+        // TDW WS error
+        console.log("Websocket server error occured:" + e);
+      };
+    });
+</script>
 
 </div>
