@@ -139,71 +139,24 @@
 
 <script>
     var ws;
-    var parse_ca_gen = function (ca_gen_data) {
-      var elements = ca_gen_data[0].split(" ");
-      // trimm elements
-      elements.map(function (element) {
-        return element.trim();
-      });
-      // skip empty
-      elements.filter(function (element) {
-        return element;
-      });
-      var prev = "";
-      var result = [];
 
-      elements.forEach(function (element) {
-        switch (prev) {
-          case "new_ca":
-            result.push({name: element, new: true, actions: []});
-            prev = "";
-            return;
-          case "switch":
-            result.push({name: element, new: false, actions: []});
-            prev = "";
-            return;
-          case "gen_client":
-            if (result.length > 0) {
-              result[result.length - 1].actions.push({name: element, action: "new_client"});
-            }
-            prev = "";
-            return;
-          case "revoke":
-            if (result.length > 0) {
-              result[result.length - 1].actions.push({name: element, action: "revoke"});
-            }
-            prev = "";
-            return;
-          default:
-            prev = element;
-        };
-      });
-      return result;
-    };
-
-    var process_ca_gen = function(parsed_data) {
-      // openvpn CA only
-      parsed_data.filter(function (element) {
-        return element.name == "openvpn";
-      });
-      // Go through ca
-      parsed_data.forEach(function (ca) {
-        // a new CA was generated, try to reaload the Window
-        if (ca.new === true) {
-            window.location.reload()
-        }
-        // process actions
-        ca.actions.forEach(function (action) {
-          switch (action.action) {
-            case "revoke":
-              renew_clients();
-              return;
-            case "new_client":
-              renew_clients();
-              return;
-          };
-        });
-      });
+    var process_ca_gen = function(data) {
+      if (data.ca != "openvpn") {
+        // we are interrested only in openvpn ca
+        return;
+      }
+      switch (data.action) {
+        case "revoke":
+        case "gen_client":
+          renew_clients();
+          return;
+        case "gen_server":
+        case "gen_dh":
+        case "gen_ca":
+          // reload current window
+          window.location.reload();
+          return;
+      };
     };
 
     var renew_clients = function() {
@@ -243,11 +196,9 @@
       ws.onmessage = function(e) {
         console.log("onmessage: " + e.data);
         var parsed = JSON.parse(e.data);
-        if (parsed['ca-gen'] && parsed['ca-gen']['finished']) {
-          // parse data
-          var input = parse_ca_gen(parsed['ca-gen']['finished']);
+        if (parsed['ca-gen']) {
           // perform appropriate action
-          process_ca_gen(input);
+          process_ca_gen(parsed['ca-gen']);
         };
       };
 
