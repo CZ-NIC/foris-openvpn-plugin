@@ -18,9 +18,9 @@ from . import openvpn_module as openvpn
 logger = logging.getLogger(__name__)
 
 
-def get_client_config(serial):
+def get_client_config(serial, server_address):
     try:
-        data = dispatch(openvpn.Download.rpc_download_config(serial))
+        data = dispatch(openvpn.Download.rpc_download_config(serial, server_address))
         return openvpn.Download.from_element(ET.fromstring(data.xml)).configuration
     except (RPCError, TimeoutExpiredError):
         return None
@@ -85,3 +85,11 @@ def revoke_client(serial):
         return True
     except (RPCError, TimeoutExpiredError):
         return False
+
+
+def foris_config():
+    try:
+        data = netconf.get(filter=("subtree", openvpn.Foris.foris_openvpn_filter())).data_ele
+        return openvpn.Foris.from_element(data)
+    except (RPCError, TimeoutExpiredError):
+        return None

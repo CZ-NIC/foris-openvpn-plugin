@@ -22,8 +22,8 @@ from .utils import prefix_to_mask_4
 from .ubus import create_session, grant_listen
 
 from .nuci import (
-    delete_ca, generate_ca, generate_client, get_client_config, get_openvpn_ca, revoke_client,
-    update_configs,
+    delete_ca, foris_config, generate_ca, generate_client, get_client_config, get_openvpn_ca,
+    openvpn_module, revoke_client, update_configs,
 )
 
 
@@ -99,6 +99,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['ca'] = ca if ca else get_openvpn_ca()
         arguments['config_form'] = self.form
         arguments['client_form'] = client_form if client_form else self.get_client_form()
+        arguments['address_form'] = self.get_address_form()
         arguments['client_certs'] = [
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
         ] if arguments['ca'] else []
@@ -144,7 +145,16 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         :return: response with token with appropriate HTTP headers
         """
-        openvpn_config = get_client_config(self.data['download-config'])
+        # Try to update the openvpn_plugin config if needed
+        opevpn_settings = foris_config()
+        form = self.get_address_form(bottle.request.POST)
+        if opevpn_settings.server_address != form.data["server-address"]:
+            form.save()
+
+        openvpn_config = get_client_config(
+            self.data['download-config'],
+            form.data.get("server-address", None)
+        )
         if not openvpn_config:
             messages.error(_("Unable to get OpenVPN client config."))
             bottle.redirect(reverse("config_page", page_name="openvpn"))
@@ -217,6 +227,25 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             ] if ca else []
             return bottle.template("openvpn/_clients", client_certs=client_certs)
         raise ValueError("Unknown AJAX action.")
+
+    def get_address_form(self, data=None):
+        address_form = ForisForm("openvpn", data, filter=openvpn.Foris.foris_openvpn_filter())
+        main_section = address_form.add_section(
+            name="address-section", title=None,
+        )
+        main_section.add_field(
+            Textbox, name="server-address", label=_("Router address"), required=False,
+            hint=_("A server address which will be present in the client config."),
+            nuci_path="uci.foris.openvpn_plugin.server_address",
+            default="",
+            placeholder=_("use autodetection"),
+        )
+
+        def form_callback(data):
+            return "edit_config", openvpn_module.Foris.prepare_edit(data)
+
+        address_form.add_callback(form_callback)
+        return address_form
 
     def get_client_form(self, data=None):
         client_form = ForisForm("openvpn", data)

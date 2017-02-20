@@ -37,14 +37,18 @@ class Download(YinElement):
         return Download(configuration_node.text)
 
     @staticmethod
-    def rpc_download_config(serial):
+    def rpc_download_config(serial, server_address=None):
 
         element = ET.Element(Download.qual_tag(Download.tag))
         cert_elem = ET.SubElement(element, Download.qual_tag("cert-serial"))
         cert_elem.text = serial
 
-        cert_elem = ET.SubElement(element, Download.qual_tag("config-name"))
-        cert_elem.text = "server_turris"  # config name is server_turris
+        config_elem = ET.SubElement(element, Download.qual_tag("config-name"))
+        config_elem.text = "server_turris"  # config name is server_turris
+
+        if server_address:
+            server_elem = ET.SubElement(element, Download.qual_tag("server-address"))
+            server_elem.text = server_address
 
         return element
 
@@ -365,6 +369,42 @@ class LAN(YinElement):
         uci.add(network_conf)
         network_conf.add(uci_raw.Section("lan", "interface"))
         return uci.get_xml()
+
+
+class Foris(YinElement):
+    tag = "config"
+    NS_URI = UCI_RAW
+
+    def __init__(self, server_address):
+        super(Foris, self).__init__()
+        self.server_address = server_address
+
+    @staticmethod
+    def foris_openvpn_filter():
+        uci = uci_raw.Uci()
+        uci_foris = uci_raw.Config("foris")
+        uci.add(uci_foris)
+        uci_foris.add(uci_raw.Section("openvpn_plugin", "config"))
+        return uci.get_xml()
+
+    @staticmethod
+    def from_element(element):
+        uci_element = element.find(Foris.qual_tag("uci"))
+        uci = uci_raw.Uci.from_element(uci_element)
+        server_address = uci.find_child('foris.openvpn_plugin.server_address')
+        return Foris(server_address.value if server_address else "")
+
+    @staticmethod
+    def prepare_edit(data):
+        uci = uci_raw.Uci()
+        uci_foris = uci_raw.Config("foris")
+        uci.add(uci_foris)
+        uci_section = uci_raw.Section("openvpn_plugin", "config")
+        uci_foris.add(uci_section)
+        if "server-address" in data:
+            uci_section.add(uci_raw.Option("server_address", data["server-address"]))
+
+        return uci
 
 
 ####################################################################################################

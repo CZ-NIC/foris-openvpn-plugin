@@ -96,14 +96,19 @@
 
   <p>
     %if client_certs:
-  <form method='post' action='{{ url("config_action", page_name="openvpn", action="download-config") }}'>
+  <form method='post' class="config-form" action='{{ url("config_action", page_name="openvpn", action="download-config") }}'>
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     % include('openvpn/_clients.tpl', client_certs=client_certs)
+    <br />
+    <div class="row">
+      {{ trans("Be sure to check, that the server IP address provided in you configuration file actually matches the public IP address of your router.") }}
+      {{ trans("You can set this address manually when the autodetection fails.") }}
+    </div>
+    %for field in address_form.active_fields:
+        %include("_field.tpl", field=field)
+    %end
   </form>
     %end
-  </p>
-  <p>
-    {{ trans("Be sure to check, that the server IP address provided in you configuration file actually matches the public IP address of your router.") }}
   </p>
 
   <p>
