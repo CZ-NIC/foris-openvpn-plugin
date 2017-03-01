@@ -199,7 +199,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         if delete_ca():
             messages.success(_("The OpenVPN CA was successfully deleted."))
         else:
-            messages.success(_("Failed to detete the OpenVPN CA."))
+            messages.success(_("Failed to delete the OpenVPN CA."))
 
         return bottle.redirect(reverse("config_page", page_name="openvpn"))
 

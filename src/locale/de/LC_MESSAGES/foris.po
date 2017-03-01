@@ -220,7 +220,7 @@ msgstr ""
 msgid "The OpenVPN CA was successfully deleted."
 msgstr ""
 
-msgid "Failed to detete the OpenVPN CA."
+msgid "Failed to delete the OpenVPN CA."
 msgstr ""
 
 msgid "Router address"

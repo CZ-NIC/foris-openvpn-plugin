@@ -91,7 +91,7 @@ msgstr "Začínám generovat klientský certifikát pro OpenVPN server."
 msgid "The OpenVPN CA was successfully deleted."
 msgstr "Certifikační autorita OpenVPN serveru byla úspěšně smazána."
 
-msgid "Failed to detete the OpenVPN CA."
+msgid "Failed to delete the OpenVPN CA."
 msgstr "Nepodařilo se smazat certifikační autoritu pro OpenVPN server."
 
 msgid "Router address"
