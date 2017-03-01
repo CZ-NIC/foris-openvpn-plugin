@@ -122,8 +122,8 @@ msgid "Started to generate client '%(name)s' for the OpenVPN server."
 msgstr "Začínám generovat klienta '%(name)s' pro OpenVPN server."
 
 #, python-format
-msgid "Failed to generate client '%s(name)s' for the OpenVPN server."
-msgstr "Nepodařilo se vygenerovat klienta '%s(name)s' pro OpenVPN server."
+msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+msgstr "Nepodařilo se vygenerovat klienta '%(name)s' pro OpenVPN server."
 
 msgid "Client"
 msgstr "Klient"

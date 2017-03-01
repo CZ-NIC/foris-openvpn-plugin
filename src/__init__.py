@@ -269,7 +269,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
                 )
             else:
                 messages.error(
-                    _("Failed to generate client '%s(name)s' for the OpenVPN server.")
+                    _("Failed to generate client '%(name)s' for the OpenVPN server.")
                     % dict(name=data['client_name'])
                 )
             return bottle.redirect(reverse("config_page", page_name="openvpn"))

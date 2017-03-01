@@ -290,9 +290,9 @@ msgstr ""
 "Generierung der Client '%(name)s' für den OpenVPN Server wurde angefangen."
 
 #, python-format
-msgid "Failed to generate client '%s(name)s' for the OpenVPN server."
+msgid "Failed to generate client '%(name)s' for the OpenVPN server."
 msgstr ""
-"Generierung der Client '%s(name)s' für den OpenVPN Server ist fehlgeschlagen."
+"Generierung der Client '%(name)s' für den OpenVPN Server ist fehlgeschlagen."
 
 msgid "active"
 msgstr "aktiv"
