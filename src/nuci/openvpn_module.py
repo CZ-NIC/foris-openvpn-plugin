@@ -90,10 +90,6 @@ class CaGen(YinElement):
                 e['status'] != 'generating']:
             return False
 
-        # test dhparams
-        if not self.data['dhparams'] or self.data['dhparams']['generating']:
-            return False
-
         # At least one server certificate is ready
         if not [e for e in self.data['certs'] if e['type'] == 'server' and
                 e['status'] != 'generating']:
@@ -122,7 +118,7 @@ class CaGen(YinElement):
             # handle only openvpn ca
             if ca_element.find(CaGen.qual_tag("name")).text != "openvpn":
                 continue
-            res = {'certs': [], 'dhparams': {}, 'crl': None}
+            res = {'certs': [], 'crl': None}
             for cert_element in ca_element.findall(CaGen.qual_tag("cert")):
                 status = cert_element.find(CaGen.qual_tag("status")).text
                 record = {
@@ -137,11 +133,6 @@ class CaGen(YinElement):
                     record['cert_path'] = cert_element.find(CaGen.qual_tag("cert")).text
 
                 res['certs'].append(record)
-            dhparams_node = ca_element.find(CaGen.qual_tag("dhparams"))
-            if dhparams_node:
-                res['dhparams']['path'] = dhparams_node.find(CaGen.qual_tag("file")).text
-                res['dhparams']['generating'] = \
-                    False if dhparams_node.find(CaGen.qual_tag("generating")) is None else True
             crl_node = ca_element.find(CaGen.qual_tag("crl"))
             if crl_node:
                 res['crl'] = crl_node.text
@@ -155,7 +146,6 @@ class CaGen(YinElement):
         ca_element = ET.SubElement(root, CaGen.qual_tag("ca"))
         ET.SubElement(ca_element, CaGen.qual_tag("name")).text = 'openvpn'  # CA name
         ET.SubElement(ca_element, CaGen.qual_tag("new"))
-        ET.SubElement(ca_element, CaGen.qual_tag("dhparams"))
         server_element = ET.SubElement(ca_element, CaGen.qual_tag("cert"))
         ET.SubElement(server_element, CaGen.qual_tag("name")).text = 'turris'
         ET.SubElement(server_element, CaGen.qual_tag("type")).text = 'server'
@@ -318,7 +308,7 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("crl_verify", "/etc/ssl/ca/openvpn/ca.crl"))
         server_section.add(uci_raw.Option("cert", cert_path))
         server_section.add(uci_raw.Option("key", key_path))
-        server_section.add(uci_raw.Option("dh", "/etc/ssl/ca/openvpn/dhparam.pem"))
+        server_section.add(uci_raw.Option("dh", "/etc/dhparam/dh-default.pem"))
         server_section.add(uci_raw.Option("server", "%s %s" % (network, netmask)))
         server_section.add(uci_raw.Option("ifconfig_pool_persist", "/tmp/ipp.txt"))
         #server_section.add(uci_raw.Option("client_to_client", "1")) # TODO config option
