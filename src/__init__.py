@@ -96,6 +96,8 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         """
         arguments['PLUGIN_NAME'] = OpenvpnPlugin.PLUGIN_NAME
         arguments['PLUGIN_STYLES'] = OpenvpnPlugin.PLUGIN_STYLES
+        arguments['PLUGIN_STATIC_SCRIPTS'] = OpenvpnPlugin.PLUGIN_STATIC_SCRIPTS
+        arguments['PLUGIN_DYNAMIC_SCRIPTS'] = OpenvpnPlugin.PLUGIN_DYNAMIC_SCRIPTS
         arguments['ca'] = ca if ca else get_openvpn_ca()
         arguments['config_form'] = self.form
         arguments['client_form'] = client_form if client_form else self.get_client_form()
@@ -106,9 +108,8 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         # set the session for ubus
         session = create_session() or ""
-        granted = grant_listen(session)
+        grant_listen(session)
         arguments['ubus_session'] = session
-        arguments['ubus_ready'] = granted
 
         # prepare current settings to display
         current = {}
@@ -291,6 +292,12 @@ class OpenvpnPlugin(ForisPlugin):
     DIRNAME = os.path.dirname(os.path.abspath(__file__))
     PLUGIN_STYLES = [
         "css/screen.css",
+    ]
+    PLUGIN_STATIC_SCRIPTS = [
+        "js/websockets.js"
+    ]
+    PLUGIN_DYNAMIC_SCRIPTS = [
+        "openvpn.js"
     ]
 
     def __init__(self, app):

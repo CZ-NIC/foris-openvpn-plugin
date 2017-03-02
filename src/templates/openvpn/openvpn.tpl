@@ -65,23 +65,6 @@
   <p>
   {{! trans("Note that when you trigger <strong>\"Apply configuration\"</strong> button you might lose the connection to the router for a while. This means that you might need to reopen this admin page again.") }}
   </p>
-  <script>
-    $(document).ready(function() {
-        $('#field-enabled_1').click(function () {
-            if ($(this).prop('checked')) {
-                $('#field-network').parent().show();
-                $('.openvpn-config-current').show();
-            } else {
-                $('#field-network').parent().hide();
-                $('.openvpn-config-current').hide();
-            }
-        });
-        %if not config_form.data['enabled']:
-        $('#field-network').parent().hide();
-        $('.openvpn-config-current').hide();
-        %end
-    });
-  </script>
   %if config_form.data['enabled']:
   <h3>{{ trans("Client configuration") }}</h3>
     <p>{{ trans("Here you can create and revoke the client capability to connect to your OpenVPN network.") }}</p>
@@ -125,98 +108,10 @@
       <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
       <button type="submit" name="send" id="reset-ca-submit">{{ trans("Delete CA") }}</button>
     </form>
-    <script>
-      $(document).ready(function() {
-          $('#delete-ca-form').on('click', function(e) {
-              var answer = confirm("{{ trans("Are you sure you want to delete the OpenVPN CA?") }}");
-              if (!answer) {
-                e.preventDefault();
-              }
-          });
-      });
-    </script>
     %end
   </p>
 %end
 
 <meta name="ubus-session" content="{{ ubus_session }}">
-<meta name="ubus-ready" content="{{ ubus_ready }}">
-
-<script>
-    var ws;
-
-    var process_ca_gen = function(data) {
-      if (data.ca != "openvpn") {
-        // we are interrested only in openvpn ca
-        return;
-      }
-      switch (data.action) {
-        case "revoke":
-        case "gen_client":
-          renew_clients();
-          return;
-        case "gen_server":
-        case "gen_dh":
-        case "gen_ca":
-          // reload current window
-          window.location.reload();
-          return;
-      };
-    };
-
-    var renew_clients = function() {
-      $.get('{{ url("config_ajax", page_name="openvpn") }}', {action: "update-clients"})
-        .done(function(response, status, xhr) {
-          if (xhr.status == 200) {
-            // Redraw
-            $("#openvpn-clients").replaceWith(response);
-          } else {
-            // Logout or other
-            window.location.reload();
-          }
-        })
-        .fail(function(xhr) {
-            if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
-                window.location.replace(xhr.responseJSON.loginUrl);
-                return;
-            }
-        });
-    };
-
-    $(document).ready(function() {
-      var protocol = window.location.protocol == "http:" ? "ws:" : "wss:";
-      var port = window.location.protocol == "http:" ? "9080" : "9443";
-      var token = $("meta[name=ubus-session]").attr("content");
-      var url = protocol + "//" + window.location.hostname + ":" + port + "/" + token;
-
-      // Connect to Web Socket
-      ws = new WebSocket(url);
-
-      // Set event handlers.
-      ws.onopen = function() {
-      // register for lookup
-        ws.send(JSON.stringify({"action": "register", "params": {"kinds": ["ca-gen"]}}));
-      };
-
-      ws.onmessage = function(e) {
-        console.log("onmessage: " + e.data);
-        var parsed = JSON.parse(e.data);
-        if (parsed['ca-gen']) {
-          // perform appropriate action
-          process_ca_gen(parsed['ca-gen']);
-        };
-      };
-
-      ws.onclose = function() {
-        // TDB WS closed
-        console.log("Disconnected from websocket server.");
-      };
-
-      ws.onerror = function(e) {
-        // TDW WS error
-        console.log("Websocket server error occured:" + e);
-      };
-    });
-</script>
 
 </div>
