@@ -41,12 +41,14 @@
   <p>{{ trans("Otherwise if you've tried to set up OpenVPN outside this plugin, there is a chance that your configuration might collide with the configuration created by this plugin. Therefore you might need to disable the old configuration first.") }}</p>
   <table class="opevpn-settings">
     <tbody><tr><td>
-      <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form">
+      <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form" id="openvpn-config-form">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     %for field in config_form.active_fields:
         %include("_field.tpl", field=field)
     %end
-        <button name="apply" type="submit">{{ trans("Apply configuration") }}</button>
+        <div class="row">
+          <button name="apply" type="submit">{{ trans("Apply configuration") }}</button>
+        </div>
       </form>
     </td><td>
     <div class="openvpn-config-current">
@@ -57,6 +59,13 @@
        <tr><td>{{ trans("Device:") }}</td><td>{{ current['device'] }}</td></tr>
        <tr><td>{{ trans("Protocol:") }}</td><td>{{ current['protocol'] }}</td></tr>
        <tr><td>{{ trans("Port:") }}</td><td>{{ current['port'] }}</td></tr>
+       <tr><td>{{ trans("Route:") }}</td>
+       %if current['default_route']:
+         <td>{{ trans("All traffic") }}</td>
+       %else:
+         <td>{{ current['lan_network'] }}</td>
+       %end
+       </tr>
       </table>
     %end
     </div>

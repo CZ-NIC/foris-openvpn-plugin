@@ -1,27 +1,14 @@
-# Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# Stepan Henek <stepan.henek@nic.cz>, 2017.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris OpenVPN plugin\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-01 14:03+0100\n"
+"POT-Creation-Date: 2017-03-20 16:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +16,118 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "OpenVPN"
+msgstr ""
+
+msgid "Configuration enabled"
+msgstr ""
+
+msgid "OpenVPN network"
+msgstr ""
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+
+msgid "All traffic through vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+
+msgid "Can't apply the configuration. Certificates are missing."
+msgstr ""
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr ""
+
+msgid "enable"
+msgstr ""
+
+msgid "disable"
+msgstr ""
+
+msgid "The client certificate was successfully revoked."
+msgstr ""
+
+msgid "Failed to revoke the client certificate."
+msgstr ""
+
+msgid "Unable to get OpenVPN client config."
+msgstr ""
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr ""
+
+msgid "Failed to generate CA for the OpenVPN server."
+msgstr ""
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr ""
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr ""
+
+msgid "Failed to delete the OpenVPN CA."
+msgstr ""
+
+msgid "Router address"
+msgstr ""
+
+msgid "A server address which will be present in the client config."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
+
+msgid "Client name"
+msgstr ""
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+
+msgid "Client name is invalid."
+msgstr ""
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr ""
+
+#, python-format
+msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+msgstr ""
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr ""
+
+msgid "Client"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Get Config"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
 
 msgid "No certifite authority"
 msgstr ""
@@ -102,6 +201,12 @@ msgstr ""
 msgid "Port:"
 msgstr ""
 
+msgid "Route:"
+msgstr ""
+
+msgid "All traffic"
+msgstr ""
+
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> button "
 "you might lose the connection to the router for a while. This means that you "
@@ -145,110 +250,6 @@ msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this CA "
 "will be useless and if you wanted to use this plugin, you'd need to generate "
 "a new CA first."
-msgstr ""
-
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr ""
-
-msgid "Client"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
-msgid "Get Config"
-msgstr ""
-
-msgid "Revoke"
-msgstr ""
-
-msgid "OpenVPN"
-msgstr ""
-
-msgid "Configuration enabled"
-msgstr ""
-
-msgid "OpenVPN network"
-msgstr ""
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr ""
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr ""
-
-msgid "enabled"
-msgstr ""
-
-msgid "disabled"
-msgstr ""
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr ""
-
-msgid "enable"
-msgstr ""
-
-msgid "disable"
-msgstr ""
-
-msgid "The client certificate was successfully revoked."
-msgstr ""
-
-msgid "Failed to revoke the client certificate."
-msgstr ""
-
-msgid "Unable to get OpenVPN client config."
-msgstr ""
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr ""
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
-
-msgid "Failed to detete the OpenVPN CA."
-msgstr ""
-
-msgid "Router address"
-msgstr ""
-
-msgid "A server address which will be present in the client config."
-msgstr ""
-
-msgid "use autodetection"
-msgstr ""
-
-msgid "Client name"
-msgstr ""
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-
-msgid "Client name is invalid."
-msgstr ""
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
 msgstr ""
 
 msgid "active"

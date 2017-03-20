@@ -188,6 +188,7 @@ class Config(YinElement):
     PROTO = "udp"
     DEFAULT_MASK = "255.255.255.0"
     DEFAULT_NETWORK = "10.111.111.0"
+    DEFAULT_VPN_DEF_ROUTE = False
 
     @property
     def key(self):
@@ -230,6 +231,17 @@ class Config(YinElement):
         return "%s/%d" % (address, prefix)
 
     @staticmethod
+    def default_route_preproc(data):
+        # default value
+        default_route = Config.DEFAULT_VPN_DEF_ROUTE
+
+        push_node = data.find_child('uci.openvpn.server_turris.push')
+        if push_node:
+            return "redirect-gateway def1" in [e.content for e in push_node.children]
+
+        return default_route
+
+    @staticmethod
     def openvpn_filter():
         uci = uci_raw.Uci()
         network_conf = uci_raw.Config("network")
@@ -247,7 +259,8 @@ class Config(YinElement):
 
     @staticmethod
     def prepare_edit_config(
-            enabled, network, netmask, route_network, route_netmask, cert_path, key_path):
+            enabled, network, netmask, route_network, route_netmask,
+            default_route, cert_path, key_path):
         uci = uci_raw.Uci()
 
         # network config
@@ -292,7 +305,12 @@ class Config(YinElement):
             firewall_conf.add_removal(forward_lan_out_section)
         forward_lan_out_section.add(uci_raw.Option("src", "lan"))
         forward_lan_out_section.add(uci_raw.Option("dest", "vpn_turris"))
-        # TODO we could optionally add openvpn_turris -> wan forwarding
+        if default_route:
+            forward_wan_out_section = uci_raw.Section("vpn_turris_forward_wan_out", "forwarding")
+            firewall_conf.add_replace(forward_wan_out_section) if enabled else \
+                firewall_conf.add_removal(forward_wan_out_section)
+            forward_wan_out_section.add(uci_raw.Option("src", "vpn_turris"))
+            forward_wan_out_section.add(uci_raw.Option("dest", "wan"))
 
         # openvpn config
         openvpn_conf = uci_raw.Config("openvpn")
@@ -325,6 +343,9 @@ class Config(YinElement):
         routes.add(uci_raw.Value(
             0, "route %s %s" % (normalize_subnet_4(route_network, route_netmask), route_netmask))
         )
+        if default_route:
+            routes.add(uci_raw.Value(1, "redirect-gateway def1"))
+
         server_section.add(routes)
 
         return uci.get_xml()

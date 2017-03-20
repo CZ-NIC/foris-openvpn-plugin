@@ -71,16 +71,16 @@ $(document).ready(function() {
   });
   $('#field-enabled_1').click(function () {
     if ($(this).prop('checked')) {
-      $('#field-network').parent().show();
+      $('#openvpn-config-form div:not(:first):not(:last)').show();
       $('.openvpn-config-current').show();
     } else {
-      $('#field-network').parent().hide();
+      $('#openvpn-config-form div:not(:first):not(:last)').hide();
       $('.openvpn-config-current').hide();
     }
   });
   if ($('#field-enabled_1').is(':checked')) {
-    $('#field-network').parent().show();
+      $('#openvpn-config-form div:not(:first):not(:last)').show();
   } else {
-    $('#field-network').parent().hide();
+      $('#openvpn-config-form div:not(:first):not(:last)').hide();
   };
 });

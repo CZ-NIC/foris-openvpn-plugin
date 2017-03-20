@@ -18,12 +18,12 @@ from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
 from foris.validators import IPv4Prefix, LenRange, RegExp
 from .nuci import openvpn
-from .utils import prefix_to_mask_4
+from .utils import prefix_to_mask_4, mask_to_prefix_4
 from .ubus import create_session, grant_listen
 
 from .nuci import (
-    delete_ca, foris_config, generate_ca, generate_client, get_client_config, get_openvpn_ca,
-    openvpn_module, revoke_client, update_configs,
+    delete_ca, foris_config, generate_ca, generate_client, get_client_config, get_lan,
+    get_openvpn_ca, openvpn_module, revoke_client, update_configs,
 )
 
 
@@ -48,11 +48,20 @@ class OpenvpnConfigHandler(BaseConfigHandler):
                 "reachable from the router and the clients."
             ),
         )
+        config_section.add_field(
+            Checkbox, name="default_route", label=_("All traffic through vpn"),
+            nuci_preproc=openvpn.Config.default_route_preproc,
+            hint=_(
+                "After enabling this option all traffic from your client "
+                "will be routed through the vpn."
+            ),
+        )
 
         def form_callback(data):
             enabled = data['enabled']
             network, prefix = data['network'].split("/")
             mask = prefix_to_mask_4(int(prefix))
+            default_route = data['default_route']
 
             if enabled:
                 # get ca status
@@ -67,7 +76,7 @@ class OpenvpnConfigHandler(BaseConfigHandler):
             else:
                 paths = dict()  # use default paths
 
-            if update_configs(enabled, network, mask, **paths):
+            if update_configs(enabled, network, mask, default_route, **paths):
                 messages.success(
                     _('OpenVPN server configuration was successfully %s.') % (
                         _('enabled') if enabled else _('disabled')
@@ -121,6 +130,12 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
                 'uci.openvpn.server_turris.proto').value
             current['port'] = self.form.nuci_config.find_child(
                 'uci.openvpn.server_turris.port').value
+            current['default_route'] = openvpn.Config.default_route_preproc(self.form.nuci_config)
+            lan_config = get_lan()
+            current['lan_network'] = "%s/%d" % (
+                lan_config.network,
+                mask_to_prefix_4(lan_config.netmask)
+            )
             arguments['current'] = current
 
     def _action_download_config_or_revoke(self):

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-20 14:30+0100\n"
+"POT-Creation-Date: 2017-03-20 16:40+0100\n"
 "PO-Revision-Date: 2017-03-01 14:00+0000\n"
 "Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris-"
@@ -47,6 +47,15 @@ msgid ""
 msgstr ""
 "Tato síť by měla být jiná, než jakákoliv síť přímo dosažitelná z routeru a "
 "klientů."
+
+msgid "All traffic through vpn"
+msgstr "Všechen provoz skrz vpn"
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+"Po povolení této volby bude váš klient směrovat veškerý provoz skrz vpn."
 
 msgid "Can't apply the configuration. Certificates are missing."
 msgstr "Nepodařilo se zavést konfiguraci. Chybí certifikáty."
@@ -124,6 +133,9 @@ msgstr "Začínám generovat klienta '%(name)s' pro OpenVPN server."
 #, python-format
 msgid "Failed to generate client '%(name)s' for the OpenVPN server."
 msgstr "Nepodařilo se vygenerovat klienta '%(name)s' pro OpenVPN server."
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr "Opravdu si přejete smazat certifikační autoritu pro OpenVPN?"
 
 msgid "Client"
 msgstr "Klient"
@@ -223,6 +235,12 @@ msgstr "Protokol:"
 msgid "Port:"
 msgstr "Port:"
 
+msgid "Route:"
+msgstr "Přesměruj:"
+
+msgid "All traffic"
+msgstr "Veškerý provoz"
+
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> button "
 "you might lose the connection to the router for a while. This means that you "
@@ -282,9 +300,6 @@ msgstr ""
 "certifikáty vydané touhle autoritou budou nepoužitelné. Pokud byste chtěl(a) "
 "tento plugin opět používat, budete si muset vygenerovat novou certifikační "
 "autoritu."
-
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr "Opavdu si přejete smazat certifikační autoritu pro OpenVPN?"
 
 msgid "active"
 msgstr "aktivní"
