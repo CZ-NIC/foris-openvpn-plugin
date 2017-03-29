@@ -67,7 +67,7 @@ def get_lan():
 
 
 def update_configs(
-        enabled, network, netmask, default_route,
+        enabled, network, netmask, default_route, dns,
         cert_path="/etc/ssl/ca/openvpn/01.crt", key_path="/etc/ssl/ca/openvpn/01.key"):
     try:
         # read lan
@@ -79,7 +79,7 @@ def update_configs(
         # update config
         edit_config(openvpn.Config.prepare_edit_config(
             enabled, network, netmask, lan_config.network, lan_config.netmask, default_route,
-            cert_path, key_path
+            dns, cert_path, key_path
         ))
         return True
     except (RPCError, TimeoutExpiredError):

@@ -56,12 +56,21 @@ class OpenvpnConfigHandler(BaseConfigHandler):
                 "will be routed through the vpn."
             ),
         )
+        config_section.add_field(
+            Checkbox, name="dns", label=_("Use DNS from vpn"),
+            nuci_preproc=openvpn.Config.dns_preproc,
+            hint=_(
+                "After enabling this option your client should start "
+                "to use DNS server on your router."
+            ),
+        )
 
         def form_callback(data):
             enabled = data['enabled']
             network, prefix = data['network'].split("/")
             mask = prefix_to_mask_4(int(prefix))
             default_route = data['default_route']
+            dns = data['dns']
 
             if enabled:
                 # get ca status
@@ -76,7 +85,7 @@ class OpenvpnConfigHandler(BaseConfigHandler):
             else:
                 paths = dict()  # use default paths
 
-            if update_configs(enabled, network, mask, default_route, **paths):
+            if update_configs(enabled, network, mask, default_route, dns, **paths):
                 messages.success(
                     _('OpenVPN server configuration was successfully %s.') % (
                         _('enabled') if enabled else _('disabled')

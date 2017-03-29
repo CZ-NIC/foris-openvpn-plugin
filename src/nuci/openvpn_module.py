@@ -15,7 +15,7 @@ from foris.nuci.modules.base import YinElement
 client_name_regexp = r'[a-zA-Z0-9_.-]+'
 re_client_name = re.compile(client_name_regexp)
 
-from ..utils import normalize_subnet_4, mask_to_prefix_4
+from ..utils import normalize_subnet_4, mask_to_prefix_4, ip_str_to_num_4, ip_num_to_str_4
 
 OPENVPN_CLIENT_URI = "http://www.nic.cz/ns/router/openvpn-client"
 CAGEN_URI = "http://www.nic.cz/ns/router/ca-gen"
@@ -189,6 +189,7 @@ class Config(YinElement):
     DEFAULT_MASK = "255.255.255.0"
     DEFAULT_NETWORK = "10.111.111.0"
     DEFAULT_VPN_DEF_ROUTE = False
+    DEFAULT_VPN_DNS = False
 
     @property
     def key(self):
@@ -231,15 +232,32 @@ class Config(YinElement):
         return "%s/%d" % (address, prefix)
 
     @staticmethod
-    def default_route_preproc(data):
-        # default value
-        default_route = Config.DEFAULT_VPN_DEF_ROUTE
+    def _is_in_push(data, push_option):
 
         push_node = data.find_child('uci.openvpn.server_turris.push')
         if push_node:
-            return "redirect-gateway def1" in [e.content for e in push_node.children]
+            for e in push_node.children:
+                if e.content.startswith(push_option):
+                    return True
+            return False
+
+        return None  # No push node present
+
+    @staticmethod
+    def default_route_preproc(data):
+
+        in_push = Config._is_in_push(data, "redirect-gateway def1")
+        default_route = Config.DEFAULT_VPN_DEF_ROUTE if in_push is None else in_push
 
         return default_route
+
+    @staticmethod
+    def dns_preproc(data):
+
+        in_push = Config._is_in_push(data, "dhcp-option DNS")
+        dns = Config.DEFAULT_VPN_DNS if in_push is None else in_push
+
+        return dns
 
     @staticmethod
     def openvpn_filter():
@@ -260,7 +278,7 @@ class Config(YinElement):
     @staticmethod
     def prepare_edit_config(
             enabled, network, netmask, route_network, route_netmask,
-            default_route, cert_path, key_path):
+            default_route, dns, cert_path, key_path):
         uci = uci_raw.Uci()
 
         # network config
@@ -339,14 +357,23 @@ class Config(YinElement):
         server_section.add(uci_raw.Option("status", "/tmp/openvpn-status.log"))
         server_section.add(uci_raw.Option("verb", "3"))
         server_section.add(uci_raw.Option("mute", "20"))
-        routes = uci_raw.List("push")
-        routes.add(uci_raw.Value(
-            0, "route %s %s" % (normalize_subnet_4(route_network, route_netmask), route_netmask))
+        push = uci_raw.List("push")
+        index = 0
+        push.add(uci_raw.Value(
+            index,
+            "route %s %s" % (normalize_subnet_4(route_network, route_netmask), route_netmask))
         )
+        index += 1
         if default_route:
-            routes.add(uci_raw.Value(1, "redirect-gateway def1"))
+            push.add(uci_raw.Value(index, "redirect-gateway def1"))
+            index += 1
 
-        server_section.add(routes)
+        if dns:
+            vpn_router_address = ip_num_to_str_4(ip_str_to_num_4(network) + 1)
+            push.add(uci_raw.Value(index, "dhcp-option DNS %s" % vpn_router_address))
+            index += 1
+
+        server_section.add(push)
 
         return uci.get_xml()
 
