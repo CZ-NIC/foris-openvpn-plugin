@@ -105,6 +105,7 @@ class OpenvpnConfigHandler(BaseConfigHandler):
 
 
 class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
+    menu_order = 60
     template = "openvpn/openvpn.tpl"
 
     def _prepare_render_args(self, arguments, client_form=None, ca=None):
