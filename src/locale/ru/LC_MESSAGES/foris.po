@@ -8,102 +8,112 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 11:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-04-06 06:41+0000\n"
+"Last-Translator: Gleb <70b6efd8@opayq.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris-"
+"openvpn-plugin/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.13-dev\n"
 
 msgid "OpenVPN"
-msgstr ""
+msgstr "OpenVPN"
 
 msgid "Configuration enabled"
-msgstr ""
+msgstr "Конфигурация включена"
 
 msgid "OpenVPN network"
-msgstr ""
+msgstr "Сеть OpenVPN"
 
 msgid ""
 "This network should be different than any network directly reachable from "
 "the router and the clients."
 msgstr ""
+"Эта сеть должна отличаться от любой сети, доступной напрямую от "
+"маршрутизатора и клиентов."
 
 msgid "All traffic through vpn"
-msgstr ""
+msgstr "Весь трафик через vpn"
 
 msgid ""
 "After enabling this option all traffic from your client will be routed "
 "through the vpn."
 msgstr ""
+"После включения этой опции весь трафик от вашего клиента будет "
+"маршрутизироваться через vpn."
 
 msgid "Use DNS from vpn"
-msgstr ""
+msgstr "Использовать DNS из vpn"
 
 msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
 msgstr ""
+"После включении этой опции ваш клиент должен начать использовать DNS-сервера "
+"на маршрутизаторе."
 
 msgid "Can't apply the configuration. Certificates are missing."
-msgstr ""
+msgstr "Не удается применить конфигурацию. Сертификаты отсутствуют."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
-msgstr ""
+msgstr "Конфигурация openvpn сервера была успешно %s."
 
 msgid "enabled"
-msgstr ""
+msgstr "включено"
 
 msgid "disabled"
-msgstr ""
+msgstr "отключено"
 
 #, python-format
 msgid "Failed to %s OpenVPN server configuration."
-msgstr ""
+msgstr "Не удалось %s настройки openvpn сервера."
 
 msgid "enable"
-msgstr ""
+msgstr "включить"
 
 msgid "disable"
-msgstr ""
+msgstr "деактивировать"
 
 msgid "The client certificate was successfully revoked."
-msgstr ""
+msgstr "Клиентский сертификат был успешно аннулирован."
 
 msgid "Failed to revoke the client certificate."
-msgstr ""
+msgstr "Не удалось отозвать клиентский сертификат."
 
 msgid "Unable to get OpenVPN client config."
-msgstr ""
+msgstr "Не удалось получить конфиг клиента openvpn."
 
 msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "Начали создавать центр сертификации для openvpn сервера."
 
 msgid "Failed to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "Не удалось создать ЦС для OpenVPN сервера."
 
 msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
+msgstr "Начали генерировать сертификат клиента для OpenVPN сервера."
 
 msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
+msgstr "OpenVPN CA был успешно удален."
 
 msgid "Failed to delete the OpenVPN CA."
-msgstr ""
+msgstr "Не удалось удалить ЦС OpenVPN."
 
 msgid "Router address"
-msgstr ""
+msgstr "Адрес маршрутизатора"
 
 msgid "A server address which will be present in the client config."
-msgstr ""
+msgstr "Адрес сервера, который будет присутствовать в конфигурации клиента."
 
 msgid "use autodetection"
-msgstr ""
+msgstr "использовать автоопределение"
 
 msgid "Client name"
-msgstr ""
+msgstr "Имя клиента"
 
 msgid ""
 "The display name for the client. It must be shorter than 64 characters and "
