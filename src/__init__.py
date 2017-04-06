@@ -16,9 +16,10 @@ from foris.plugins import ForisPlugin
 from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
+from foris.utils.addresses import prefix_to_mask_4, mask_to_prefix_4
 from foris.validators import IPv4Prefix, LenRange, RegExp
+
 from .nuci import openvpn
-from .utils import prefix_to_mask_4, mask_to_prefix_4
 from .ubus import create_session, grant_listen
 
 from .nuci import (

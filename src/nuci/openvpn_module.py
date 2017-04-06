@@ -15,7 +15,9 @@ from foris.nuci.modules.base import YinElement
 client_name_regexp = r'[a-zA-Z0-9_.-]+'
 re_client_name = re.compile(client_name_regexp)
 
-from ..utils import normalize_subnet_4, mask_to_prefix_4, ip_str_to_num_4, ip_num_to_str_4
+from foris.utils.addresses import (
+    normalize_subnet_4, mask_to_prefix_4, ip_str_to_num_4, ip_num_to_str_4
+)
 
 OPENVPN_CLIENT_URI = "http://www.nic.cz/ns/router/openvpn-client"
 CAGEN_URI = "http://www.nic.cz/ns/router/ca-gen"
