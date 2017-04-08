@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 11:47+0200\n"
-"PO-Revision-Date: 2017-04-04 16:37+0000\n"
-"Last-Translator: Easylarveur <easylarveur@hotmail.fr>\n"
+"PO-Revision-Date: 2017-04-08 20:21+0000\n"
+"Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris-"
 "openvpn-plugin/fr/>\n"
 "Language: fr\n"
@@ -59,20 +59,20 @@ msgid "OpenVPN server configuration was successfully %s."
 msgstr ""
 
 msgid "enabled"
-msgstr ""
+msgstr "activé"
 
 msgid "disabled"
-msgstr ""
+msgstr "désactivée"
 
 #, python-format
 msgid "Failed to %s OpenVPN server configuration."
 msgstr ""
 
 msgid "enable"
-msgstr ""
+msgstr "activer"
 
 msgid "disable"
-msgstr ""
+msgstr "désactiver"
 
 msgid "The client certificate was successfully revoked."
 msgstr ""
@@ -99,7 +99,7 @@ msgid "Failed to delete the OpenVPN CA."
 msgstr ""
 
 msgid "Router address"
-msgstr ""
+msgstr "Adresse du routeur"
 
 msgid "A server address which will be present in the client config."
 msgstr ""
@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 
 msgid "Client name is invalid."
-msgstr ""
+msgstr "Le nom du client est invalide."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
@@ -163,7 +163,7 @@ msgid ""
 msgstr ""
 
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement en cours..."
 
 msgid "Reload page"
 msgstr ""
