@@ -8,110 +8,123 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 11:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-04-09 16:42+0000\n"
+"Last-Translator: Sergiu Cozma <lssjbrolli@gmail.com>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/turris/foris-"
+"openvpn-plugin/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 2.13-dev\n"
 
 msgid "OpenVPN"
-msgstr ""
+msgstr "OpenVPN"
 
 msgid "Configuration enabled"
-msgstr ""
+msgstr "Configuratie activata"
 
 msgid "OpenVPN network"
-msgstr ""
+msgstr "Retea OpenVPN"
 
 msgid ""
 "This network should be different than any network directly reachable from "
 "the router and the clients."
 msgstr ""
+"Aceasta retea ar trebui sa fie diferita de alte retele direct accesibile de "
+"router si clienti."
 
 msgid "All traffic through vpn"
-msgstr ""
+msgstr "Tot traficul prin vpn"
 
 msgid ""
 "After enabling this option all traffic from your client will be routed "
 "through the vpn."
 msgstr ""
+"Dupa activarea acestei optiuni tot traficul de la clientul vostru va fi "
+"trimis prin vpn."
 
 msgid "Use DNS from vpn"
-msgstr ""
+msgstr "Foloseste DNS de la vpn"
 
 msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
 msgstr ""
+"Dupa activarea acestei optiuni clientul tau va incepe sa foloseasca server-"
+"ul DNS de pe router."
 
 msgid "Can't apply the configuration. Certificates are missing."
-msgstr ""
+msgstr "Configuratia nu poate fi aplicata. Certificatele lipsesc."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
-msgstr ""
+msgstr "Configurarea server-ului OpenVPN a fost facuta cu success %s."
 
 msgid "enabled"
-msgstr ""
+msgstr "activat"
 
 msgid "disabled"
-msgstr ""
+msgstr "deactivat"
 
 #, python-format
 msgid "Failed to %s OpenVPN server configuration."
 msgstr ""
 
 msgid "enable"
-msgstr ""
+msgstr "activat"
 
 msgid "disable"
-msgstr ""
+msgstr "deactivat"
 
 msgid "The client certificate was successfully revoked."
-msgstr ""
+msgstr "Certificatul clientului a fost revocat cu succes."
 
 msgid "Failed to revoke the client certificate."
-msgstr ""
+msgstr "Certificatul clientului nu a putut fi revocat."
 
 msgid "Unable to get OpenVPN client config."
-msgstr ""
+msgstr "Nu a putut fi obtinut fisierul de configurare al clientului."
 
 msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "S-a inceput generarea de CA pentru sever-ul OpenVPN."
 
 msgid "Failed to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "Nu s-a putut genera CA pentru server-ul OpenVPN."
 
 msgid "Started to generate client certificate for the OpenVPN server."
 msgstr ""
+"S-a inceput generarea certificatului de client pentru server-ul OpenVPN."
 
 msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
+msgstr "Certificatul CA a fost sters cu succes."
 
 msgid "Failed to delete the OpenVPN CA."
-msgstr ""
+msgstr "Nu s-a putu sterge certificatul CA."
 
 msgid "Router address"
-msgstr ""
+msgstr "Adresa router-ului"
 
 msgid "A server address which will be present in the client config."
-msgstr ""
+msgstr "Adresa server-ului care va fi prezent in config-ul clientului."
 
 msgid "use autodetection"
-msgstr ""
+msgstr "foloseste autodetectia"
 
 msgid "Client name"
-msgstr ""
+msgstr "Numele clientului"
 
 msgid ""
 "The display name for the client. It must be shorter than 64 characters and "
 "must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
+"Numele afisat al clientului. Trebuie sa fie mai scurt de 64 de caractere si "
+"poate contine numai caractere alfanumerice. puncte, cratime si sublinieri."
 
 msgid "Client name is invalid."
-msgstr ""
+msgstr "Numele clientului este invalid."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
