@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-05 10:29+0100\n"
+"POT-Creation-Date: 2017-04-10 14:47+0200\n"
 "PO-Revision-Date: 2017-03-05 10:29+0100\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language-Team: Slovak\n"
@@ -30,6 +30,130 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 1.8.11\n"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "Configuration enabled"
+msgstr "Konfigurácia povolená"
+
+msgid "OpenVPN network"
+msgstr "OpenVPN sieť"
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+"Táto sieť by mala byť iná, než ktorákoľvek sieť priamo dostupná z routera a "
+"klientov."
+
+msgid "All traffic through vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+
+msgid "Use DNS from vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option your client should start to use DNS server on "
+"your router."
+msgstr ""
+
+msgid "Can't apply the configuration. Certificates are missing."
+msgstr "Nepodarilo sa aplikovať konfiguráciu. Chýbajú certifikáty."
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr "Konfigurácia OpenVPN servera bola úspešne %s."
+
+msgid "enabled"
+msgstr "povolená"
+
+msgid "disabled"
+msgstr "zakázaná"
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr "Nepodarilo sa %s konfiguráciu OpenVPN servera."
+
+msgid "enable"
+msgstr "povoliť"
+
+msgid "disable"
+msgstr "zakázať"
+
+msgid "The client certificate was successfully revoked."
+msgstr "Klientský certifikát bol úspešne zneplatnený."
+
+msgid "Failed to revoke the client certificate."
+msgstr "Nepodarilo sa zneplatniť klientský certifikát."
+
+msgid "Unable to get OpenVPN client config."
+msgstr "Nepodarilo sa prevziať konfiguráciu pre OpenVPN klienta."
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr "Začína sa generovanie CA pre OpenVPN server."
+
+msgid "Failed to generate CA for the OpenVPN server."
+msgstr "Nepodarilo sa vygenerovať CA pre OpenVPN server."
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr "Začína sa generovať klientský certifikát pre OpenVPN server."
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr "Certifikačná autorita OpenVPN servera bola úspešne zmazaná."
+
+msgid "Failed to delete the OpenVPN CA."
+msgstr "Nepodarilo sa zmazať certifikačnú autoritu pre OpenVPN server."
+
+msgid "Router address"
+msgstr "Adresa routera"
+
+msgid "A server address which will be present in the client config."
+msgstr "Adresa servera, ktorá bude v konfigurácii pre klienta."
+
+msgid "use autodetection"
+msgstr "použiť automatické zistenie"
+
+msgid "Client name"
+msgstr "Meno klienta"
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Zobrazované meno klienta. Musí byť kratšie než 64 znakov a môže obsahovať "
+"iba alfanumerické znaky, bodky, pomlčky a podčiarkovníky."
+
+msgid "Client name is invalid."
+msgstr "Meno klienta je neplatné."
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr "Začína sa generovanie klienta '%(name)s' pre OpenVPN server."
+
+#, python-format
+msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+msgstr "Nepodarilo sa vygenerovať klienta '%(name)s' pre OpenVPN server."
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr "Skutočne chcete zmazať certifikačnú autoritu pre OpenVPN?"
+
+msgid "Client"
+msgstr "Klient"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Get Config"
+msgstr "Prevziať konfiguráciu"
+
+msgid "Revoke"
+msgstr "Zrušiť prístup"
 
 msgid "No certifite authority"
 msgstr "Chýba certifikačná autorita"
@@ -117,6 +241,12 @@ msgstr "Protokol:"
 msgid "Port:"
 msgstr "Port:"
 
+msgid "Route:"
+msgstr ""
+
+msgid "All traffic"
+msgstr ""
+
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> button "
 "you might lose the connection to the router for a while. This means that you "
@@ -177,114 +307,6 @@ msgstr ""
 "vydané touto autoritou nebudú použiteľné. Pokiaľ by ste chceli tento plugin "
 "opäť používať, budete si musieť vygenerovať novú certifikačnú autoritu."
 
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr "Skutočne chcete zmazať certifikačnú autoritu pre OpenVPN?"
-
-msgid "Client"
-msgstr "Klient"
-
-msgid "Status"
-msgstr "Stav"
-
-msgid "Get Config"
-msgstr "Prevziať konfiguráciu"
-
-msgid "Revoke"
-msgstr "Zrušiť prístup"
-
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
-msgid "Configuration enabled"
-msgstr "Konfigurácia povolená"
-
-msgid "OpenVPN network"
-msgstr "OpenVPN sieť"
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-"Táto sieť by mala byť iná, než ktorákoľvek sieť priamo dostupná z routera a "
-"klientov."
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr "Nepodarilo sa aplikovať konfiguráciu. Chýbajú certifikáty."
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr "Konfigurácia OpenVPN servera bola úspešne %s."
-
-msgid "enabled"
-msgstr "povolená"
-
-msgid "disabled"
-msgstr "zakázaná"
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr "Nepodarilo sa %s konfiguráciu OpenVPN servera."
-
-msgid "enable"
-msgstr "povoliť"
-
-msgid "disable"
-msgstr "zakázať"
-
-msgid "The client certificate was successfully revoked."
-msgstr "Klientský certifikát bol úspešne zneplatnený."
-
-msgid "Failed to revoke the client certificate."
-msgstr "Nepodarilo sa zneplatniť klientský certifikát."
-
-msgid "Unable to get OpenVPN client config."
-msgstr "Nepodarilo sa prevziať konfiguráciu pre OpenVPN klienta."
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr "Začína sa generovanie CA pre OpenVPN server."
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr "Nepodarilo sa vygenerovať CA pre OpenVPN server."
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr "Začína sa generovať klientský certifikát pre OpenVPN server."
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr "Certifikačná autorita OpenVPN servera bola úspešne zmazaná."
-
-msgid "Failed to detete the OpenVPN CA."
-msgstr "Nepodarilo sa odstrániť OpenVPN CA."
-
-msgid "Router address"
-msgstr "Adresa routera"
-
-msgid "A server address which will be present in the client config."
-msgstr "Adresa servera, ktorá bude v konfigurácii pre klienta."
-
-msgid "use autodetection"
-msgstr "použiť automatické zistenie"
-
-msgid "Client name"
-msgstr "Meno klienta"
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-"Zobrazované meno klienta. Musí byť kratšie než 64 znakov a môže obsahovať "
-"iba alfanumerické znaky, bodky, pomlčky a podčiarkovníky."
-
-msgid "Client name is invalid."
-msgstr "Meno klienta je neplatné."
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr "Začína sa generovanie klienta '%(name)s' pre OpenVPN server."
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr "Nepodarilo sa vygenerovať klienta '%(name)s' pre OpenVPN server."
-
 msgid "active"
 msgstr "aktívny"
 
@@ -300,5 +322,5 @@ msgstr "generovaný"
 msgid "lost"
 msgstr "stratený"
 
-#~ msgid "Failed to delete the OpenVPN CA."
-#~ msgstr "Nepodarilo sa zmazať certifikačnú autoritu pre OpenVPN server."
+#~ msgid "Failed to detete the OpenVPN CA."
+#~ msgstr "Nepodarilo sa odstrániť OpenVPN CA."

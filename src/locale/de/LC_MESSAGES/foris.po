@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-27 14:46+0100\n"
+"POT-Creation-Date: 2017-04-10 14:47+0200\n"
 "PO-Revision-Date: 2017-03-01 12:47+0000\n"
 "Last-Translator: NoR nIc <nora.cznic@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/turris/foris-"
@@ -31,6 +31,135 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.12-dev\n"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "Configuration enabled"
+msgstr "Konfiguration aktiviert"
+
+msgid "OpenVPN network"
+msgstr "OpenVPN Netzwerk"
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+"Dies sollte nicht eines der Netzwerke sein, die direkt vom Router oder einem "
+"bestimmten Kunden erreichbar sind."
+
+msgid "All traffic through vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+
+msgid "Use DNS from vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option your client should start to use DNS server on "
+"your router."
+msgstr ""
+
+msgid "Can't apply the configuration. Certificates are missing."
+msgstr "Die Konfiguration kann nicht angewendet werden. Zertifikate fehlen."
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr "Die OpenVPN-Serverkonfiguration wurde erfolgreich %s."
+
+msgid "enabled"
+msgstr "aktiviert"
+
+msgid "disabled"
+msgstr "deaktiviert"
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr "Die OpenVPN-Serverkonfiguration konnte nicht %s werden."
+
+msgid "enable"
+msgstr "aktiviert"
+
+msgid "disable"
+msgstr "deaktiviert"
+
+msgid "The client certificate was successfully revoked."
+msgstr "Das Clientzertifikat wurde erfolgreich widerrufen."
+
+msgid "Failed to revoke the client certificate."
+msgstr "Das Clientzertifikat konnte nicht widerrufen werden."
+
+msgid "Unable to get OpenVPN client config."
+msgstr "Kann keine OpenVPN Clientkonfiguration erhalten."
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr "Generierung der ZS für OpenVPN Server angefangen."
+
+msgid "Failed to generate CA for the OpenVPN server."
+msgstr "Generierung der ZS für OpenVPN Server ist fehlgeschlagen."
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr "Generierung des Clientzertifikats für OpenVPN Server angefangen."
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr "Die OpenVPN ZS wurde erfolgreich gelöscht."
+
+#, fuzzy
+msgid "Failed to delete the OpenVPN CA."
+msgstr "Die OpenVPN ZS konnte nicht gelöscht werden."
+
+msgid "Router address"
+msgstr "Router Adresse"
+
+msgid "A server address which will be present in the client config."
+msgstr "Die Serveradresse, die in die Clientkonfiguration eingeschrieben wird."
+
+msgid "use autodetection"
+msgstr "Autodetektion verwenden"
+
+msgid "Client name"
+msgstr "Clientname"
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Der Anzeigename für den Client. Es darf nicht länger als 64 Zeichen sein und "
+"darf nur alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche "
+"enthalten."
+
+msgid "Client name is invalid."
+msgstr "Der Clientname ist ungültig."
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr ""
+"Generierung der Client '%(name)s' für den OpenVPN Server wurde angefangen."
+
+#, python-format
+msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+msgstr ""
+"Generierung der Client '%(name)s' für den OpenVPN Server ist fehlgeschlagen."
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr ""
+"Sind Sie sicher, dass Sie die OpenVPN Zertifizierungsstelle löschen möchten?"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Get Config"
+msgstr "Konfigurationsdaten holen"
+
+msgid "Revoke"
+msgstr "Widerrufen"
 
 msgid "No certifite authority"
 msgstr "Keine Zertifizierungsstelle"
@@ -85,8 +214,8 @@ msgid ""
 "safely proceed to <strong>\"Apply configuration\"</strong> button."
 msgstr ""
 "Wenn Sie noch nicht versucht haben, den OpenVPN-Server auf unserem Router zu "
-"installieren, können Sie ruhig auf <strong> \"Konfiguration anwenden\" "
-"</strong> klicken."
+"installieren, können Sie ruhig auf <strong> \"Konfiguration anwenden\" </"
+"strong> klicken."
 
 msgid ""
 "Otherwise if you've tried to set up OpenVPN outside this plugin, there is a "
@@ -117,15 +246,20 @@ msgstr "Protokoll:"
 msgid "Port:"
 msgstr "Port:"
 
+msgid "Route:"
+msgstr ""
+
+msgid "All traffic"
+msgstr ""
+
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> button "
 "you might lose the connection to the router for a while. This means that you "
 "might need to reopen this admin page again."
 msgstr ""
-"Bitte beachten Sie, dass wenn Sie auf <strong>\"Konfiguration anwenden\""
-"</strong> klicken, verlieren Sie möglicherweise kurzfristig die Verbindung "
-"zum Router. Dies bedeutet, dass Sie diese Admin-Seite erneut neu öffnen "
-"müssen."
+"Bitte beachten Sie, dass wenn Sie auf <strong>\"Konfiguration anwenden\"</"
+"strong> klicken, verlieren Sie möglicherweise kurzfristig die Verbindung zum "
+"Router. Dies bedeutet, dass Sie diese Admin-Seite erneut neu öffnen müssen."
 
 msgid "Client configuration"
 msgstr "Client Konfiguration"
@@ -181,118 +315,6 @@ msgstr ""
 "Sie können die gesamte ZS löschen. Beachten Sie dabei, dass dadurch alle von "
 "dieser ZS ausgestellten Zerifikate nutzlos werden und wenn Sie dieses Plugin "
 "verwenden möchten, müssen Sie zuerst eine neue ZS generieren."
-
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr ""
-"Sind Sie sicher, dass Sie die OpenVPN Zertifizierungsstelle löschen möchten?"
-
-msgid "Client"
-msgstr "Client"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Get Config"
-msgstr "Konfigurationsdaten holen"
-
-msgid "Revoke"
-msgstr "Widerrufen"
-
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
-msgid "Configuration enabled"
-msgstr "Konfiguration aktiviert"
-
-msgid "OpenVPN network"
-msgstr "OpenVPN Netzwerk"
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-"Dies sollte nicht eines der Netzwerke sein, die direkt vom Router oder einem "
-"bestimmten Kunden erreichbar sind."
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr "Die Konfiguration kann nicht angewendet werden. Zertifikate fehlen."
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr "Die OpenVPN-Serverkonfiguration wurde erfolgreich %s."
-
-msgid "enabled"
-msgstr "aktiviert"
-
-msgid "disabled"
-msgstr "deaktiviert"
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr "Die OpenVPN-Serverkonfiguration konnte nicht %s werden."
-
-msgid "enable"
-msgstr "aktiviert"
-
-msgid "disable"
-msgstr "deaktiviert"
-
-msgid "The client certificate was successfully revoked."
-msgstr "Das Clientzertifikat wurde erfolgreich widerrufen."
-
-msgid "Failed to revoke the client certificate."
-msgstr "Das Clientzertifikat konnte nicht widerrufen werden."
-
-msgid "Unable to get OpenVPN client config."
-msgstr "Kann keine OpenVPN Clientkonfiguration erhalten."
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr "Generierung der ZS für OpenVPN Server angefangen."
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr "Generierung der ZS für OpenVPN Server ist fehlgeschlagen."
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr "Generierung des Clientzertifikats für OpenVPN Server angefangen."
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr "Die OpenVPN ZS wurde erfolgreich gelöscht."
-
-msgid "Failed to detete the OpenVPN CA."
-msgstr "Die OpenVPN ZS konnte nicht gelöscht werden."
-
-msgid "Router address"
-msgstr "Router Adresse"
-
-msgid "A server address which will be present in the client config."
-msgstr "Die Serveradresse, die in die Clientkonfiguration eingeschrieben wird."
-
-msgid "use autodetection"
-msgstr "Autodetektion verwenden"
-
-msgid "Client name"
-msgstr "Clientname"
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-"Der Anzeigename für den Client. Es darf nicht länger als 64 Zeichen sein und "
-"darf nur alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche "
-"enthalten."
-
-msgid "Client name is invalid."
-msgstr "Der Clientname ist ungültig."
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
-"Generierung der Client '%(name)s' für den OpenVPN Server wurde angefangen."
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
-"Generierung der Client '%(name)s' für den OpenVPN Server ist fehlgeschlagen."
 
 msgid "active"
 msgstr "aktiv"
