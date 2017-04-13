@@ -154,8 +154,8 @@ msgstr ""
 
 msgid ""
 "The CA necessary for the OpenVPN server is being generated. The time "
-"required for generating CA way differ. It could take up to 30 minutes. "
-"Please try to reload this page lager."
+"required for generating the CA can vary, and may take up to 30 minutes. "
+"Please reload this page later."
 msgstr ""
 
 msgid "Loading..."
