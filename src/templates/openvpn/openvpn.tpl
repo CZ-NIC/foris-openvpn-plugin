@@ -11,7 +11,7 @@
 %include("_messages.tpl")
 
 %if not ca:
-  <h3>{{ trans("No certifite authority") }}</h3>
+  <h3>{{ trans("No certification authority") }}</h3>
   <p>
   {{ trans("Currently there is no OpenVPN certificate authority(CA). A CA is required to generate client certificates to authenticate to the OpenVPN server. To proceed you need to generate it first.") }}
   <form method='post' action="{{ url("config_action", page_name="openvpn", action="generate-ca") }}">
@@ -23,7 +23,7 @@
 %elif not ca.ca_ready:
   <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
-  {{ trans("The CA necessary for the OpenVPN server is being generated. The time required for generating CA way differ. It could take up to 30 minutes. Please try to reload this page lager.") }}
+  {{ trans("The CA necessary for the OpenVPN server is being generated. The time required for generating CA may differ. It could take up to 30 minutes. Please try to reload this page later.") }}
   </p>
   <center><img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"></center>
   <br/>

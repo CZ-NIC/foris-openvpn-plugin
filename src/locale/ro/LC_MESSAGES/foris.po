@@ -149,7 +149,7 @@ msgstr ""
 msgid "Revoke"
 msgstr ""
 
-msgid "No certifite authority"
+msgid "No certification authority"
 msgstr ""
 
 msgid ""
@@ -166,8 +166,8 @@ msgstr ""
 
 msgid ""
 "The CA necessary for the OpenVPN server is being generated. The time "
-"required for generating CA way differ. It could take up to 30 minutes. "
-"Please try to reload this page lager."
+"required for generating CA may differ. It could take up to 30 minutes. "
+"Please try to reload this page later."
 msgstr ""
 
 msgid "Loading..."
