@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 11:47+0200\n"
-"PO-Revision-Date: 2017-04-06 06:41+0000\n"
-"Last-Translator: Gleb <70b6efd8@opayq.com>\n"
+"PO-Revision-Date: 2017-05-20 17:12+0000\n"
+"Last-Translator: Anton Shestakov <av6@dwimlabs.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris-"
 "openvpn-plugin/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"X-Generator: Weblate 2.14.1-dev\n"
 
 msgid "OpenVPN"
 msgstr "OpenVPN"
@@ -57,11 +57,11 @@ msgstr ""
 "на маршрутизаторе."
 
 msgid "Can't apply the configuration. Certificates are missing."
-msgstr "Не удается применить конфигурацию. Сертификаты отсутствуют."
+msgstr "Не удаётся применить конфигурацию. Отсутствуют сертификаты."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
-msgstr "Конфигурация openvpn сервера была успешно %s."
+msgstr "Конфигурация сервера OpenVPN была успешно %s."
 
 msgid "enabled"
 msgstr "включено"
@@ -71,7 +71,7 @@ msgstr "отключено"
 
 #, python-format
 msgid "Failed to %s OpenVPN server configuration."
-msgstr "Не удалось %s настройки openvpn сервера."
+msgstr "Не удалось %s настройки сервера OpenVPN."
 
 msgid "enable"
 msgstr "включить"
@@ -86,19 +86,19 @@ msgid "Failed to revoke the client certificate."
 msgstr "Не удалось отозвать клиентский сертификат."
 
 msgid "Unable to get OpenVPN client config."
-msgstr "Не удалось получить конфиг клиента openvpn."
+msgstr "Не удалось получить настройки клиента OpenVPN."
 
 msgid "Started to generate CA for the OpenVPN server."
-msgstr "Начали создавать центр сертификации для openvpn сервера."
+msgstr "Началось создание центра сертификации для сервера OpenVPN."
 
 msgid "Failed to generate CA for the OpenVPN server."
-msgstr "Не удалось создать ЦС для OpenVPN сервера."
+msgstr "Не удалось создать ЦС для сервера OpenVPN."
 
 msgid "Started to generate client certificate for the OpenVPN server."
-msgstr "Начали генерировать сертификат клиента для OpenVPN сервера."
+msgstr "Началось создание клиентского сертификата для сервера OpenVPN."
 
 msgid "The OpenVPN CA was successfully deleted."
-msgstr "OpenVPN CA был успешно удален."
+msgstr "ЦС OpenVPN был успешно удалён."
 
 msgid "Failed to delete the OpenVPN CA."
 msgstr "Не удалось удалить ЦС OpenVPN."
@@ -135,7 +135,7 @@ msgid "Are you sure you want to delete the OpenVPN CA?"
 msgstr ""
 
 msgid "Client"
-msgstr ""
+msgstr "Клиент"
 
 msgid "Status"
 msgstr ""
@@ -144,7 +144,7 @@ msgid "Get Config"
 msgstr ""
 
 msgid "Revoke"
-msgstr ""
+msgstr "Отозвать"
 
 msgid "No certification authority"
 msgstr ""
@@ -156,10 +156,10 @@ msgid ""
 msgstr ""
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Создать ЦС"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Создание центра сертификации"
 
 msgid ""
 "The CA necessary for the OpenVPN server is being generated. The time "
@@ -168,7 +168,7 @@ msgid ""
 msgstr ""
 
 msgid "Loading..."
-msgstr ""
+msgstr "Загрузка…"
 
 msgid "Reload page"
 msgstr ""
@@ -177,7 +177,7 @@ msgid "Server configuration"
 msgstr ""
 
 msgid "To work properly OpenVPN plugin needs:"
-msgstr ""
+msgstr "Для правильной работы плагину OpenVPN нужно:"
 
 msgid "public IP address (preferably static)"
 msgstr ""
@@ -186,7 +186,7 @@ msgid "standard network settings (WAN and LAN devices present)"
 msgstr ""
 
 msgid "Previous settings"
-msgstr ""
+msgstr "Предыдущие настройки"
 
 msgid ""
 "If you haven't tried to set up OpenVPN server on our router yet, you can "
@@ -204,25 +204,25 @@ msgid "Apply configuration"
 msgstr ""
 
 msgid "Current settings"
-msgstr ""
+msgstr "Текущие настройки"
 
 msgid "Network:"
-msgstr ""
+msgstr "Сеть:"
 
 msgid "Device:"
-msgstr ""
+msgstr "Устройство:"
 
 msgid "Protocol:"
-msgstr ""
+msgstr "Протокол:"
 
 msgid "Port:"
-msgstr ""
+msgstr "Порт:"
 
 msgid "Route:"
 msgstr ""
 
 msgid "All traffic"
-msgstr ""
+msgstr "Весь трафик"
 
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> button "
@@ -256,7 +256,7 @@ msgid ""
 msgstr ""
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Удалить ЦС"
 
 msgid ""
 "You can't delete the CA while the OpenVPN server is enabled. To delete the "
