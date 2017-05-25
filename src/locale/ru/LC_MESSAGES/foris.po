@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 11:47+0200\n"
-"PO-Revision-Date: 2017-05-24 11:43+0000\n"
-"Last-Translator: Anton Shestakov <av6@dwimlabs.net>\n"
+"PO-Revision-Date: 2017-05-25 11:23+0000\n"
+"Last-Translator: anonymous <>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris-"
 "openvpn-plugin/ru/>\n"
 "Language: ru\n"
@@ -119,17 +119,19 @@ msgid ""
 "The display name for the client. It must be shorter than 64 characters and "
 "must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
+"Отображаемое имя клиента. Должно быть не длиннее 64 символов и содержать "
+"только буквы латинского алфавита, цифры, точки, тире и символы подчеркивания."
 
 msgid "Client name is invalid."
-msgstr ""
+msgstr "Некорректное имя клиента."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
+msgstr "Начата генерация клиента %(name)s для OpenVPN сервера."
 
 #, python-format
 msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
+msgstr "Не удалось сгенерировать клиента %(name)s для OpenVPN сервера."
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
 msgstr "Вы уверены, что хотите удалить ЦС OpenVPN?"
@@ -138,7 +140,7 @@ msgid "Client"
 msgstr "Клиент"
 
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 msgid "Get Config"
 msgstr "Получить настройки"
