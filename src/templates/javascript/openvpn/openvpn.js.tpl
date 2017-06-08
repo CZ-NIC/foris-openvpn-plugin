@@ -36,31 +36,9 @@ var renew_clients = function() {
     });
 };
 
-var WS = {
-  handlers: {
-    open: function() {
-      // register for lookup
-      ws.send(JSON.stringify({"action": "register", "params": {"kinds": ["ca-gen"]}}));
-    },
-    message: function(e) {
-      console.log("message: " + e.data);
-      var parsed = JSON.parse(e.data);
-      if (parsed['ca-gen']) {
-        // perform appropriate action
-        process_ca_gen(parsed['ca-gen']);
-      };
-    },
-    error: function(e) {
-      // TDW WS error
-      console.log("Websocket server error occured:" + e);
-    },
-    close: function() {
-      // TDB WS closed
-      console.log("Disconnected from websocket server.");
-    }
-  }
-}
-
+Foris.WS["ca-gen"] = function (data) {
+  process_ca_gen(data);
+};
 
 $(document).ready(function() {
   $('#delete-ca-form').on('click', function(e) {

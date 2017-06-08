@@ -121,6 +121,4 @@
   </p>
 %end
 
-<meta name="ubus-session" content="{{ ubus_session }}">
-
 </div>

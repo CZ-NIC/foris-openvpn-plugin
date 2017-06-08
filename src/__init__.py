@@ -20,7 +20,6 @@ from foris.utils.addresses import prefix_to_mask_4, mask_to_prefix_4
 from foris.validators import IPv4Prefix, LenRange, RegExp
 
 from .nuci import openvpn
-from .ubus import create_session, grant_listen
 
 from .nuci import (
     delete_ca, foris_config, generate_ca, generate_client, get_client_config, get_lan,
@@ -125,11 +124,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['client_certs'] = [
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
         ] if arguments['ca'] else []
-
-        # set the session for ubus
-        session = create_session() or ""
-        grant_listen(session)
-        arguments['ubus_session'] = session
 
         # prepare current settings to display
         current = {}
@@ -320,7 +314,6 @@ class OpenvpnPlugin(ForisPlugin):
         "css/screen.css",
     ]
     PLUGIN_STATIC_SCRIPTS = [
-        "js/websockets.js"
     ]
     PLUGIN_DYNAMIC_SCRIPTS = [
         "openvpn.js"
