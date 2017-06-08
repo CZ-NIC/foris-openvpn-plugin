@@ -126,11 +126,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
         ] if arguments['ca'] else []
 
-        # set the session for ubus
-        session = create_session() or ""
-        grant_listen(session)
-        arguments['ubus_session'] = session
-
         # prepare current settings to display
         current = {}
         if self.form.data['enabled']:
@@ -320,7 +315,6 @@ class OpenvpnPlugin(ForisPlugin):
         "css/screen.css",
     ]
     PLUGIN_STATIC_SCRIPTS = [
-        "js/websockets.js"
     ]
     PLUGIN_DYNAMIC_SCRIPTS = [
         "openvpn.js"
