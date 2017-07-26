@@ -8,9 +8,9 @@
 import re
 from xml.etree import cElementTree as ET
 
-from foris.core import gettext_dummy as _
 from foris.nuci.modules import uci_raw
 from foris.nuci.modules.base import YinElement
+from foris.utils.translators import gettext_dummy as _
 
 client_name_regexp = r'[a-zA-Z0-9_.-]+'
 re_client_name = re.compile(client_name_regexp)
