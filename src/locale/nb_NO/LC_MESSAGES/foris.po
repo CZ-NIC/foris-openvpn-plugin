@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 14:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-12-06 09:37+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris"
+"/foris-openvpn-plugin/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18-dev\n"
 
 msgid "OpenVPN"
 msgstr ""
@@ -103,15 +106,17 @@ msgid "use autodetection"
 msgstr ""
 
 msgid "Client name"
-msgstr ""
+msgstr "Klientnavn"
 
 msgid ""
 "The display name for the client. It must be shorter than 64 characters and "
 "must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
+"Visningsnavnet for klienten. Den må være kortere enn 64 tegn og må innehold "
+"kun tegn og bokstaver, punktum, bindestrek og understrek."
 
 msgid "Client name is invalid."
-msgstr ""
+msgstr "Klientnavnet er ugyldig."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
@@ -125,10 +130,10 @@ msgid "Are you sure you want to delete the OpenVPN CA?"
 msgstr ""
 
 msgid "Client"
-msgstr ""
+msgstr "Klient"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "Get Config"
 msgstr ""
@@ -229,7 +234,7 @@ msgid ""
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Opprett"
 
 msgid ""
 "Be sure to check, that the server IP address provided in you configuration "
@@ -260,13 +265,13 @@ msgid ""
 msgstr ""
 
 msgid "active"
-msgstr ""
+msgstr "aktiv"
 
 msgid "revoked"
-msgstr ""
+msgstr "tilbakekalt"
 
 msgid "expired"
-msgstr ""
+msgstr "utløpt"
 
 msgid "generating"
 msgstr ""
