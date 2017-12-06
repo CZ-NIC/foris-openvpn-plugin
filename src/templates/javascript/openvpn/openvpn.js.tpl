@@ -61,4 +61,5 @@ $(document).ready(function() {
   } else {
       $('#openvpn-config-form div:not(:first):not(:last)').hide();
   };
+  $(".hint-text").hide();
 });
