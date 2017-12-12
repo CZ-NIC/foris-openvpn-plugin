@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 14:47+0200\n"
-"PO-Revision-Date: 2017-12-09 04:49+0000\n"
+"PO-Revision-Date: 2017-12-13 22:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris"
 "/foris-openvpn-plugin/nb_NO/>\n"
@@ -90,25 +90,26 @@ msgid "Unable to get OpenVPN client config."
 msgstr "Klarte ikke å hente OpenVPN-klientoppsett."
 
 msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "Startet generering av sertifikatmyndighet for OpenVPN-tjeneren."
 
 msgid "Failed to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "Klarte ikke å generere sertifikatmyndighet for OpenVPN-tjeneren."
 
 msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
+msgstr "Startet generering av klientsertifikat for OpenVPN-tjener."
 
+#, fuzzy
 msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
+msgstr "Sertifikatmyndighet for OpenVPN ble slettet."
 
 msgid "Failed to delete the OpenVPN CA."
-msgstr ""
+msgstr "Klarte ikke å slette OpenVPN-sertifikatmyndighet."
 
 msgid "Router address"
 msgstr "Ruteradresse"
 
 msgid "A server address which will be present in the client config."
-msgstr ""
+msgstr "En tjeneradresse som vil være å finne i klientoppsettet."
 
 msgid "use autodetection"
 msgstr "bruk automatisk oppdagelse"
@@ -128,14 +129,14 @@ msgstr "Klientnavnet er ugyldig."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
+msgstr "Startet generering av klienten '%(name)s' for OpenVPN-tjeneren."
 
 #, python-format
 msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
+msgstr "Klarte ikke å generere klienten '%(name)s' for OpenVPN-tjeneren."
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker å slette OpenVPN-sertifikatmyndigheten?"
 
 msgid "Client"
 msgstr "Klient"
@@ -158,6 +159,10 @@ msgid ""
 "generate client certificates to authenticate to the OpenVPN server. To "
 "proceed you need to generate it first."
 msgstr ""
+"Det finnes for tiden inngen OpenVPN-sertifikatmyndighet (CA). En "
+"sertifikatmyndighet kreves for å generere klientsertifikater for å "
+"identitetsbekrefte ovenfor OpenVPN-tjeneren. For å fortsette må du generere "
+"det først."
 
 msgid "Generate CA"
 msgstr "Opprett sertifikatsmyndighet"
@@ -170,6 +175,9 @@ msgid ""
 "required for generating CA may differ. It could take up to 30 minutes. "
 "Please try to reload this page later."
 msgstr ""
+"Sertifikatmyndigheten som trengs for OpenVPN-tjeneren blir generert. "
+"Tidsforbruket kan variere. Det kan ta opptil en halvtime. Last inn denne "
+"siden igjen etterpå."
 
 msgid "Loading..."
 msgstr "Laster…"
@@ -186,8 +194,9 @@ msgstr "For å fungere skikkelig trenger OpenVPN-programtillegget:"
 msgid "public IP address (preferably static)"
 msgstr "offentlig IP-adresse (helst statisk)"
 
+#, fuzzy
 msgid "standard network settings (WAN and LAN devices present)"
-msgstr ""
+msgstr "forvalgte nettverksinnstillinger (WAN og LAN-enheter som finnes)"
 
 msgid "Previous settings"
 msgstr "Tidligere innstillinger"
@@ -273,20 +282,29 @@ msgid ""
 "the OpenVPN config directory or you might try to open it using your OpenVPN "
 "client directly. You might need to restart your client afterwards."
 msgstr ""
+"For å legge til dette klientoppsettet, må du laste det ned og legge det i "
+"OpenVPN-oppsettsmappa, eller du kan prøv å åpne det med OpenVPN-klienten din "
+"direkte. Det kan hende du trenger å starte klienten på nytt etterpå."
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Slett sertifikatmyndighet"
 
+#, fuzzy
 msgid ""
 "You can't delete the CA while the OpenVPN server is enabled. To delete the "
 "CA you need to disable the server configuration first."
 msgstr ""
+"Du kan ikke slette sertifikatmyndigheten mens OpenVPN-tjeneren er påskrudd. "
+"For å slette sertifikatmyndigheten må du skru av tjeneroppsettet først."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this CA "
 "will be useless and if you wanted to use this plugin, you'd need to generate "
 "a new CA first."
 msgstr ""
+"Du kan slette hele sertifikatmyndigheten. Merk at alle sertifikater utstedt "
+"av denne sertifikatmyndigheten vil bli ubrukelige og hvis du ønsket å bruke "
+"dette programtillegget, må du generere en ny sertifikatmyndighet først."
 
 msgid "active"
 msgstr "aktiv"
@@ -298,7 +316,7 @@ msgid "expired"
 msgstr "utløpt"
 
 msgid "generating"
-msgstr ""
+msgstr "genererer"
 
 msgid "lost"
-msgstr ""
+msgstr "tapt"
