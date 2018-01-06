@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 14:47+0200\n"
-"PO-Revision-Date: 2018-01-06 16:07+0000\n"
-"Last-Translator: Mathias Tillman <master.homer@gmail.com>\n"
+"PO-Revision-Date: 2018-01-24 12:31+0000\n"
+"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris-"
 "openvpn-plugin/sv/>\n"
 "Language: sv\n"
@@ -110,15 +110,17 @@ msgid "use autodetection"
 msgstr ""
 
 msgid "Client name"
-msgstr ""
+msgstr "Klientnamn"
 
 msgid ""
 "The display name for the client. It must be shorter than 64 characters and "
 "must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
+"Klientens visningsnamn. Det måste vara kortare än 64 tecken och får endast "
+"inehålla bokstäver, siffror, punkter, bindestreck och understreck."
 
 msgid "Client name is invalid."
-msgstr ""
+msgstr "Klientens namn är ogiltigt."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
@@ -132,10 +134,10 @@ msgid "Are you sure you want to delete the OpenVPN CA?"
 msgstr ""
 
 msgid "Client"
-msgstr ""
+msgstr "Klient"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "Get Config"
 msgstr ""
@@ -236,7 +238,7 @@ msgid ""
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Skapa"
 
 msgid ""
 "Be sure to check, that the server IP address provided in you configuration "
@@ -267,13 +269,13 @@ msgid ""
 msgstr ""
 
 msgid "active"
-msgstr ""
+msgstr "aktiv"
 
 msgid "revoked"
-msgstr ""
+msgstr "återkallad"
 
 msgid "expired"
-msgstr ""
+msgstr "utgången"
 
 msgid "generating"
 msgstr ""
