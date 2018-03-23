@@ -8,135 +8,130 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 14:47+0200\n"
-"PO-Revision-Date: 2017-12-13 22:48+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris"
-"/foris-openvpn-plugin/nb_NO/>\n"
-"Language: nb_NO\n"
+"PO-Revision-Date: 2018-01-24 12:31+0000\n"
+"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris-"
+"openvpn-plugin/sv/>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 msgid "OpenVPN"
 msgstr "OpenVPN"
 
 msgid "Configuration enabled"
-msgstr "Oppsett påskrudd"
+msgstr "Konfiguration aktiverad"
 
 msgid "OpenVPN network"
-msgstr "OpenVPN-nettverk"
+msgstr "OpenVPN-nätverk"
 
 msgid ""
 "This network should be different than any network directly reachable from "
 "the router and the clients."
 msgstr ""
-"Dette nettverket bør være forskjellig fra ethvert annet nettverk som kan nås "
-"direkte fra ruteren og klientene."
+"Detta nätverk ska vara annorlunda från andra nätverk som kan nås direkt från "
+"routern och klienterna."
 
-#, fuzzy
 msgid "All traffic through vpn"
-msgstr "All trafikk gjennom VPN"
+msgstr "All trafik genom vpn"
 
 msgid ""
 "After enabling this option all traffic from your client will be routed "
 "through the vpn."
 msgstr ""
-"Etter å ha skrudd på dette valget vil all trafikk fra din klient bli rutet "
-"gjennom VPN-tunnelen."
+"Aktivera detta alternativ för att dirigera all trafik från klienten genom "
+"denna vpn."
 
 msgid "Use DNS from vpn"
-msgstr "Bruk DNS fra VPN"
+msgstr "Använd DNS från vpn"
 
 msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
-msgstr ""
-"Etter å ha skrudd på dette valget burde klienten din begynne å bruke DNS-"
-"tjeneren på din ruter."
+msgstr "Aktivera detta alternativ för att använda DNS-adressen på din router."
 
 msgid "Can't apply the configuration. Certificates are missing."
-msgstr "Kan ikke bruke oppsettet. Sertifikater mangler."
+msgstr ""
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
-msgstr "OpenVPN-tjeneroppsett ble %s."
+msgstr ""
 
 msgid "enabled"
-msgstr "påskrudd"
+msgstr ""
 
 msgid "disabled"
-msgstr "avskrudd"
+msgstr ""
 
 #, python-format
 msgid "Failed to %s OpenVPN server configuration."
-msgstr "Klarte ikke å %s OpenVPN-tjeneroppsett."
+msgstr ""
 
 msgid "enable"
-msgstr "skru på"
+msgstr ""
 
 msgid "disable"
-msgstr "skru av"
+msgstr ""
 
-#, fuzzy
 msgid "The client certificate was successfully revoked."
-msgstr "Klientsertifikatet ble tilbakekalt."
+msgstr ""
 
 msgid "Failed to revoke the client certificate."
-msgstr "Klarte ikke å tilbakekalle klientsertifikatet."
+msgstr ""
 
 msgid "Unable to get OpenVPN client config."
-msgstr "Klarte ikke å hente OpenVPN-klientoppsett."
+msgstr ""
 
 msgid "Started to generate CA for the OpenVPN server."
-msgstr "Startet generering av sertifikatmyndighet for OpenVPN-tjeneren."
+msgstr ""
 
 msgid "Failed to generate CA for the OpenVPN server."
-msgstr "Klarte ikke å generere sertifikatmyndighet for OpenVPN-tjeneren."
+msgstr ""
 
 msgid "Started to generate client certificate for the OpenVPN server."
-msgstr "Startet generering av klientsertifikat for OpenVPN-tjener."
+msgstr ""
 
-#, fuzzy
 msgid "The OpenVPN CA was successfully deleted."
-msgstr "Sertifikatmyndighet for OpenVPN ble slettet."
+msgstr ""
 
 msgid "Failed to delete the OpenVPN CA."
-msgstr "Klarte ikke å slette OpenVPN-sertifikatmyndighet."
+msgstr ""
 
 msgid "Router address"
-msgstr "Ruteradresse"
+msgstr ""
 
 msgid "A server address which will be present in the client config."
-msgstr "En tjeneradresse som vil være å finne i klientoppsettet."
+msgstr ""
 
 msgid "use autodetection"
-msgstr "bruk automatisk oppdagelse"
+msgstr ""
 
 msgid "Client name"
-msgstr "Klientnavn"
+msgstr "Klientnamn"
 
 msgid ""
 "The display name for the client. It must be shorter than 64 characters and "
 "must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
-"Visningsnavnet for klienten. Den må være kortere enn 64 tegn og må innehold "
-"kun tegn og bokstaver, punktum, bindestrek og understrek."
+"Klientens visningsnamn. Det måste vara kortare än 64 tecken och får endast "
+"inehålla bokstäver, siffror, punkter, bindestreck och understreck."
 
 msgid "Client name is invalid."
-msgstr "Klientnavnet er ugyldig."
+msgstr "Klientens namn är ogiltigt."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr "Startet generering av klienten '%(name)s' for OpenVPN-tjeneren."
+msgstr ""
 
 #, python-format
 msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr "Klarte ikke å generere klienten '%(name)s' for OpenVPN-tjeneren."
+msgstr ""
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr "Er du sikker på at du ønsker å slette OpenVPN-sertifikatmyndigheten?"
+msgstr ""
 
 msgid "Client"
 msgstr "Klient"
@@ -144,70 +139,58 @@ msgstr "Klient"
 msgid "Status"
 msgstr "Status"
 
-#, fuzzy
 msgid "Get Config"
-msgstr "Hent oppsett"
+msgstr ""
 
 msgid "Revoke"
-msgstr "Tilbakekall"
+msgstr ""
 
 msgid "No certification authority"
-msgstr "Ingen sertifikatsmyndighet"
+msgstr ""
 
 msgid ""
 "Currently there is no OpenVPN certificate authority(CA). A CA is required to "
 "generate client certificates to authenticate to the OpenVPN server. To "
 "proceed you need to generate it first."
 msgstr ""
-"Det finnes for tiden inngen OpenVPN-sertifikatmyndighet (CA). En "
-"sertifikatmyndighet kreves for å generere klientsertifikater for å "
-"identitetsbekrefte ovenfor OpenVPN-tjeneren. For å fortsette må du generere "
-"det først."
 
 msgid "Generate CA"
-msgstr "Opprett sertifikatsmyndighet"
+msgstr ""
 
 msgid "Generating certificate authority"
-msgstr "Oppretter sertifikatsmyndighet"
+msgstr ""
 
 msgid ""
 "The CA necessary for the OpenVPN server is being generated. The time "
 "required for generating CA may differ. It could take up to 30 minutes. "
 "Please try to reload this page later."
 msgstr ""
-"Sertifikatmyndigheten som trengs for OpenVPN-tjeneren blir generert. "
-"Tidsforbruket kan variere. Det kan ta opptil en halvtime. Last inn denne "
-"siden igjen etterpå."
 
 msgid "Loading..."
-msgstr "Laster…"
+msgstr ""
 
 msgid "Reload page"
-msgstr "Gjeninnlast side"
+msgstr ""
 
 msgid "Server configuration"
-msgstr "TJeneroppsett"
+msgstr ""
 
 msgid "To work properly OpenVPN plugin needs:"
-msgstr "For å fungere skikkelig trenger OpenVPN-programtillegget:"
+msgstr ""
 
 msgid "public IP address (preferably static)"
-msgstr "offentlig IP-adresse (helst statisk)"
+msgstr ""
 
-#, fuzzy
 msgid "standard network settings (WAN and LAN devices present)"
-msgstr "forvalgte nettverksinnstillinger (WAN og LAN-enheter som finnes)"
+msgstr ""
 
 msgid "Previous settings"
-msgstr "Tidligere innstillinger"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "If you haven't tried to set up OpenVPN server on our router yet, you can "
 "safely proceed to <strong>\"Apply configuration\"</strong> button."
 msgstr ""
-"Hvis du ikke har prøvd å sette opp en OpenVPN-tjener på din ruter enda, kan "
-"du trygt klikke <strong>\"Bruk-oppsett\"</strong>-knappen."
 
 msgid ""
 "Otherwise if you've tried to set up OpenVPN outside this plugin, there is a "
@@ -215,108 +198,87 @@ msgid ""
 "by this plugin. Therefore you might need to disable the old configuration "
 "first."
 msgstr ""
-"Ellers, hvis du har prøvd å sette opp OpenVPN utenom dette programtillegget, "
-"er det en mulighet for at oppsettet krasjer med oppsettet opprettet her. "
-"Derfor kan det hende du trenger å skru av det gamle oppsettet først."
 
 msgid "Apply configuration"
-msgstr "Bruk oppsett"
+msgstr ""
 
 msgid "Current settings"
-msgstr "Nåværende innstillinger"
+msgstr ""
 
 msgid "Network:"
-msgstr "Nettverk:"
+msgstr ""
 
 msgid "Device:"
-msgstr "Enhet:"
+msgstr ""
 
 msgid "Protocol:"
-msgstr "Protokoll:"
+msgstr ""
 
 msgid "Port:"
-msgstr "Port:"
+msgstr ""
 
 msgid "Route:"
-msgstr "Rute:"
+msgstr ""
 
 msgid "All traffic"
-msgstr "All trafikk"
+msgstr ""
 
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> button "
 "you might lose the connection to the router for a while. This means that you "
 "might need to reopen this admin page again."
 msgstr ""
-"Mer at når du trykker <strong>\"Bruk oppsett\"</strong>-knappen kan du miste "
-"tilkoblingen til ruteren en stund. Dette betyr at du kan trenge å gjenåpne "
-"administrasjonssiden igjen."
 
 msgid "Client configuration"
-msgstr "Klientoppsett"
+msgstr ""
 
 msgid ""
 "Here you can create and revoke the client capability to connect to your "
 "OpenVPN network."
 msgstr ""
-"Her kan du opprette og tilbakekalle klientmuligheten og koble til ditt eget "
-"OpenVPN-nettverk."
 
 msgid "Create"
-msgstr "Opprett"
+msgstr "Skapa"
 
 msgid ""
 "Be sure to check, that the server IP address provided in you configuration "
 "file actually matches the public IP address of your router."
 msgstr ""
-"Husk å sjekke at IP-adressen oppgitt i oppsettsfila faktisk stemmer med "
-"offentlig IP-adresse for din ruter."
 
 msgid "You can set this address manually when the autodetection fails."
 msgstr ""
-"DU kan sette denne adressen manuelt hvis den automatiske oppdagingen "
-"mislykkes."
 
 msgid ""
 "To apply the client configuration you need to download it and put it into "
 "the OpenVPN config directory or you might try to open it using your OpenVPN "
 "client directly. You might need to restart your client afterwards."
 msgstr ""
-"For å legge til dette klientoppsettet, må du laste det ned og legge det i "
-"OpenVPN-oppsettsmappa, eller du kan prøv å åpne det med OpenVPN-klienten din "
-"direkte. Det kan hende du trenger å starte klienten på nytt etterpå."
 
 msgid "Delete CA"
-msgstr "Slett sertifikatmyndighet"
+msgstr ""
 
-#, fuzzy
 msgid ""
 "You can't delete the CA while the OpenVPN server is enabled. To delete the "
 "CA you need to disable the server configuration first."
 msgstr ""
-"Du kan ikke slette sertifikatmyndigheten mens OpenVPN-tjeneren er påskrudd. "
-"For å slette sertifikatmyndigheten må du skru av tjeneroppsettet først."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this CA "
 "will be useless and if you wanted to use this plugin, you'd need to generate "
 "a new CA first."
 msgstr ""
-"Du kan slette hele sertifikatmyndigheten. Merk at alle sertifikater utstedt "
-"av denne sertifikatmyndigheten vil bli ubrukelige og hvis du ønsket å bruke "
-"dette programtillegget, må du generere en ny sertifikatmyndighet først."
 
 msgid "active"
 msgstr "aktiv"
 
 msgid "revoked"
-msgstr "tilbakekalt"
+msgstr "återkallad"
 
 msgid "expired"
-msgstr "utløpt"
+msgstr "utgången"
 
 msgid "generating"
-msgstr "genererer"
+msgstr ""
 
 msgid "lost"
-msgstr "tapt"
+msgstr ""
