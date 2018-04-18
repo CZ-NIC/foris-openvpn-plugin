@@ -63,7 +63,7 @@
        %if current['default_route']:
          <td>{{ trans("All traffic") }}</td>
        %else:
-         <td>{{ current['lan_network'] }}</td>
+         <td>{{ current['route'] }}</td>
        %end
        </tr>
       </table>

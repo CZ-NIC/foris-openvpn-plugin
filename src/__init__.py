@@ -41,17 +41,27 @@ class OpenvpnConfigHandler(BaseConfigHandler):
     userfriendly_title = gettext("OpenVPN")
 
     def get_form(self):
+        self.backend_data = current_state.backend.perform("openvpn", "get_settings")
+        data = {
+            "enabled": self.backend_data["enabled"],
+            "network": "%s/%d" % (
+                self.backend_data["network"], mask_to_prefix_4(self.backend_data["network_netmask"])
+            ),
+            "default_route": self.backend_data["route_all"],
+            "dns": self.backend_data["use_dns"],
+        }
 
-        form = ForisForm(
-            "openvpn-configuration", self.data, filter=openvpn.Config.openvpn_filter())
+        if self.data:
+            # Update from post
+            data.update(self.data)
+
+        form = ForisForm("openvpn-configuration", data)
         config_section = form.add_section(name="config", title=_(self.userfriendly_title))
         config_section.add_field(
             Checkbox, name="enabled", label=_("Configuration enabled"),
-            nuci_preproc=openvpn.Config.enabled_preproc
         )
         config_section.add_field(
             Textbox, name="network", label=_("OpenVPN network"),
-            nuci_preproc=openvpn.Config.network_preproc,
             validators=[IPv4Prefix()],
             hint=_(
                 "This network should be different than any network directly "
@@ -60,7 +70,6 @@ class OpenvpnConfigHandler(BaseConfigHandler):
         )
         config_section.add_field(
             Checkbox, name="default_route", label=_("All traffic through vpn"),
-            nuci_preproc=openvpn.Config.default_route_preproc,
             hint=_(
                 "After enabling this option all traffic from your client "
                 "will be routed through the vpn."
@@ -68,7 +77,6 @@ class OpenvpnConfigHandler(BaseConfigHandler):
         )
         config_section.add_field(
             Checkbox, name="dns", label=_("Use DNS from vpn"),
-            nuci_preproc=openvpn.Config.dns_preproc,
             hint=_(
                 "After enabling this option your client should start "
                 "to use DNS server on your router."
@@ -76,35 +84,27 @@ class OpenvpnConfigHandler(BaseConfigHandler):
         )
 
         def form_callback(data):
-            enabled = data['enabled']
-            network, prefix = data['network'].split("/")
-            mask = prefix_to_mask_4(int(prefix))
-            default_route = data['default_route']
-            dns = data['dns']
+            msg = {"enabled": data['enabled']}
 
-            if enabled:
-                # get ca status
-                ca = get_openvpn_ca()
-                if not ca or not ca.ca_ready:
-                    messages.error(_("Can't apply the configuration. Certificates are missing."))
-                    # ca is missing or generating, can't apply the configuration
-                    return "none", None
-                # when ca is ready it should contain at least one server certicate
-                cert_path, key_path = ca.get_paths('server')[0]
-                paths = dict(cert_path=cert_path, key_path=key_path)
-            else:
-                paths = dict()  # use default paths
+            if msg["enabled"]:
+                msg["network"], prefix = data['network'].split("/")
+                mask = prefix_to_mask_4(int(prefix))
+                msg["network_netmask"] = mask
+                msg["route_all"] = data['default_route']
+                msg["use_dns"] = data['dns']
 
-            if update_configs(enabled, network, mask, default_route, dns, **paths):
+            res = current_state.backend.perform("openvpn", "update_settings", msg)
+
+            if res["result"]:
                 messages.success(
                     _('OpenVPN server configuration was successfully %s.') % (
-                        _('enabled') if enabled else _('disabled')
+                        _('enabled') if msg["enabled"] else _('disabled')
                     )
                 )
             else:
                 messages.error(
                     _('Failed to %s OpenVPN server configuration.') % (
-                        _('enable') if enabled else _('disable')
+                        _('enable') if msg["enabled"] else _('disable')
                     )
                 )
 
@@ -132,25 +132,28 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['client_certs'] = status["clients"]
         arguments['config_form'] = self.form
         arguments['client_form'] = client_form if client_form else self.get_client_form()
-        arguments['address_form'] = self.get_address_form()
+        arguments['address_form'] = self.get_address_form(
+            {"server-address": self.backend_data["server_hostname"]})
 
         # prepare current settings to display
         current = {}
         if self.form.data['enabled']:
-            current['network'] = openvpn.Config.network_preproc(self.form.nuci_config)
-            current['device'] = self.form.nuci_config.find_child(
-                'uci.openvpn.server_turris.dev').value
-            current['protocol'] = self.form.nuci_config.find_child(
-                'uci.openvpn.server_turris.proto').value
-            current['port'] = self.form.nuci_config.find_child(
-                'uci.openvpn.server_turris.port').value
-            current['default_route'] = openvpn.Config.default_route_preproc(self.form.nuci_config)
-            lan_config = get_lan()
-            current['lan_network'] = "%s/%d" % (
-                lan_config.network,
-                mask_to_prefix_4(lan_config.netmask)
+            current['network'] = "%s/%d" % (
+                self.backend_data["network"], mask_to_prefix_4(self.backend_data["network_netmask"])
             )
-            arguments['current'] = current
+            current['device'] = self.backend_data["device"]
+            current['protocol'] = self.backend_data["protocol"]
+            current['port'] = self.backend_data["port"]
+            current['default_route'] = self.backend_data["route_all"]
+            if self.backend_data["routes"]:
+                current['route'] = "%s/%d" % (
+                    self.backend_data["routes"][0]["network"],
+                    mask_to_prefix_4(self.backend_data["routes"][0]["netmask"])
+                )
+            else:
+                current['route'] = "???"
+
+        arguments['current'] = current
 
     def _action_download_config_or_revoke(self):
         if 'revoke-client' in self.data:
@@ -259,14 +262,13 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         raise ValueError("Unknown AJAX action.")
 
     def get_address_form(self, data=None):
-        address_form = ForisForm("openvpn", data, filter=openvpn.Foris.foris_openvpn_filter())
+        address_form = ForisForm("openvpn", data)
         main_section = address_form.add_section(
             name="address-section", title=None,
         )
         main_section.add_field(
             Textbox, name="server-address", label=_("Router address"), required=False,
             hint=_("A server address which will be present in the client config."),
-            nuci_path="uci.foris.openvpn_plugin.server_address",
             default="",
             placeholder=_("use autodetection"),
         )
