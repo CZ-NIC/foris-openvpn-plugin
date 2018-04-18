@@ -16,15 +16,15 @@
       </thead>
       <tbody>
     %for cert in client_certs:
-        <tr id="serial-{{ cert["serial"] }}-name-{{ cert["name"] }}">
+        <tr id="serial-{{ cert["id"] }}-name-{{ cert["name"] }}">
           <td>{{ cert["name"] }}</td>
           <td>{{ trans(cert['status']) }}</td>
           <td>
-            %if cert['status'] == 'active':
-            <button name="download-config" value="{{ cert["serial"] }}" type="submit">{{ trans("Get Config") }}</button>
+            %if cert['status'] == 'valid':
+            <button name="download-config" value="{{ cert["id"] }}" type="submit">{{ trans("Get Config") }}</button>
             %end
             %if cert['status'] not in ['revoked', 'generating']:
-            <button name="revoke-client" value="{{ cert["serial"] }}" type="submit">{{ trans("Revoke") }}</button>
+            <button name="revoke-client" value="{{ cert["id"] }}" type="submit">{{ trans("Revoke") }}</button>
             %end
           </td>
         </tr>

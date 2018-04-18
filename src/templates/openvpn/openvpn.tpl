@@ -10,7 +10,7 @@
 <div id="page-openvpn" class="config-page">
 %include("_messages.tpl")
 
-%if not ca:
+%if ca_status == "missing":
   <h3>{{ trans("No certification authority") }}</h3>
   <p>
   {{ trans("Currently there is no OpenVPN certificate authority(CA). A CA is required to generate client certificates to authenticate to the OpenVPN server. To proceed you need to generate it first.") }}
@@ -20,7 +20,7 @@
   </form>
   </p>
 
-%elif not ca.ca_ready:
+%elif ca_status == "generating":
   <h3>{{ trans("Generating certificate authority") }}</h3>
   <p>
   {{ trans("The CA necessary for the OpenVPN server is being generated. The time required for generating CA may differ. It could take up to 30 minutes. Please try to reload this page later.") }}
@@ -29,7 +29,7 @@
   <br/>
   <center><form><button name="reload-page" type="submit">{{ trans("Reload page") }}</button></form></center>
 
-%else:
+%elif ca_status == "ready":
   <h3>{{ trans("Server configuration") }}</h3>
   <span>{{ trans("To work properly OpenVPN plugin needs:") }}</span>
   <ul class="points">

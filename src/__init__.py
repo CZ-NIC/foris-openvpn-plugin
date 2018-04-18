@@ -30,6 +30,14 @@ from .nuci import (
 
 
 class OpenvpnConfigHandler(BaseConfigHandler):
+
+    # Translate status obtained via get_status
+    CLIENT_STATUS_VALID = _("valid")
+    CLIENT_STATUS_REVOKED = _("revoked")
+    CLIENT_STATUS_EXPIRED = _("expired")
+    CLIENT_STATUS_GENERATING = _("generating")
+    CLIENT_STATUS_LOST = _("lost")
+
     userfriendly_title = gettext("OpenVPN")
 
     def get_form(self):
@@ -119,13 +127,12 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['PLUGIN_STYLES'] = OpenvpnPlugin.PLUGIN_STYLES
         arguments['PLUGIN_STATIC_SCRIPTS'] = OpenvpnPlugin.PLUGIN_STATIC_SCRIPTS
         arguments['PLUGIN_DYNAMIC_SCRIPTS'] = OpenvpnPlugin.PLUGIN_DYNAMIC_SCRIPTS
-        arguments['ca'] = ca if ca else get_openvpn_ca()
+        status = current_state.backend.perform("openvpn", "get_status")
+        arguments['ca_status'] = status["status"]
+        arguments['client_certs'] = status["clients"]
         arguments['config_form'] = self.form
         arguments['client_form'] = client_form if client_form else self.get_client_form()
         arguments['address_form'] = self.get_address_form()
-        arguments['client_certs'] = [
-            e for e in arguments['ca'].data.get('certs', []) if e['type'] == 'client'
-        ] if arguments['ca'] else []
 
         # prepare current settings to display
         current = {}
@@ -246,10 +253,7 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
     def call_ajax_action(self, action):
         if action == "update-clients":
             bottle.response.set_header("Content-Type", "text/html")
-            ca = get_openvpn_ca()
-            client_certs = [
-                e for e in ca.data.get('certs', []) if e['type'] == 'client'
-            ] if ca else []
+            client_certs = current_state.backend.perform("openvpn", "get_status")["clients"]
             return bottle.template("openvpn/_clients", client_certs=client_certs)
         raise ValueError("Unknown AJAX action.")
 
