@@ -220,7 +220,8 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         :return: redirect to plugin's main page
         """
-        if delete_ca():
+        res = current_state.backend.perform("openvpn", "delete_ca")
+        if res["result"]:
             messages.success(_("The OpenVPN CA was successfully deleted."))
         else:
             messages.success(_("Failed to delete the OpenVPN CA."))
