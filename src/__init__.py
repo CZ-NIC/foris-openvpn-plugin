@@ -17,13 +17,15 @@ from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
 from foris.utils.addresses import prefix_to_mask_4, mask_to_prefix_4
 from foris.utils.translators import gettext_dummy as gettext, ugettext as _
+from foris.state import current_state
 from foris.validators import IPv4Prefix, LenRange, RegExp
+
 
 from .nuci import openvpn
 
 from .nuci import (
     delete_ca, foris_config, generate_ca, generate_client, get_client_config, get_lan,
-    get_openvpn_ca, openvpn_module, revoke_client, update_configs,
+    get_openvpn_ca, openvpn_module, update_configs,
 )
 
 
@@ -155,7 +157,9 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         :return: response with token with appropriate HTTP headers
         """
-        if revoke_client(self.data['revoke-client']):
+        res = current_state.backend.perform(
+            "openvpn", "revoke", {"id": self.data['revoke-client']})
+        if res["result"]:
             messages.success(_("The client certificate was successfully revoked."))
         else:
             messages.error(_("Failed to revoke the client certificate."))
