@@ -199,9 +199,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         current_state.backend.perform("openvpn", "generate_ca")
         messages.success(_("Started to generate CA for the OpenVPN server."))
 
-        # TODO move to js code
-        #    messages.error(_("Failed to generate CA for the OpenVPN server."))
-
         return bottle.redirect(reverse("config_page", page_name="openvpn"))
 
     def _action_generate_client(self):
@@ -288,12 +285,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
                 _("Started to generate client '%(name)s' for the OpenVPN server.")
                 % dict(name=data['client_name'])
             )
-
-            # TODO move this message to js part
-            #    messages.error(
-            #        _("Failed to generate client '%(name)s' for the OpenVPN server.")
-            #        % dict(name=data['client_name'])
-            #    )
 
             return bottle.redirect(reverse("config_page", page_name="openvpn"))
 

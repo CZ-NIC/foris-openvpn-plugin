@@ -1,22 +1,3 @@
-var process_ca_gen = function(data) {
-  if (data.ca != "openvpn") {
-    // we are interrested only in openvpn ca
-    return;
-  }
-  switch (data.action) {
-    case "revoke":
-    case "gen_client":
-      renew_clients();
-      return;
-    case "gen_server":
-    case "gen_dh":
-    case "gen_ca":
-      // reload current window
-      window.location.reload();
-      return;
-  };
-};
-
 var renew_clients = function() {
   $.get('{{ url("config_ajax", page_name="openvpn") }}', {action: "update-clients"})
     .done(function(response, status, xhr) {
@@ -36,8 +17,19 @@ var renew_clients = function() {
     });
 };
 
-Foris.WS["ca-gen"] = function (data) {
-  process_ca_gen(data);
+Foris.WS["openvpn"] = function (data) {
+  switch (data.action) {
+    case "generate_client":
+      if (data.data.status == "failed") {
+      }
+    case "revoke":
+      renew_clients();
+      return;
+    case "generate_ca":
+      // reload current window
+      window.location.reload();
+      return;
+  };
 };
 
 $(document).ready(function() {
