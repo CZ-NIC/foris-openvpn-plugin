@@ -201,10 +201,11 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         :return: redirect to plugin's main page
         """
-        if generate_ca():
-            messages.success(_("Started to generate CA for the OpenVPN server."))
-        else:
-            messages.error(_("Failed to generate CA for the OpenVPN server."))
+        current_state.backend.perform("openvpn", "generate_ca")
+        messages.success(_("Started to generate CA for the OpenVPN server."))
+
+        # TODO move to js code
+        #    messages.error(_("Failed to generate CA for the OpenVPN server."))
 
         return bottle.redirect(reverse("config_page", page_name="openvpn"))
 
