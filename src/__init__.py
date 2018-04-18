@@ -170,25 +170,24 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
 
         :return: response with token with appropriate HTTP headers
         """
-        # Try to update the openvpn_plugin config if needed
-        opevpn_settings = foris_config()
         form = self.get_address_form(bottle.request.POST)
-        if opevpn_settings.server_address != form.data["server-address"]:
-            form.save()
 
-        openvpn_config = get_client_config(
-            self.data['download-config'],
-            form.data.get("server-address", None)
+        res = current_state.backend.perform(
+            "openvpn", "get_client_config", {
+                "id": self.data['download-config'],
+                "hostname": form.data["server-address"] if form.data["server-address"] else "",
+            }
         )
-        if not openvpn_config:
+
+        if res["status"] != "valid":
             messages.error(_("Unable to get OpenVPN client config."))
             bottle.redirect(reverse("config_page", page_name="openvpn"))
 
         bottle.response.set_header("Content-Type", "text/plain")
         # TODO .ovpn for windows
         bottle.response.set_header("Content-Disposition", 'attachment; filename="turris.conf"')
-        bottle.response.set_header("Content-Length", len(openvpn_config))
-        return openvpn_config
+        bottle.response.set_header("Content-Length", len(res["config"]))
+        return res["config"]
 
     def _action_generate_ca(self):
         """Call RPC to generate CA for openvpn server
