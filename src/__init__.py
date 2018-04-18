@@ -21,14 +21,6 @@ from foris.state import current_state
 from foris.validators import IPv4Prefix, LenRange, RegExp
 
 
-from .nuci import openvpn
-
-from .nuci import (
-    delete_ca, foris_config, generate_ca, generate_client, get_client_config, get_lan,
-    get_openvpn_ca, openvpn_module, update_configs,
-)
-
-
 class OpenvpnConfigHandler(BaseConfigHandler):
 
     # Translate status obtained via get_status
@@ -273,10 +265,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             placeholder=_("use autodetection"),
         )
 
-        def form_callback(data):
-            return "edit_config", openvpn_module.Foris.prepare_edit(data)
-
-        address_form.add_callback(form_callback)
         return address_form
 
     def get_client_form(self, data=None):
