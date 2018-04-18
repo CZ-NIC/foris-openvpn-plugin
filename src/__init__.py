@@ -287,16 +287,19 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         )
 
         def form_callback(data):
-            if generate_client(data['client_name']):
-                messages.success(
-                    _("Started to generate client '%(name)s' for the OpenVPN server.")
-                    % dict(name=data['client_name'])
-                )
-            else:
-                messages.error(
-                    _("Failed to generate client '%(name)s' for the OpenVPN server.")
-                    % dict(name=data['client_name'])
-                )
+            current_state.backend.perform(
+                "openvpn", "generate_client", {"name": self.data['client_name']})
+            messages.success(
+                _("Started to generate client '%(name)s' for the OpenVPN server.")
+                % dict(name=data['client_name'])
+            )
+
+            # TODO move this message to js part
+            #    messages.error(
+            #        _("Failed to generate client '%(name)s' for the OpenVPN server.")
+            #        % dict(name=data['client_name'])
+            #    )
+
             return bottle.redirect(reverse("config_page", page_name="openvpn"))
 
         client_form.add_callback(form_callback)
