@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 14:47+0200\n"
+"POT-Creation-Date: 2018-04-19 13:56+0200\n"
 "PO-Revision-Date: 2018-01-24 12:31+0000\n"
 "Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris-"
@@ -19,115 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.19-dev\n"
 
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
-msgid "Configuration enabled"
-msgstr "Konfiguration aktiverad"
-
-msgid "OpenVPN network"
-msgstr "OpenVPN-nätverk"
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-"Detta nätverk ska vara annorlunda från andra nätverk som kan nås direkt från "
-"routern och klienterna."
-
-msgid "All traffic through vpn"
-msgstr "All trafik genom vpn"
-
-msgid ""
-"After enabling this option all traffic from your client will be routed "
-"through the vpn."
-msgstr ""
-"Aktivera detta alternativ för att dirigera all trafik från klienten genom "
-"denna vpn."
-
-msgid "Use DNS from vpn"
-msgstr "Använd DNS från vpn"
-
-msgid ""
-"After enabling this option your client should start to use DNS server on "
-"your router."
-msgstr "Aktivera detta alternativ för att använda DNS-adressen på din router."
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr ""
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr ""
-
-msgid "enabled"
-msgstr ""
-
-msgid "disabled"
-msgstr ""
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr ""
-
-msgid "enable"
-msgstr ""
-
-msgid "disable"
-msgstr ""
-
-msgid "The client certificate was successfully revoked."
-msgstr ""
-
-msgid "Failed to revoke the client certificate."
-msgstr ""
-
-msgid "Unable to get OpenVPN client config."
-msgstr ""
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr ""
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
-
-msgid "Failed to delete the OpenVPN CA."
-msgstr ""
-
-msgid "Router address"
-msgstr ""
-
-msgid "A server address which will be present in the client config."
-msgstr ""
-
-msgid "use autodetection"
-msgstr ""
-
-msgid "Client name"
-msgstr "Klientnamn"
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-"Klientens visningsnamn. Det måste vara kortare än 64 tecken och får endast "
-"inehålla bokstäver, siffror, punkter, bindestreck och understreck."
-
-msgid "Client name is invalid."
-msgstr "Klientens namn är ogiltigt."
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+msgid "Revoking..."
 msgstr ""
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
@@ -268,8 +160,8 @@ msgid ""
 "a new CA first."
 msgstr ""
 
-msgid "active"
-msgstr "aktiv"
+msgid "valid"
+msgstr ""
 
 msgid "revoked"
 msgstr "återkallad"
@@ -282,3 +174,107 @@ msgstr ""
 
 msgid "lost"
 msgstr ""
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "Configuration enabled"
+msgstr "Konfiguration aktiverad"
+
+msgid "OpenVPN network"
+msgstr "OpenVPN-nätverk"
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+"Detta nätverk ska vara annorlunda från andra nätverk som kan nås direkt från "
+"routern och klienterna."
+
+msgid "All traffic through vpn"
+msgstr "All trafik genom vpn"
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+"Aktivera detta alternativ för att dirigera all trafik från klienten genom "
+"denna vpn."
+
+msgid "Use DNS from vpn"
+msgstr "Använd DNS från vpn"
+
+msgid ""
+"After enabling this option your client should start to use DNS server on "
+"your router."
+msgstr "Aktivera detta alternativ för att använda DNS-adressen på din router."
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr ""
+
+msgid "enable"
+msgstr ""
+
+msgid "disable"
+msgstr ""
+
+msgid "The client certificate was successfully revoked."
+msgstr ""
+
+msgid "Failed to revoke the client certificate."
+msgstr ""
+
+msgid "Unable to get OpenVPN client config."
+msgstr ""
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr ""
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr ""
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr ""
+
+msgid "Failed to delete the OpenVPN CA."
+msgstr ""
+
+msgid "Router address"
+msgstr ""
+
+msgid "A server address which will be present in the client config."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
+
+msgid "Client name"
+msgstr "Klientnamn"
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Klientens visningsnamn. Det måste vara kortare än 64 tecken och får endast "
+"inehålla bokstäver, siffror, punkter, bindestreck och understreck."
+
+msgid "Client name is invalid."
+msgstr "Klientens namn är ogiltigt."
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr ""
+
+#~ msgid "active"
+#~ msgstr "aktiv"

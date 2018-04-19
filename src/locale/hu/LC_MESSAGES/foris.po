@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 14:47+0200\n"
+"POT-Creation-Date: 2018-04-19 13:56+0200\n"
 "PO-Revision-Date: 2017-12-09 21:47+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris-"
@@ -19,120 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.18-dev\n"
 
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
-msgid "Configuration enabled"
-msgstr "Beállítások engedélyezve"
-
-msgid "OpenVPN network"
-msgstr "OpenVPN hálózat"
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-"Ennek a hálózatnak különböznie kell a  többi az útválasztó és az ügyfelek "
-"által közvetlenül elérhető hálózattól."
-
-msgid "All traffic through vpn"
-msgstr "MInden forgalom vpn-en át"
-
-msgid ""
-"After enabling this option all traffic from your client will be routed "
-"through the vpn."
-msgstr ""
-"A beállítás engedélyezése után a kliens teljes forgalma a vpn-en át lesz "
-"irányítva."
-
-msgid "Use DNS from vpn"
-msgstr "Használja a VPN DNS-ét"
-
-msgid ""
-"After enabling this option your client should start to use DNS server on "
-"your router."
-msgstr ""
-"A beállítás engedélyezése után az ügyfélnek az útválasztó DNS-kiszolgálót "
-"kell kezdeni használnia."
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr "A beállítást nem lehet alkalmazni. Hiányoznak a tanúsítványok."
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr "OpenVPN szerver beállítása sikeresen %s."
-
-msgid "enabled"
-msgstr "bekapcsolva"
-
-msgid "disabled"
-msgstr "kikapcsolva"
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr "Nem sikerült %s az OpenVPN szerver beállítás(t)."
-
-msgid "enable"
-msgstr "bekapcsolni"
-
-msgid "disable"
-msgstr "kikapcsolni"
-
-msgid "The client certificate was successfully revoked."
-msgstr "Az ügyféltanúsítvány sikeresen visszavonva."
-
-msgid "Failed to revoke the client certificate."
-msgstr "Nem sikerült visszavonni az ügyféltanúsítványt."
-
-msgid "Unable to get OpenVPN client config."
-msgstr "Nem lehet az OpenVPN ügyfélbeállítást lekérni."
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr "Az OpenVPN szerverhez szükség CA létrehozása elkezdődött."
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr "Az OpenVPN szerverhez szükség CA létrehozása nem sikerült."
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
-"Az OpenVPN szerverhez szükség ügyféltanúsítvány létrehozása elkezdődött."
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr "Az OpenVPN CA sikeresen törölve."
-
-msgid "Failed to delete the OpenVPN CA."
-msgstr "Az OpenVPN CA-t nem sikerült törölni."
-
-msgid "Router address"
-msgstr "Útválasztó IP-címe"
-
-msgid "A server address which will be present in the client config."
-msgstr "A szerver címe, amely jelen lesz az ügyfélbeállításban."
-
-msgid "use autodetection"
-msgstr "Automatikus érzékelés"
-
-msgid "Client name"
-msgstr "Ügyfélnév"
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-"Az ügyfél megjelenítendő neve. 64 karakternél rövidebbnek kell lennie és "
-"csak a következőkből állhat: alfanumerikus karakterek, pontok, kötőjelek és "
-"aláhúzásjelek."
-
-msgid "Client name is invalid."
-msgstr "Érvénytelen ügyfélnév."
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása elkezdődött."
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása nem sikerült."
+#, fuzzy
+msgid "Revoking..."
+msgstr "Betöltés..."
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
 msgstr "Biztosan törli az OpenVPN CA-t?"
@@ -243,10 +132,10 @@ msgid ""
 "you might lose the connection to the router for a while. This means that you "
 "might need to reopen this admin page again."
 msgstr ""
-"Vegyük figyelembe, hogy ha Ön rákattint a <strong>\"Beállítás alkalmazása\""
-"</strong> gombra, lehet, hogy elveszti a kapcsolatot a routerrel egy "
-"darabig. Ez azt jelenti, hogy szükség lehet,  ennek az admin-oldalnak az "
-"újbóli megnyitására ."
+"Vegyük figyelembe, hogy ha Ön rákattint a <strong>\"Beállítás alkalmazása\"</"
+"strong> gombra, lehet, hogy elveszti a kapcsolatot a routerrel egy darabig. "
+"Ez azt jelenti, hogy szükség lehet,  ennek az admin-oldalnak az újbóli "
+"megnyitására ."
 
 msgid "Client configuration"
 msgstr "Ügyfélbeállítás"
@@ -299,8 +188,8 @@ msgstr ""
 "tanúsítványok mint használhatatlanná válnak és  ha ezt a plugint használni "
 "akarjuk, elsőként új CA-t kell létrehozni."
 
-msgid "active"
-msgstr "aktív"
+msgid "valid"
+msgstr ""
 
 msgid "revoked"
 msgstr "visszavonva"
@@ -313,3 +202,121 @@ msgstr "létrehozás"
 
 msgid "lost"
 msgstr "elveszett"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "Configuration enabled"
+msgstr "Beállítások engedélyezve"
+
+msgid "OpenVPN network"
+msgstr "OpenVPN hálózat"
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+"Ennek a hálózatnak különböznie kell a  többi az útválasztó és az ügyfelek "
+"által közvetlenül elérhető hálózattól."
+
+msgid "All traffic through vpn"
+msgstr "MInden forgalom vpn-en át"
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+"A beállítás engedélyezése után a kliens teljes forgalma a vpn-en át lesz "
+"irányítva."
+
+msgid "Use DNS from vpn"
+msgstr "Használja a VPN DNS-ét"
+
+msgid ""
+"After enabling this option your client should start to use DNS server on "
+"your router."
+msgstr ""
+"A beállítás engedélyezése után az ügyfélnek az útválasztó DNS-kiszolgálót "
+"kell kezdeni használnia."
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr "OpenVPN szerver beállítása sikeresen %s."
+
+msgid "enabled"
+msgstr "bekapcsolva"
+
+msgid "disabled"
+msgstr "kikapcsolva"
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr "Nem sikerült %s az OpenVPN szerver beállítás(t)."
+
+msgid "enable"
+msgstr "bekapcsolni"
+
+msgid "disable"
+msgstr "kikapcsolni"
+
+msgid "The client certificate was successfully revoked."
+msgstr "Az ügyféltanúsítvány sikeresen visszavonva."
+
+msgid "Failed to revoke the client certificate."
+msgstr "Nem sikerült visszavonni az ügyféltanúsítványt."
+
+msgid "Unable to get OpenVPN client config."
+msgstr "Nem lehet az OpenVPN ügyfélbeállítást lekérni."
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr "Az OpenVPN szerverhez szükség CA létrehozása elkezdődött."
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr ""
+"Az OpenVPN szerverhez szükség ügyféltanúsítvány létrehozása elkezdődött."
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr "Az OpenVPN CA sikeresen törölve."
+
+msgid "Failed to delete the OpenVPN CA."
+msgstr "Az OpenVPN CA-t nem sikerült törölni."
+
+msgid "Router address"
+msgstr "Útválasztó IP-címe"
+
+msgid "A server address which will be present in the client config."
+msgstr "A szerver címe, amely jelen lesz az ügyfélbeállításban."
+
+msgid "use autodetection"
+msgstr "Automatikus érzékelés"
+
+msgid "Client name"
+msgstr "Ügyfélnév"
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Az ügyfél megjelenítendő neve. 64 karakternél rövidebbnek kell lennie és "
+"csak a következőkből állhat: alfanumerikus karakterek, pontok, kötőjelek és "
+"aláhúzásjelek."
+
+msgid "Client name is invalid."
+msgstr "Érvénytelen ügyfélnév."
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása elkezdődött."
+
+#~ msgid "Can't apply the configuration. Certificates are missing."
+#~ msgstr "A beállítást nem lehet alkalmazni. Hiányoznak a tanúsítványok."
+
+#~ msgid "Failed to generate CA for the OpenVPN server."
+#~ msgstr "Az OpenVPN szerverhez szükség CA létrehozása nem sikerült."
+
+#~ msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+#~ msgstr ""
+#~ "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása nem sikerült."
+
+#~ msgid "active"
+#~ msgstr "aktív"

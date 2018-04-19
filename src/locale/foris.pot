@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 14:47+0200\n"
+"POT-Creation-Date: 2018-04-19 13:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,109 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "OpenVPN"
-msgstr ""
-
-msgid "Configuration enabled"
-msgstr ""
-
-msgid "OpenVPN network"
-msgstr ""
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-
-msgid "All traffic through vpn"
-msgstr ""
-
-msgid ""
-"After enabling this option all traffic from your client will be routed "
-"through the vpn."
-msgstr ""
-
-msgid "Use DNS from vpn"
-msgstr ""
-
-msgid ""
-"After enabling this option your client should start to use DNS server on "
-"your router."
-msgstr ""
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr ""
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr ""
-
-msgid "enabled"
-msgstr ""
-
-msgid "disabled"
-msgstr ""
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr ""
-
-msgid "enable"
-msgstr ""
-
-msgid "disable"
-msgstr ""
-
-msgid "The client certificate was successfully revoked."
-msgstr ""
-
-msgid "Failed to revoke the client certificate."
-msgstr ""
-
-msgid "Unable to get OpenVPN client config."
-msgstr ""
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr ""
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
-
-msgid "Failed to delete the OpenVPN CA."
-msgstr ""
-
-msgid "Router address"
-msgstr ""
-
-msgid "A server address which will be present in the client config."
-msgstr ""
-
-msgid "use autodetection"
-msgstr ""
-
-msgid "Client name"
-msgstr ""
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-
-msgid "Client name is invalid."
-msgstr ""
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+msgid "Revoking..."
 msgstr ""
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
@@ -260,7 +158,7 @@ msgid ""
 "a new CA first."
 msgstr ""
 
-msgid "active"
+msgid "valid"
 msgstr ""
 
 msgid "revoked"
@@ -273,4 +171,99 @@ msgid "generating"
 msgstr ""
 
 msgid "lost"
+msgstr ""
+
+msgid "OpenVPN"
+msgstr ""
+
+msgid "Configuration enabled"
+msgstr ""
+
+msgid "OpenVPN network"
+msgstr ""
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+
+msgid "All traffic through vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+
+msgid "Use DNS from vpn"
+msgstr ""
+
+msgid ""
+"After enabling this option your client should start to use DNS server on "
+"your router."
+msgstr ""
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "disabled"
+msgstr ""
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr ""
+
+msgid "enable"
+msgstr ""
+
+msgid "disable"
+msgstr ""
+
+msgid "The client certificate was successfully revoked."
+msgstr ""
+
+msgid "Failed to revoke the client certificate."
+msgstr ""
+
+msgid "Unable to get OpenVPN client config."
+msgstr ""
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr ""
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr ""
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr ""
+
+msgid "Failed to delete the OpenVPN CA."
+msgstr ""
+
+msgid "Router address"
+msgstr ""
+
+msgid "A server address which will be present in the client config."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
+
+msgid "Client name"
+msgstr ""
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+
+msgid "Client name is invalid."
+msgstr ""
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
 msgstr ""

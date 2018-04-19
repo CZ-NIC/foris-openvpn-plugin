@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-29 11:47+0200\n"
+"POT-Creation-Date: 2018-04-19 13:56+0200\n"
 "PO-Revision-Date: 2017-06-05 17:16+0000\n"
 "Last-Translator: Sergiu Cozma <lssjbrolli@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/turris/foris-"
@@ -20,119 +20,9 @@ msgstr ""
 "20)) ? 1 : 2;\n"
 "X-Generator: Weblate 2.15-dev\n"
 
-msgid "OpenVPN"
-msgstr "OpenVPN"
-
-msgid "Configuration enabled"
-msgstr "Configuratie activata"
-
-msgid "OpenVPN network"
-msgstr "Retea OpenVPN"
-
-msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
-msgstr ""
-"Această rețea ar trebui să fie diferită de orice rețea accesibilă direct de "
-"la router și clienți."
-
-msgid "All traffic through vpn"
-msgstr "Tot traficul prin vpn"
-
-msgid ""
-"After enabling this option all traffic from your client will be routed "
-"through the vpn."
-msgstr ""
-"Dupa activarea acestei optiuni tot traficul de la clientul vostru va fi "
-"trimis prin vpn."
-
-msgid "Use DNS from vpn"
-msgstr "Foloseste DNS de la vpn"
-
-msgid ""
-"After enabling this option your client should start to use DNS server on "
-"your router."
-msgstr ""
-"Dupa activarea acestei optiuni clientul tau va incepe sa foloseasca server-"
-"ul DNS de pe router."
-
-msgid "Can't apply the configuration. Certificates are missing."
-msgstr "Configuratia nu poate fi aplicata. Certificatele lipsesc."
-
-#, python-format
-msgid "OpenVPN server configuration was successfully %s."
-msgstr "Configurarea server-ului OpenVPN a fost facuta cu success %s."
-
-msgid "enabled"
-msgstr "activat"
-
-msgid "disabled"
-msgstr "deactivat"
-
-#, python-format
-msgid "Failed to %s OpenVPN server configuration."
-msgstr "Esec la %s configuratia server-ului."
-
-msgid "enable"
-msgstr "activat"
-
-msgid "disable"
-msgstr "deactivat"
-
-msgid "The client certificate was successfully revoked."
-msgstr "Certificatul clientului a fost revocat cu succes."
-
-msgid "Failed to revoke the client certificate."
-msgstr "Certificatul clientului nu a putut fi revocat."
-
-msgid "Unable to get OpenVPN client config."
-msgstr "Nu s-a putut obtine fisierul de configurare al clientului."
-
-msgid "Started to generate CA for the OpenVPN server."
-msgstr "S-a inceput generarea de CA pentru sever-ul OpenVPN."
-
-msgid "Failed to generate CA for the OpenVPN server."
-msgstr "Nu s-a putut genera CA pentru server-ul OpenVPN."
-
-msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
-"S-a inceput generarea certificatului de client pentru server-ul OpenVPN."
-
-msgid "The OpenVPN CA was successfully deleted."
-msgstr "Certificatul CA a fost sters cu succes."
-
-msgid "Failed to delete the OpenVPN CA."
-msgstr "Nu s-a putut sterge certificatul CA."
-
-msgid "Router address"
-msgstr "Adresa router-ului"
-
-msgid "A server address which will be present in the client config."
-msgstr "Adresa server-ului care va fi prezent in config-ul clientului."
-
-msgid "use autodetection"
-msgstr "foloseste autodetectia"
-
-msgid "Client name"
-msgstr "Numele clientului"
-
-msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
-msgstr ""
-"Numele afisat al clientului. Trebuie sa fie mai scurt de 64 de caractere si "
-"poate contine numai caractere alfanumerice. puncte, cratime si sublinieri."
-
-msgid "Client name is invalid."
-msgstr "Numele clientului este invalid."
-
-#, python-format
-msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr "S-a inceput generarea clientului %(name)s pentru server-ul OpenVPN."
-
-#, python-format
-msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-msgstr "Eroare la generarea clientuluu %(name)s pentru server-ul OpenVPN."
+#, fuzzy
+msgid "Revoking..."
+msgstr "Se incarca..."
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
 msgstr "Esti sigut ca vrei sa stergi CA-ul?"
@@ -243,8 +133,8 @@ msgid ""
 "you might lose the connection to the router for a while. This means that you "
 "might need to reopen this admin page again."
 msgstr ""
-"Rețineți că atunci când activați butonul <strong>\"Aplicare configuratia\""
-"</strong> este posibil să pierdeți conexiunea la router. Aceasta înseamnă că "
+"Rețineți că atunci când activați butonul <strong>\"Aplicare configuratia\"</"
+"strong> este posibil să pierdeți conexiunea la router. Aceasta înseamnă că "
 "este posibil să trebuiască să redeschideți din nou această pagină de "
 "administrare."
 
@@ -300,8 +190,8 @@ msgstr ""
 "vor fi inutile și dacă doriți să utilizați acest plugin, va trebui mai întâi "
 "să generați un CA nou."
 
-msgid "active"
-msgstr "activ"
+msgid "valid"
+msgstr ""
 
 msgid "revoked"
 msgstr "revocata"
@@ -314,3 +204,119 @@ msgstr "genereaza"
 
 msgid "lost"
 msgstr "pierdut"
+
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+msgid "Configuration enabled"
+msgstr "Configuratie activata"
+
+msgid "OpenVPN network"
+msgstr "Retea OpenVPN"
+
+msgid ""
+"This network should be different than any network directly reachable from "
+"the router and the clients."
+msgstr ""
+"Această rețea ar trebui să fie diferită de orice rețea accesibilă direct de "
+"la router și clienți."
+
+msgid "All traffic through vpn"
+msgstr "Tot traficul prin vpn"
+
+msgid ""
+"After enabling this option all traffic from your client will be routed "
+"through the vpn."
+msgstr ""
+"Dupa activarea acestei optiuni tot traficul de la clientul vostru va fi "
+"trimis prin vpn."
+
+msgid "Use DNS from vpn"
+msgstr "Foloseste DNS de la vpn"
+
+msgid ""
+"After enabling this option your client should start to use DNS server on "
+"your router."
+msgstr ""
+"Dupa activarea acestei optiuni clientul tau va incepe sa foloseasca server-"
+"ul DNS de pe router."
+
+#, python-format
+msgid "OpenVPN server configuration was successfully %s."
+msgstr "Configurarea server-ului OpenVPN a fost facuta cu success %s."
+
+msgid "enabled"
+msgstr "activat"
+
+msgid "disabled"
+msgstr "deactivat"
+
+#, python-format
+msgid "Failed to %s OpenVPN server configuration."
+msgstr "Esec la %s configuratia server-ului."
+
+msgid "enable"
+msgstr "activat"
+
+msgid "disable"
+msgstr "deactivat"
+
+msgid "The client certificate was successfully revoked."
+msgstr "Certificatul clientului a fost revocat cu succes."
+
+msgid "Failed to revoke the client certificate."
+msgstr "Certificatul clientului nu a putut fi revocat."
+
+msgid "Unable to get OpenVPN client config."
+msgstr "Nu s-a putut obtine fisierul de configurare al clientului."
+
+msgid "Started to generate CA for the OpenVPN server."
+msgstr "S-a inceput generarea de CA pentru sever-ul OpenVPN."
+
+msgid "Started to generate client certificate for the OpenVPN server."
+msgstr ""
+"S-a inceput generarea certificatului de client pentru server-ul OpenVPN."
+
+msgid "The OpenVPN CA was successfully deleted."
+msgstr "Certificatul CA a fost sters cu succes."
+
+msgid "Failed to delete the OpenVPN CA."
+msgstr "Nu s-a putut sterge certificatul CA."
+
+msgid "Router address"
+msgstr "Adresa router-ului"
+
+msgid "A server address which will be present in the client config."
+msgstr "Adresa server-ului care va fi prezent in config-ul clientului."
+
+msgid "use autodetection"
+msgstr "foloseste autodetectia"
+
+msgid "Client name"
+msgstr "Numele clientului"
+
+msgid ""
+"The display name for the client. It must be shorter than 64 characters and "
+"must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Numele afisat al clientului. Trebuie sa fie mai scurt de 64 de caractere si "
+"poate contine numai caractere alfanumerice. puncte, cratime si sublinieri."
+
+msgid "Client name is invalid."
+msgstr "Numele clientului este invalid."
+
+#, python-format
+msgid "Started to generate client '%(name)s' for the OpenVPN server."
+msgstr "S-a inceput generarea clientului %(name)s pentru server-ul OpenVPN."
+
+#~ msgid "Can't apply the configuration. Certificates are missing."
+#~ msgstr "Configuratia nu poate fi aplicata. Certificatele lipsesc."
+
+#~ msgid "Failed to generate CA for the OpenVPN server."
+#~ msgstr "Nu s-a putut genera CA pentru server-ul OpenVPN."
+
+#~ msgid "Failed to generate client '%(name)s' for the OpenVPN server."
+#~ msgstr "Eroare la generarea clientuluu %(name)s pentru server-ul OpenVPN."
+
+#~ msgid "active"
+#~ msgstr "activ"
