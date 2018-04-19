@@ -4,6 +4,7 @@ var renew_clients = function() {
       if (xhr.status == 200) {
         // Redraw
         $("#openvpn-clients").replaceWith(response);
+        Foris.overrideOpenvpnRevoke();
       } else {
         // Logout or other
         window.location.reload();
@@ -32,6 +33,25 @@ Foris.WS["openvpn"] = function (data) {
   };
 };
 
+Foris.overrideOpenvpnRevoke = function() {
+  $('#openvpn-clients button[name="revoke-client"]').click(function (event) {
+    event.preventDefault();
+    var id = $(this).val();
+    $(this).text('{{ trans("Revoking...") }}');
+    $(this).prop('disabled', true);
+    var data = $(this).parents("form:first").serialize();
+    data += "&action=revoke&id=" + id;
+    $.ajax({
+      type: "POST",
+      url: '{{ url("config_ajax", page_name="openvpn") }}',
+      data: data,
+      success: function(data, text, xhr) {
+        // No need to perform rerender will be handled via ws
+      },
+    });
+  });
+}
+
 $(document).ready(function() {
   $('#delete-ca-form').on('click', function(e) {
     var answer = confirm("{{ trans("Are you sure you want to delete the OpenVPN CA?") }}");
@@ -54,4 +74,5 @@ $(document).ready(function() {
       $('#openvpn-config-form div:not(:first):not(:last)').hide();
   };
   $(".hint-text").hide();
+  Foris.overrideOpenvpnRevoke();
 });

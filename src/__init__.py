@@ -248,6 +248,16 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
             bottle.response.set_header("Content-Type", "text/html")
             client_certs = current_state.backend.perform("openvpn", "get_status")["clients"]
             return bottle.template("openvpn/_clients", client_certs=client_certs)
+        if action == "revoke":
+            if bottle.request.method != 'POST':
+                raise bottle.HTTPError(405, "Method not allowed.")
+            try:
+                cert_id = bottle.request.POST.get("id")
+            except KeyError:
+                raise bottle.HTTPError(400, "id is missing.")
+            bottle.response.set_header("Content-Type", "application/json")
+            return current_state.backend.perform("openvpn", "revoke", {"id": cert_id})
+
         raise ValueError("Unknown AJAX action.")
 
     def get_address_form(self, data=None):
