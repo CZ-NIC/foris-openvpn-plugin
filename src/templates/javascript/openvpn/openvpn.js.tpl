@@ -63,6 +63,7 @@ $(document).ready(function() {
     if ($(this).prop('checked')) {
       $('#openvpn-config-form div:not(:first):not(:last)').show();
       $('.openvpn-config-current').show();
+      $("#openvpn-config-form .hint-text").hide()
     } else {
       $('#openvpn-config-form div:not(:first):not(:last)').hide();
       $('.openvpn-config-current').hide();
@@ -70,6 +71,7 @@ $(document).ready(function() {
   });
   if ($('#field-enabled_1').is(':checked')) {
       $('#openvpn-config-form div:not(:first):not(:last)').show();
+      $("#openvpn-config-form .hint-text").hide()
   } else {
       $('#openvpn-config-form div:not(:first):not(:last)').hide();
   };
