@@ -18,13 +18,21 @@
     %for cert in client_certs:
         <tr id="serial-{{ cert["id"] }}-name-{{ cert["name"] }}">
           <td>{{ cert["name"] }}</td>
-          <td>{{ trans(cert['status']) }}</td>
+          %if cert['status'] == 'revoked':
+            <td title="{{ trans(cert['status']) }}"><i class="fas fa-times"></td>
+          %elif cert['status'] == 'generating':
+            <td title="{{ trans(cert['status']) }}"><i class="fas fa-clock"></td>
+          %elif cert['status'] == 'valid':
+            <td title="{{ trans(cert['status']) }}"><i class="fas fa-check"></td>
+          %else:
+            <td>{{ trans(cert['status']) }}</td>
+          %end
           <td>
             %if cert['status'] == 'valid':
-            <button name="download-config" value="{{ cert["id"] }}" type="submit">{{ trans("Get Config") }}</button>
+            <button name="download-config" value="{{ cert["id"] }}" type="submit"><i class="fas fa-download"></i> {{ trans("Get Config") }}</button>
             %end
             %if cert['status'] not in ['revoked', 'generating']:
-            <button name="revoke-client" value="{{ cert["id"] }}" type="submit">{{ trans("Revoke") }}</button>
+            <button name="revoke-client" value="{{ cert["id"] }}" type="submit"><i class="fas fa-times"></i> {{ trans("Revoke") }}</button>
             %end
           </td>
         </tr>
