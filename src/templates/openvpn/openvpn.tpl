@@ -57,7 +57,6 @@
        <tr><th colspan="2"><strong>{{ trans("Current settings") }}</strong></th></tr>
        <tr><td>{{ trans("Network:") }}</td><td>{{ current['network'] }}</td></tr>
        <tr><td>{{ trans("Device:") }}</td><td>{{ current['device'] }}</td></tr>
-       <tr><td>{{ trans("Protocol:") }}</td><td>{{ current['protocol'] }}</td></tr>
        <tr><td>{{ trans("Port:") }}</td><td>{{ current['port'] }}</td></tr>
        <tr><td>{{ trans("Route:") }}</td>
        %if current['default_route']:

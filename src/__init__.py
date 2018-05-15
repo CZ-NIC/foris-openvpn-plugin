@@ -10,7 +10,7 @@ import os
 import bottle
 
 from foris.fapi import ForisForm
-from foris.form import Checkbox, Textbox
+from foris.form import Checkbox, Textbox, Dropdown
 from foris.plugins import ForisPlugin
 from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
@@ -41,6 +41,8 @@ class OpenvpnConfigHandler(BaseConfigHandler):
             ),
             "default_route": self.backend_data["route_all"],
             "dns": self.backend_data["use_dns"],
+            "ipv6": self.backend_data["ipv6"],
+            "protocol": self.backend_data["protocol"],
         }
 
         if self.data:
@@ -51,6 +53,22 @@ class OpenvpnConfigHandler(BaseConfigHandler):
         config_section = form.add_section(name="config", title=_(self.userfriendly_title))
         config_section.add_field(
             Checkbox, name="enabled", label=_("Configuration enabled"),
+        )
+        config_section.add_field(
+            Checkbox, name="ipv6", label=_("Listen on IPv6"),
+            hint=_(
+                "This option enables openvpn server to listen on IPv6 address. "
+                "It could be beneficial for users who does not have a public IPv4 address"
+                " and want to use openvpn server."
+            ),
+        )
+        config_section.add_field(
+            Dropdown, name="protocol", label=_("Protocol"),
+            args=[("udp", "UDP"), ("tcp", "TCP")],
+            hint=_(
+                "Choose a protocol which will be used when the clients are connecting to the "
+                "server. "
+            ),
         )
         config_section.add_field(
             Textbox, name="network", label=_("OpenVPN network"),
@@ -84,6 +102,8 @@ class OpenvpnConfigHandler(BaseConfigHandler):
                 msg["network_netmask"] = mask
                 msg["route_all"] = data['default_route']
                 msg["use_dns"] = data['dns']
+                msg["ipv6"] = data['ipv6']
+                msg["protocol"] = data['protocol']
 
             res = current_state.backend.perform("openvpn", "update_settings", msg)
 
@@ -134,7 +154,6 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
                 self.backend_data["network"], mask_to_prefix_4(self.backend_data["network_netmask"])
             )
             current['device'] = self.backend_data["device"]
-            current['protocol'] = self.backend_data["protocol"]
             current['port'] = self.backend_data["port"]
             current['default_route'] = self.backend_data["route_all"]
             if self.backend_data["routes"]:
