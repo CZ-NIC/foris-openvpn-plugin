@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 13:56+0200\n"
+"POT-Creation-Date: 2018-05-17 13:12+0200\n"
 "PO-Revision-Date: 2017-12-09 10:47+0000\n"
 "Last-Translator: Michael Pietsch <michael@mi-pietsch.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/turris/foris-"
@@ -131,9 +131,6 @@ msgstr "Netzwerk:"
 msgid "Device:"
 msgstr "Gerät:"
 
-msgid "Protocol:"
-msgstr "Protokoll:"
-
 msgid "Port:"
 msgstr "Port:"
 
@@ -227,6 +224,24 @@ msgstr "OpenVPN"
 
 msgid "Configuration enabled"
 msgstr "Konfiguration aktiviert"
+
+msgid "Listen on IPv6"
+msgstr ""
+
+msgid ""
+"This option enables openvpn server to listen on IPv6 address. It could be "
+"beneficial for users who does not have a public IPv4 address and want to use "
+"openvpn server."
+msgstr ""
+
+#, fuzzy
+msgid "Protocol"
+msgstr "Protokoll:"
+
+msgid ""
+"Choose a protocol which will be used when the clients are connecting to the "
+"server. "
+msgstr ""
 
 msgid "OpenVPN network"
 msgstr "OpenVPN Netzwerk"

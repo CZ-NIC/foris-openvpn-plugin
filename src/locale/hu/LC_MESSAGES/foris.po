@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 13:56+0200\n"
+"POT-Creation-Date: 2018-05-17 13:12+0200\n"
 "PO-Revision-Date: 2018-04-29 07:24+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/"
-"foris-openvpn-plugin/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris-"
+"openvpn-plugin/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,9 +114,6 @@ msgstr "Hálózat:"
 msgid "Device:"
 msgstr "Eszköz:"
 
-msgid "Protocol:"
-msgstr "Protokoll:"
-
 msgid "Port:"
 msgstr "Port:"
 
@@ -207,6 +204,24 @@ msgstr "OpenVPN"
 
 msgid "Configuration enabled"
 msgstr "Beállítások engedélyezve"
+
+msgid "Listen on IPv6"
+msgstr ""
+
+msgid ""
+"This option enables openvpn server to listen on IPv6 address. It could be "
+"beneficial for users who does not have a public IPv4 address and want to use "
+"openvpn server."
+msgstr ""
+
+#, fuzzy
+msgid "Protocol"
+msgstr "Protokoll:"
+
+msgid ""
+"Choose a protocol which will be used when the clients are connecting to the "
+"server. "
+msgstr ""
 
 msgid "OpenVPN network"
 msgstr "OpenVPN hálózat"

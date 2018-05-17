@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 13:56+0200\n"
+"POT-Creation-Date: 2018-05-17 13:12+0200\n"
 "PO-Revision-Date: 2017-06-05 17:16+0000\n"
 "Last-Translator: Sergiu Cozma <lssjbrolli@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/turris/foris-"
@@ -116,9 +116,6 @@ msgstr "Retea:"
 msgid "Device:"
 msgstr "Dispozitiv:"
 
-msgid "Protocol:"
-msgstr "Protocol:"
-
 msgid "Port:"
 msgstr "Port:"
 
@@ -210,6 +207,24 @@ msgstr "OpenVPN"
 
 msgid "Configuration enabled"
 msgstr "Configuratie activata"
+
+msgid "Listen on IPv6"
+msgstr ""
+
+msgid ""
+"This option enables openvpn server to listen on IPv6 address. It could be "
+"beneficial for users who does not have a public IPv4 address and want to use "
+"openvpn server."
+msgstr ""
+
+#, fuzzy
+msgid "Protocol"
+msgstr "Protocol:"
+
+msgid ""
+"Choose a protocol which will be used when the clients are connecting to the "
+"server. "
+msgstr ""
 
 msgid "OpenVPN network"
 msgstr "Retea OpenVPN"
