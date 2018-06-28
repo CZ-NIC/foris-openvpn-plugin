@@ -37,7 +37,7 @@ Foris.overrideOpenvpnRevoke = function() {
   $('#openvpn-clients button[name="revoke-client"]').click(function (event) {
     event.preventDefault();
     var id = $(this).val();
-    $(this).text('{{ trans("Revoking...") }}');
+    $(this).text('{% trans %}Revoking...{% endtrans %}');
     $(this).prop('disabled', true);
     var data = $(this).parents("form:first").serialize();
     data += "&action=revoke&id=" + id;
@@ -54,7 +54,7 @@ Foris.overrideOpenvpnRevoke = function() {
 
 $(document).ready(function() {
   $('#delete-ca-form').on('click', function(e) {
-    var answer = confirm("{{ trans("Are you sure you want to delete the OpenVPN CA?") }}");
+    var answer = confirm("{% trans %}Are you sure you want to delete the OpenVPN CA?{% endtrans %}");
     if (!answer) {
       e.preventDefault();
     }

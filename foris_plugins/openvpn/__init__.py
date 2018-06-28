@@ -1,5 +1,5 @@
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2017 CZ.NIC, z. s. p. o. <https://www.nic.cz>
+# Copyright (C) 2018 CZ.NIC, z. s. p. o. <https://www.nic.cz>
 #
 # Foris is distributed under the terms of GNU General Public License v3.
 # You should have received a copy of the GNU General Public License
@@ -24,11 +24,19 @@ from foris.validators import IPv4Prefix, LenRange, RegExp
 class OpenvpnConfigHandler(BaseConfigHandler):
 
     # Translate status obtained via get_status
-    CLIENT_STATUS_VALID = _("valid")
-    CLIENT_STATUS_REVOKED = _("revoked")
-    CLIENT_STATUS_EXPIRED = _("expired")
-    CLIENT_STATUS_GENERATING = _("generating")
-    CLIENT_STATUS_LOST = _("lost")
+    CLIENT_STATUS_VALID = gettext("valid")
+    CLIENT_STATUS_REVOKED = gettext("revoked")
+    CLIENT_STATUS_EXPIRED = gettext("expired")
+    CLIENT_STATUS_GENERATING = gettext("generating")
+    CLIENT_STATUS_LOST = gettext("lost")
+
+    TRANSLATION_MAP = {
+        "valid": CLIENT_STATUS_VALID,
+        "revoked": CLIENT_STATUS_REVOKED,
+        "expired": CLIENT_STATUS_EXPIRED,
+        "generating": CLIENT_STATUS_GENERATING,
+        "lost": CLIENT_STATUS_LOST,
+    }
 
     userfriendly_title = gettext("OpenVPN")
 
@@ -128,7 +136,8 @@ class OpenvpnConfigHandler(BaseConfigHandler):
 
 class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
     menu_order = 60
-    template = "openvpn/openvpn.tpl"
+    template = "openvpn/openvpn"
+    template_type = "jinja2"
 
     def _prepare_render_args(self, arguments, client_form=None, ca=None):
         """ Prepare the arguments for the template.
@@ -141,7 +150,12 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         arguments['PLUGIN_DYNAMIC_SCRIPTS'] = OpenvpnPlugin.PLUGIN_DYNAMIC_SCRIPTS
         status = current_state.backend.perform("openvpn", "get_status")
         arguments['ca_status'] = status["status"]
-        arguments['client_certs'] = status["clients"]
+        client_certs = status["clients"]
+        # translate certificat statuses
+        for cert in client_certs:
+            cert["status_msg"] = OpenvpnConfigHandler.TRANSLATION_MAP.get(
+                cert["status"], cert["status"])
+        arguments['client_certs'] = client_certs
         arguments['config_form'] = self.form
         arguments['client_form'] = client_form if client_form else self.get_client_form()
         arguments['address_form'] = self.get_address_form(
@@ -266,7 +280,14 @@ class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
         if action == "update-clients":
             bottle.response.set_header("Content-Type", "text/html")
             client_certs = current_state.backend.perform("openvpn", "get_status")["clients"]
-            return bottle.template("openvpn/_clients", client_certs=client_certs)
+            for cert in client_certs:
+                cert["status_msg"] = OpenvpnConfigHandler.TRANSLATION_MAP.get(
+                    cert["status"], cert["status"])
+            return bottle.template(
+                "openvpn/_clients.html.j2",
+                client_certs=client_certs,
+                template_adapter=bottle.Jinja2Template,
+            )
         if action == "revoke":
             if bottle.request.method != 'POST':
                 raise bottle.HTTPError(405, "Method not allowed.")
@@ -333,7 +354,7 @@ class OpenvpnPlugin(ForisPlugin):
     PLUGIN_NAME = "openvpn"
     DIRNAME = os.path.dirname(os.path.abspath(__file__))
     PLUGIN_STYLES = [
-        "css/screen.css",
+        "css/openvpn.css",
     ]
     PLUGIN_STATIC_SCRIPTS = [
     ]
