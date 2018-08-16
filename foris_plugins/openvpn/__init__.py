@@ -16,7 +16,7 @@ from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.utils import messages, reverse
 from foris.utils.addresses import prefix_to_mask_4, mask_to_prefix_4
-from foris.utils.translators import gettext_dummy as gettext, ugettext as _
+from foris.utils.translators import gettext_dummy as gettext, gettext as _
 from foris.state import current_state
 from foris.validators import IPv4Prefix, LenRange, RegExp
 
