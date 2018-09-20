@@ -135,6 +135,7 @@ class OpenvpnConfigHandler(BaseConfigHandler):
 
 
 class OpenvpnConfigPage(ConfigPageMixin, OpenvpnConfigHandler):
+    slug = "openvpn"
     menu_order = 60
     template = "openvpn/openvpn"
     template_type = "jinja2"
@@ -364,4 +365,4 @@ class OpenvpnPlugin(ForisPlugin):
 
     def __init__(self, app):
         super(OpenvpnPlugin, self).__init__(app)
-        add_config_page("openvpn", OpenvpnConfigPage, top_level=True)
+        add_config_page(OpenvpnConfigPage)
