@@ -1,197 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Foris OpenVPN plugin package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Foris OpenVPN
+# plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:12+0200\n"
+"POT-Creation-Date: 2018-09-25 16:51+0200\n"
 "PO-Revision-Date: 2018-07-29 11:37+0000\n"
 "Last-Translator: BMN <weblate@yopmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/turris/"
-"foris-openvpn-plugin/fr/>\n"
 "Language: fr\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris-"
+"openvpn-plugin/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.1.1\n"
-
-msgid "Revoking..."
-msgstr "Revocation en cours ..."
-
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr "Êtes-vous sûr de que vouloir supprimer la CA d'OpenVPN ?"
-
-msgid "Client"
-msgstr "Client"
-
-msgid "Status"
-msgstr "Statut"
-
-msgid "Get Config"
-msgstr "Obtenir la configuration"
-
-msgid "Revoke"
-msgstr "Révoquer"
-
-msgid "No certification authority"
-msgstr "Aucune autorité de certification"
-
-msgid ""
-"Currently there is no OpenVPN certificate authority(CA). A CA is required to "
-"generate client certificates to authenticate to the OpenVPN server. To "
-"proceed you need to generate it first."
-msgstr ""
-"Actuellement, il n'existe pas d'autorité de certification(CA) d'OpenVPN. Une "
-"autorité de certification est nécessaire pour générer des certificats client "
-"pour s'authentifier sur le serveur OpenVPN. Pour continuer, vous devez la "
-"générer d'abord."
-
-msgid "Generate CA"
-msgstr "Générer CA"
-
-msgid "Generating certificate authority"
-msgstr "Génération de l'autorité de certification"
-
-msgid ""
-"The CA necessary for the OpenVPN server is being generated. The time "
-"required for generating CA may differ. It could take up to 30 minutes. "
-"Please try to reload this page later."
-msgstr ""
-"L’autorité de certification nécessaire pour le serveur OpenVPN est en cours "
-"de génération. Le temps nécessaire pour générer la CA peut varier. Cela "
-"pourrait prendre jusqu'à 30 minutes. S’il vous plaît essayer de recharger "
-"cette page plus tard."
-
-msgid "Loading..."
-msgstr "Chargement en cours..."
-
-msgid "Reload page"
-msgstr "Recharger la page"
-
-msgid "Server configuration"
-msgstr "Configuration du serveur"
-
-msgid "To work properly OpenVPN plugin needs:"
-msgstr "Pour fonctionner correctement le plugin OpenVPN a besoin de :"
-
-msgid "public IP address (preferably static)"
-msgstr "adresse IP publique (de préférence statique)"
-
-msgid "standard network settings (WAN and LAN devices present)"
-msgstr "paramètres réseau standard (dispositifs WAN et LAN présents)"
-
-msgid "Previous settings"
-msgstr "Paramètres précédents"
-
-msgid ""
-"If you haven't tried to set up OpenVPN server on our router yet, you can "
-"safely proceed to <strong>\"Apply configuration\"</strong> button."
-msgstr ""
-"Si vous n’avez pas encore essayé de mettre en place le serveur OpenVPN sur "
-"notre routeur, vous pouvez cliquer en toute sécurité sur le bouton <strong>"
-"\"Appliquer la configuration\"</strong>."
-
-msgid ""
-"Otherwise if you've tried to set up OpenVPN outside this plugin, there is a "
-"chance that your configuration might collide with the configuration created "
-"by this plugin. Therefore you might need to disable the old configuration "
-"first."
-msgstr ""
-"Sinon, si vous avez essayé de configurer OpenVPN en dehors de ce plugin, il "
-"y a des chances que votre configuration puisse entrer en collision avec la "
-"configuration créée par ce plugin. Par conséquent, vous devrez peut-être "
-"désactiver l'ancienne configuration en premier."
-
-msgid "Apply configuration"
-msgstr "Appliquer la configuration"
-
-msgid "Current settings"
-msgstr "Paramètres actuels"
-
-msgid "Network:"
-msgstr "Réseau :"
-
-msgid "Device:"
-msgstr "Dispositif :"
-
-msgid "Port:"
-msgstr "Port :"
-
-msgid "Route:"
-msgstr "Route :"
-
-msgid "All traffic"
-msgstr "Tout le trafic"
-
-msgid ""
-"Note that when you trigger <strong>\"Apply configuration\"</strong> button "
-"you might lose the connection to the router for a while. This means that you "
-"might need to reopen this admin page again."
-msgstr ""
-"Notez que lorsque vous déclenchez le bouton <strong>\"Appliquer la "
-"configuration\"</strong>, vous risquez de perdre la connexion au routeur "
-"pendant un certain temps. Cela signifie que vous pourriez avoir besoin de "
-"rouvrir cette page admin à nouveau."
-
-msgid "Client configuration"
-msgstr "Configuration du client"
-
-msgid ""
-"Here you can create and revoke the client capability to connect to your "
-"OpenVPN network."
-msgstr ""
-"Ici vous pouvez créer et révoquer la capacité du client à se connecter à "
-"votre réseau OpenVPN."
-
-msgid "Create"
-msgstr "Créer"
-
-msgid ""
-"Be sure to check, that the server IP address provided in you configuration "
-"file actually matches the public IP address of your router."
-msgstr ""
-"Assurez-vous de vérifier que l'adresse IP du serveur fournie dans votre "
-"fichier de configuration correspond bien à l'adresse IP publique de votre "
-"routeur."
-
-msgid "You can set this address manually when the autodetection fails."
-msgstr ""
-"Vous pouvez définir cette adresse manuellement lorsque la détection "
-"automatique échoue."
-
-msgid ""
-"To apply the client configuration you need to download it and put it into "
-"the OpenVPN config directory or you might try to open it using your OpenVPN "
-"client directly. You might need to restart your client afterwards."
-msgstr ""
-"Pour appliquer la configuration du client, vous devez la télécharger et la "
-"mettre dans le répertoire config d'OpenVPN ou vous pouvez essayer de "
-"l'ouvrir à l'aide de votre client OpenVPN directement. Vous devrez peut-être "
-"redémarrer votre client par la suite."
-
-msgid "Delete CA"
-msgstr "Supprimer la CA"
-
-msgid ""
-"You can't delete the CA while the OpenVPN server is enabled. To delete the "
-"CA you need to disable the server configuration first."
-msgstr ""
-"Vous ne pouvez pas supprimer la CA alors que le serveur OpenVPN est activé. "
-"Pour supprimer la CA, vous devez désactiver la configuration du serveur en "
-"premier."
-
-msgid ""
-"You can delete the whole CA. Note that all the cerificates issued by this CA "
-"will be useless and if you wanted to use this plugin, you'd need to generate "
-"a new CA first."
-msgstr ""
-"Vous pouvez supprimer l'ensemble de la CA. Notez que tous les certificats "
-"émis par cette autorité de certification seront inutiles et si vous "
-"souhaitez utiliser ce plugin, vous devrez générer une nouvelle CA en premier."
+"Generated-By: Babel 2.6.0\n"
 
 msgid "valid"
 msgstr "valide"
@@ -218,30 +45,30 @@ msgid "Listen on IPv6"
 msgstr "Écouter en IPv6"
 
 msgid ""
-"This option enables openvpn server to listen on IPv6 address. It could be "
-"beneficial for users who does not have a public IPv4 address and want to use "
-"openvpn server."
+"This option enables openvpn server to listen on IPv6 address. It could be"
+" beneficial for users who does not have a public IPv4 address and want to"
+" use openvpn server."
 msgstr ""
-"Cette option active l'écoute des adresses IPV6 par le serveur OpenVPN. Cela "
-"peux être utiles pour les utilisateurs qui n'ont pas d'adresse IPV4 publique "
-"mais qui souhaitent utiliser le serveur OpenVPN."
+"Cette option active l'écoute des adresses IPV6 par le serveur OpenVPN. "
+"Cela peux être utiles pour les utilisateurs qui n'ont pas d'adresse IPV4 "
+"publique mais qui souhaitent utiliser le serveur OpenVPN."
 
 msgid "Protocol"
 msgstr "Protocole"
 
 msgid ""
-"Choose a protocol which will be used when the clients are connecting to the "
-"server. "
+"Choose a protocol which will be used when the clients are connecting to "
+"the server. "
 msgstr ""
-"Sélectionner le protocole qui sera utilisé lors de la connexion des clients "
-"au serveur. "
+"Sélectionner le protocole qui sera utilisé lors de la connexion des "
+"clients au serveur. "
 
 msgid "OpenVPN network"
 msgstr "Réseau OpenVPN"
 
 msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
+"This network should be different than any network directly reachable from"
+" the router and the clients."
 msgstr ""
 "Ce réseau devrait être différent de n’importe quel réseau directement "
 "accessible depuis le routeur et les clients."
@@ -253,8 +80,8 @@ msgid ""
 "After enabling this option all traffic from your client will be routed "
 "through the vpn."
 msgstr ""
-"Après l'activation de cette option, tout le trafic en provenance de votre "
-"client sera routé via le VPN."
+"Après l'activation de cette option, tout le trafic en provenance de votre"
+" client sera routé via le VPN."
 
 msgid "Use DNS from vpn"
 msgstr "Utiliser le DNS du VPN"
@@ -263,8 +90,8 @@ msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
 msgstr ""
-"Après l'activation de cette option votre client devrait commencer à utiliser "
-"le serveur DNS sur votre routeur."
+"Après l'activation de cette option votre client devrait commencer à "
+"utiliser le serveur DNS sur votre routeur."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
@@ -311,8 +138,7 @@ msgid "Router address"
 msgstr "Adresse du routeur"
 
 msgid "A server address which will be present in the client config."
-msgstr ""
-"Une adresse de serveur qui sera présente dans la configuration du client."
+msgstr "Une adresse de serveur qui sera présente dans la configuration du client."
 
 msgid "use autodetection"
 msgstr "utiliser la détection automatique"
@@ -321,12 +147,13 @@ msgid "Client name"
 msgstr "Nom du client"
 
 msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
+"The display name for the client. It must be shorter than 64 characters "
+"and must contain only alphanumeric characters, dots, dashes and "
+"underscores."
 msgstr ""
-"Le nom d'affichage pour le client. Il doit être inférieur à 64 caractères et "
-"doit contenir uniquement des caractères alphanumériques, des points, des "
-"tirets et des tirets bas."
+"Le nom d'affichage pour le client. Il doit être inférieur à 64 caractères"
+" et doit contenir uniquement des caractères alphanumériques, des points, "
+"des tirets et des tirets bas."
 
 msgid "Client name is invalid."
 msgstr "Le nom du client est invalide."
@@ -335,9 +162,186 @@ msgstr "Le nom du client est invalide."
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
 msgstr "Génération du client '%(name)s' pour le serveur OpenVPN démarrée."
 
+msgid "Revoking..."
+msgstr "Revocation en cours ..."
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr "Êtes-vous sûr de que vouloir supprimer la CA d'OpenVPN ?"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Get Config"
+msgstr "Obtenir la configuration"
+
+msgid "Revoke"
+msgstr "Révoquer"
+
+msgid "No certification authority"
+msgstr "Aucune autorité de certification"
+
+msgid ""
+"Currently there is no OpenVPN certificate authority(CA). A CA is required"
+" to generate client certificates to authenticate to the OpenVPN server. "
+"To proceed you need to generate it first."
+msgstr ""
+"Actuellement, il n'existe pas d'autorité de certification(CA) d'OpenVPN. "
+"Une autorité de certification est nécessaire pour générer des certificats"
+" client pour s'authentifier sur le serveur OpenVPN. Pour continuer, vous "
+"devez la générer d'abord."
+
+msgid "Generate CA"
+msgstr "Générer CA"
+
+msgid "Generating certificate authority"
+msgstr "Génération de l'autorité de certification"
+
+msgid ""
+"The CA necessary for the OpenVPN server is being generated. The time "
+"required for generating CA may differ. It could take up to 30 minutes. "
+"Please try to reload this page later."
+msgstr ""
+"L’autorité de certification nécessaire pour le serveur OpenVPN est en "
+"cours de génération. Le temps nécessaire pour générer la CA peut varier. "
+"Cela pourrait prendre jusqu'à 30 minutes. S’il vous plaît essayer de "
+"recharger cette page plus tard."
+
+msgid "Loading..."
+msgstr "Chargement en cours..."
+
+msgid "Reload page"
+msgstr "Recharger la page"
+
+msgid "Server configuration"
+msgstr "Configuration du serveur"
+
+msgid "To work properly OpenVPN plugin needs:"
+msgstr "Pour fonctionner correctement le plugin OpenVPN a besoin de :"
+
+msgid "public IP address (preferably static)"
+msgstr "adresse IP publique (de préférence statique)"
+
+msgid "standard network settings (WAN and LAN devices present)"
+msgstr "paramètres réseau standard (dispositifs WAN et LAN présents)"
+
+msgid "Previous settings"
+msgstr "Paramètres précédents"
+
+msgid ""
+"If you haven't tried to set up OpenVPN server on our router yet, you can "
+"safely proceed to <strong>\"Apply configuration\"</strong> button."
+msgstr ""
+"Si vous n’avez pas encore essayé de mettre en place le serveur OpenVPN "
+"sur notre routeur, vous pouvez cliquer en toute sécurité sur le bouton "
+"<strong>\"Appliquer la configuration\"</strong>."
+
+msgid ""
+"Otherwise if you've tried to set up OpenVPN outside this plugin, there is"
+" a chance that your configuration might collide with the configuration "
+"created by this plugin. Therefore you might need to disable the old "
+"configuration first."
+msgstr ""
+"Sinon, si vous avez essayé de configurer OpenVPN en dehors de ce plugin, "
+"il y a des chances que votre configuration puisse entrer en collision "
+"avec la configuration créée par ce plugin. Par conséquent, vous devrez "
+"peut-être désactiver l'ancienne configuration en premier."
+
+msgid "Apply configuration"
+msgstr "Appliquer la configuration"
+
+msgid "Current settings"
+msgstr "Paramètres actuels"
+
+msgid "Network:"
+msgstr "Réseau :"
+
+msgid "Device:"
+msgstr "Dispositif :"
+
+msgid "Port:"
+msgstr "Port :"
+
+msgid "Route:"
+msgstr "Route :"
+
+msgid "All traffic"
+msgstr "Tout le trafic"
+
+msgid ""
+"Note that when you trigger <strong>\"Apply configuration\"</strong> "
+"button you might lose the connection to the router for a while. This "
+"means that you might need to reopen this admin page again."
+msgstr ""
+"Notez que lorsque vous déclenchez le bouton <strong>\"Appliquer la "
+"configuration\"</strong>, vous risquez de perdre la connexion au routeur "
+"pendant un certain temps. Cela signifie que vous pourriez avoir besoin de"
+" rouvrir cette page admin à nouveau."
+
+msgid "Client configuration"
+msgstr "Configuration du client"
+
+msgid ""
+"Here you can create and revoke the client capability to connect to your "
+"OpenVPN network."
+msgstr ""
+"Ici vous pouvez créer et révoquer la capacité du client à se connecter à "
+"votre réseau OpenVPN."
+
+msgid "Create"
+msgstr "Créer"
+
+msgid ""
+"Be sure to check, that the server IP address provided in you "
+"configuration file actually matches the public IP address of your router."
+msgstr ""
+"Assurez-vous de vérifier que l'adresse IP du serveur fournie dans votre "
+"fichier de configuration correspond bien à l'adresse IP publique de votre"
+" routeur."
+
+msgid "You can set this address manually when the autodetection fails."
+msgstr ""
+"Vous pouvez définir cette adresse manuellement lorsque la détection "
+"automatique échoue."
+
+msgid ""
+"To apply the client configuration you need to download it and put it into"
+" the OpenVPN config directory or you might try to open it using your "
+"OpenVPN client directly. You might need to restart your client "
+"afterwards."
+msgstr ""
+"Pour appliquer la configuration du client, vous devez la télécharger et "
+"la mettre dans le répertoire config d'OpenVPN ou vous pouvez essayer de "
+"l'ouvrir à l'aide de votre client OpenVPN directement. Vous devrez peut-"
+"être redémarrer votre client par la suite."
+
+msgid "Delete CA"
+msgstr "Supprimer la CA"
+
+msgid ""
+"You can't delete the CA while the OpenVPN server is enabled. To delete "
+"the CA you need to disable the server configuration first."
+msgstr ""
+"Vous ne pouvez pas supprimer la CA alors que le serveur OpenVPN est "
+"activé. Pour supprimer la CA, vous devez désactiver la configuration du "
+"serveur en premier."
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+"Vous pouvez supprimer l'ensemble de la CA. Notez que tous les certificats"
+" émis par cette autorité de certification seront inutiles et si vous "
+"souhaitez utiliser ce plugin, vous devrez générer une nouvelle CA en "
+"premier."
+
 #~ msgid "Can't apply the configuration. Certificates are missing."
 #~ msgstr ""
-#~ "Impossible d'appliquer la configuration. Les certificats sont manquants."
+#~ "Impossible d'appliquer la configuration. Les"
+#~ " certificats sont manquants."
 
 #~ msgid "Failed to generate CA for the OpenVPN server."
 #~ msgstr "Ne peut pas générer de CA pour le serveur OpenVPN."
@@ -347,3 +351,4 @@ msgstr "Génération du client '%(name)s' pour le serveur OpenVPN démarrée."
 
 #~ msgid "active"
 #~ msgstr "actif"
+

@@ -5,200 +5,28 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
 # Stepan Henek <stepan.henek@nic.cz>, 2017.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:12+0200\n"
+"POT-Creation-Date: 2018-09-25 16:51+0200\n"
 "PO-Revision-Date: 2018-05-19 07:35+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/turris/"
-"foris-openvpn-plugin/cs/>\n"
 "Language: cs\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris-"
+"openvpn-plugin/cs/>\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.0-dev\n"
-
-msgid "Revoking..."
-msgstr "Rušení přístupu…"
-
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr "Opravdu si přejete smazat certifikační autoritu pro OpenVPN?"
-
-msgid "Client"
-msgstr "Klient"
-
-msgid "Status"
-msgstr "Stav"
-
-msgid "Get Config"
-msgstr "Stáhnout si nastavení"
-
-msgid "Revoke"
-msgstr "Zrušit přístup"
-
-msgid "No certification authority"
-msgstr "Chybí certifikační autorita"
-
-msgid ""
-"Currently there is no OpenVPN certificate authority(CA). A CA is required to "
-"generate client certificates to authenticate to the OpenVPN server. To "
-"proceed you need to generate it first."
-msgstr ""
-"V současné době se na směrovači nenachází žádná certifikační autorita (CA) "
-"pro OpenVPN. Ta je nezbytná pro vytváření klientských certifikátů, které se "
-"použijí k ověření vůči OpenVPN serveru. Aby bylo možné pokračovat, je třeba "
-"ji nejprve vytvořit."
-
-msgid "Generate CA"
-msgstr "Vytvořit cert. autoritu"
-
-msgid "Generating certificate authority"
-msgstr "Vytváření certifikační autority"
-
-msgid ""
-"The CA necessary for the OpenVPN server is being generated. The time "
-"required for generating CA may differ. It could take up to 30 minutes. "
-"Please try to reload this page later."
-msgstr ""
-"Certifikační autorita nezbytná pro OpenVPN server se vytváří. Čas který to "
-"zabere nelze přesně určit. Může to trvat až 30 minut. Prosím zkuste tuto "
-"stránku znovu načíst později."
-
-msgid "Loading..."
-msgstr "Načítání…"
-
-msgid "Reload page"
-msgstr "Načíst stránku znovu"
-
-msgid "Server configuration"
-msgstr "Nastavení serveru"
-
-msgid "To work properly OpenVPN plugin needs:"
-msgstr "Ke správné funkci zásuvného modulu OpenVPN je potřeba:"
-
-msgid "public IP address (preferably static)"
-msgstr "veřejná IP adresa (nejlépe statická)"
-
-msgid "standard network settings (WAN and LAN devices present)"
-msgstr "standardně nastavená síť (tedy existující WAN a LAN zařízení)"
-
-msgid "Previous settings"
-msgstr "Předchozí nastavení"
-
-msgid ""
-"If you haven't tried to set up OpenVPN server on our router yet, you can "
-"safely proceed to <strong>\"Apply configuration\"</strong> button."
-msgstr ""
-"Pokud jste se doposud nepokoušeli na tomto směrovači nastavit OpenVPN, "
-"můžete bez obav pokračovat kliknutím na <strong>„Uplatnit nastavení“</"
-"strong>."
-
-msgid ""
-"Otherwise if you've tried to set up OpenVPN outside this plugin, there is a "
-"chance that your configuration might collide with the configuration created "
-"by this plugin. Therefore you might need to disable the old configuration "
-"first."
-msgstr ""
-"Jinak pokud jste se už pokoušeli nastavit OpenVPN server mimo tento zásuvný "
-"modul, tak je možné, že vám bude původní nastavení kolidovat s tím "
-"provedeným tímto zásuvným modulem. Proto může být třeba nejprve stará "
-"nastavení vypnout."
-
-msgid "Apply configuration"
-msgstr "Uplatnit nastavení"
-
-msgid "Current settings"
-msgstr "Stávající nastavení"
-
-msgid "Network:"
-msgstr "Síť:"
-
-msgid "Device:"
-msgstr "Zařízení:"
-
-msgid "Port:"
-msgstr "Port:"
-
-msgid "Route:"
-msgstr "Trasa:"
-
-msgid "All traffic"
-msgstr "Veškerý provoz"
-
-msgid ""
-"Note that when you trigger <strong>\"Apply configuration\"</strong> button "
-"you might lose the connection to the router for a while. This means that you "
-"might need to reopen this admin page again."
-msgstr ""
-"Pozn.: Jakmile stisknete tlačítko <strong>„Uplatnit nastavení“</strong> "
-"můžete na chvilku přijít o spojení se směrovačem. To znamená, že může být "
-"třeba tuto správní stránku znovu otevřít."
-
-msgid "Client configuration"
-msgstr "Nastavení klientů"
-
-msgid ""
-"Here you can create and revoke the client capability to connect to your "
-"OpenVPN network."
-msgstr "Zde můžete vytvářet a rušit přístup klientů do své OpenVPN sítě."
-
-msgid "Create"
-msgstr "Vytvořit"
-
-msgid ""
-"Be sure to check, that the server IP address provided in you configuration "
-"file actually matches the public IP address of your router."
-msgstr ""
-"Ověřte, že IP adresa serveru, poskytovaná v rámci souboru s nastaveními, "
-"skutečně odpovídá veřejné IP adrese vašeho směrovače."
-
-msgid "You can set this address manually when the autodetection fails."
-msgstr ""
-"V případě, že se nezdaří automatické zjištění, je možné tuto adresu nastavit "
-"ručně."
-
-msgid ""
-"To apply the client configuration you need to download it and put it into "
-"the OpenVPN config directory or you might try to open it using your OpenVPN "
-"client directly. You might need to restart your client afterwards."
-msgstr ""
-"Nastavení klienta zavedete tak, že ji stáhnete a nahrajete do složky s "
-"nastavením OpenVPN klienta nebo ho v něm otevřete. Následně může být potřeba "
-"klienta restartovat."
-
-msgid "Delete CA"
-msgstr "Smazat certifikační autoritu"
-
-msgid ""
-"You can't delete the CA while the OpenVPN server is enabled. To delete the "
-"CA you need to disable the server configuration first."
-msgstr ""
-"Není možné smazat certifikační autoritu pokud je OpenVPN server zapnutý. "
-"Pokud chcete smazat certifikační autoritu, je třeba předtím službu vypnout."
-
-msgid ""
-"You can delete the whole CA. Note that all the cerificates issued by this CA "
-"will be useless and if you wanted to use this plugin, you'd need to generate "
-"a new CA first."
-msgstr ""
-"Můžete smazat celou certifikační autoritu. To znamená, že všechny "
-"certifikáty vydané touhle autoritou budou nepoužitelné. Pokud byste chtěli "
-"tento zásuvný modul opět používat, bude třeba vytvořit novou certifikační "
-"autoritu."
+"Generated-By: Babel 2.6.0\n"
 
 msgid "valid"
 msgstr "platný"
@@ -225,31 +53,31 @@ msgid "Listen on IPv6"
 msgstr "Očekávat spojení na IPv6"
 
 msgid ""
-"This option enables openvpn server to listen on IPv6 address. It could be "
-"beneficial for users who does not have a public IPv4 address and want to use "
-"openvpn server."
+"This option enables openvpn server to listen on IPv6 address. It could be"
+" beneficial for users who does not have a public IPv4 address and want to"
+" use openvpn server."
 msgstr ""
-"Zapnutím této volby bude openvpn server očekávat spojení na IPv6 adrese. To "
-"se hodí uživatelům, kteří nemají veřejnou IPv4 adresu a chtějí používat "
-"openvpn server."
+"Zapnutím této volby bude openvpn server očekávat spojení na IPv6 adrese. "
+"To se hodí uživatelům, kteří nemají veřejnou IPv4 adresu a chtějí "
+"používat openvpn server."
 
 msgid "Protocol"
 msgstr "Protokol"
 
 msgid ""
-"Choose a protocol which will be used when the clients are connecting to the "
-"server. "
+"Choose a protocol which will be used when the clients are connecting to "
+"the server. "
 msgstr "Vyberte protokol, kterým se budou klienti připojovat na server. "
 
 msgid "OpenVPN network"
 msgstr "OpenVPN síť"
 
 msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
+"This network should be different than any network directly reachable from"
+" the router and the clients."
 msgstr ""
-"Tato síť by měla být jiná, než jakákoliv síť přímo dosažitelná ze směrovače "
-"a klientů."
+"Tato síť by měla být jiná, než jakákoliv síť přímo dosažitelná ze "
+"směrovače a klientů."
 
 msgid "All traffic through vpn"
 msgstr "Všechen provoz skrz vpn"
@@ -257,8 +85,7 @@ msgstr "Všechen provoz skrz vpn"
 msgid ""
 "After enabling this option all traffic from your client will be routed "
 "through the vpn."
-msgstr ""
-"Po zapnutí této volby bude váš klient směrovat veškerý provoz skrz vpn."
+msgstr "Po zapnutí této volby bude váš klient směrovat veškerý provoz skrz vpn."
 
 msgid "Use DNS from vpn"
 msgstr "Používat DNS skrze vpn"
@@ -267,8 +94,8 @@ msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
 msgstr ""
-"Po zapnutí této volby by měl váš klient začít používat DNS server z vašeho "
-"směrovače."
+"Po zapnutí této volby by měl váš klient začít používat DNS server z "
+"vašeho směrovače."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
@@ -324,8 +151,9 @@ msgid "Client name"
 msgstr "Jméno klienta"
 
 msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
+"The display name for the client. It must be shorter than 64 characters "
+"and must contain only alphanumeric characters, dots, dashes and "
+"underscores."
 msgstr ""
 "Zobrazované jméno klienta. Je třeba, aby bylo nejvýše 64 znaků dlouhé a "
 "obsahovalo pouze písmena a číslice, případně ještě tečky, spojovníky a "
@@ -338,6 +166,176 @@ msgstr "Jméno klienta není platné."
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
 msgstr "Zahájeno vytváření „%(name)s“ pro OpenVPN server."
 
+msgid "Revoking..."
+msgstr "Rušení přístupu…"
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr "Opravdu si přejete smazat certifikační autoritu pro OpenVPN?"
+
+msgid "Client"
+msgstr "Klient"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Get Config"
+msgstr "Stáhnout si nastavení"
+
+msgid "Revoke"
+msgstr "Zrušit přístup"
+
+msgid "No certification authority"
+msgstr "Chybí certifikační autorita"
+
+msgid ""
+"Currently there is no OpenVPN certificate authority(CA). A CA is required"
+" to generate client certificates to authenticate to the OpenVPN server. "
+"To proceed you need to generate it first."
+msgstr ""
+"V současné době se na směrovači nenachází žádná certifikační autorita "
+"(CA) pro OpenVPN. Ta je nezbytná pro vytváření klientských certifikátů, "
+"které se použijí k ověření vůči OpenVPN serveru. Aby bylo možné "
+"pokračovat, je třeba ji nejprve vytvořit."
+
+msgid "Generate CA"
+msgstr "Vytvořit cert. autoritu"
+
+msgid "Generating certificate authority"
+msgstr "Vytváření certifikační autority"
+
+msgid ""
+"The CA necessary for the OpenVPN server is being generated. The time "
+"required for generating CA may differ. It could take up to 30 minutes. "
+"Please try to reload this page later."
+msgstr ""
+"Certifikační autorita nezbytná pro OpenVPN server se vytváří. Čas který "
+"to zabere nelze přesně určit. Může to trvat až 30 minut. Prosím zkuste "
+"tuto stránku znovu načíst později."
+
+msgid "Loading..."
+msgstr "Načítání…"
+
+msgid "Reload page"
+msgstr "Načíst stránku znovu"
+
+msgid "Server configuration"
+msgstr "Nastavení serveru"
+
+msgid "To work properly OpenVPN plugin needs:"
+msgstr "Ke správné funkci zásuvného modulu OpenVPN je potřeba:"
+
+msgid "public IP address (preferably static)"
+msgstr "veřejná IP adresa (nejlépe statická)"
+
+msgid "standard network settings (WAN and LAN devices present)"
+msgstr "standardně nastavená síť (tedy existující WAN a LAN zařízení)"
+
+msgid "Previous settings"
+msgstr "Předchozí nastavení"
+
+msgid ""
+"If you haven't tried to set up OpenVPN server on our router yet, you can "
+"safely proceed to <strong>\"Apply configuration\"</strong> button."
+msgstr ""
+"Pokud jste se doposud nepokoušeli na tomto směrovači nastavit OpenVPN, "
+"můžete bez obav pokračovat kliknutím na <strong>„Uplatnit "
+"nastavení“</strong>."
+
+msgid ""
+"Otherwise if you've tried to set up OpenVPN outside this plugin, there is"
+" a chance that your configuration might collide with the configuration "
+"created by this plugin. Therefore you might need to disable the old "
+"configuration first."
+msgstr ""
+"Jinak pokud jste se už pokoušeli nastavit OpenVPN server mimo tento "
+"zásuvný modul, tak je možné, že vám bude původní nastavení kolidovat s "
+"tím provedeným tímto zásuvným modulem. Proto může být třeba nejprve stará"
+" nastavení vypnout."
+
+msgid "Apply configuration"
+msgstr "Uplatnit nastavení"
+
+msgid "Current settings"
+msgstr "Stávající nastavení"
+
+msgid "Network:"
+msgstr "Síť:"
+
+msgid "Device:"
+msgstr "Zařízení:"
+
+msgid "Port:"
+msgstr "Port:"
+
+msgid "Route:"
+msgstr "Trasa:"
+
+msgid "All traffic"
+msgstr "Veškerý provoz"
+
+msgid ""
+"Note that when you trigger <strong>\"Apply configuration\"</strong> "
+"button you might lose the connection to the router for a while. This "
+"means that you might need to reopen this admin page again."
+msgstr ""
+"Pozn.: Jakmile stisknete tlačítko <strong>„Uplatnit nastavení“</strong> "
+"můžete na chvilku přijít o spojení se směrovačem. To znamená, že může být"
+" třeba tuto správní stránku znovu otevřít."
+
+msgid "Client configuration"
+msgstr "Nastavení klientů"
+
+msgid ""
+"Here you can create and revoke the client capability to connect to your "
+"OpenVPN network."
+msgstr "Zde můžete vytvářet a rušit přístup klientů do své OpenVPN sítě."
+
+msgid "Create"
+msgstr "Vytvořit"
+
+msgid ""
+"Be sure to check, that the server IP address provided in you "
+"configuration file actually matches the public IP address of your router."
+msgstr ""
+"Ověřte, že IP adresa serveru, poskytovaná v rámci souboru s nastaveními, "
+"skutečně odpovídá veřejné IP adrese vašeho směrovače."
+
+msgid "You can set this address manually when the autodetection fails."
+msgstr ""
+"V případě, že se nezdaří automatické zjištění, je možné tuto adresu "
+"nastavit ručně."
+
+msgid ""
+"To apply the client configuration you need to download it and put it into"
+" the OpenVPN config directory or you might try to open it using your "
+"OpenVPN client directly. You might need to restart your client "
+"afterwards."
+msgstr ""
+"Nastavení klienta zavedete tak, že ji stáhnete a nahrajete do složky s "
+"nastavením OpenVPN klienta nebo ho v něm otevřete. Následně může být "
+"potřeba klienta restartovat."
+
+msgid "Delete CA"
+msgstr "Smazat certifikační autoritu"
+
+msgid ""
+"You can't delete the CA while the OpenVPN server is enabled. To delete "
+"the CA you need to disable the server configuration first."
+msgstr ""
+"Není možné smazat certifikační autoritu pokud je OpenVPN server zapnutý. "
+"Pokud chcete smazat certifikační autoritu, je třeba předtím službu "
+"vypnout."
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+"Můžete smazat celou certifikační autoritu. To znamená, že všechny "
+"certifikáty vydané touhle autoritou budou nepoužitelné. Pokud byste "
+"chtěli tento zásuvný modul opět používat, bude třeba vytvořit novou "
+"certifikační autoritu."
+
 #~ msgid "Can't apply the configuration. Certificates are missing."
 #~ msgstr "Nastavení se nepodařilo použít. Chybí certifikáty."
 
@@ -349,3 +347,4 @@ msgstr "Zahájeno vytváření „%(name)s“ pro OpenVPN server."
 
 #~ msgid "active"
 #~ msgstr "aktivní"
+

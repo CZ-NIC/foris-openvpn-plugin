@@ -1,188 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Foris OpenVPN plugin package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Foris OpenVPN
+# plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:12+0200\n"
+"POT-Creation-Date: 2018-09-25 16:51+0200\n"
 "PO-Revision-Date: 2018-05-31 20:40+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/"
-"foris-openvpn-plugin/hu/>\n"
 "Language: hu\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris"
+"/foris-openvpn-plugin/hu/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0-dev\n"
-
-msgid "Revoking..."
-msgstr "Visszavonás..."
-
-msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr "Biztosan törli az OpenVPN CA-t?"
-
-msgid "Client"
-msgstr "Ügyfél"
-
-msgid "Status"
-msgstr "Állapot"
-
-msgid "Get Config"
-msgstr "Beállítás beszerzése"
-
-msgid "Revoke"
-msgstr "Visszavon"
-
-msgid "No certification authority"
-msgstr "Nincs hitelesítésszolgáltató"
-
-msgid ""
-"Currently there is no OpenVPN certificate authority(CA). A CA is required to "
-"generate client certificates to authenticate to the OpenVPN server. To "
-"proceed you need to generate it first."
-msgstr ""
-"Jelenleg nincs OpenVPN hitelesítésszolgáltató (CA). Egy CA szükséges az "
-"ügyfél tanúsítványok létrehozásához, hogy azokat hitelesíteni lehessen az "
-"OpenVPN szerver felé. A folytatáshoz először ezt létre kell hoznia."
-
-msgid "Generate CA"
-msgstr "CA létrehozása"
-
-msgid "Generating certificate authority"
-msgstr "Hitelesítésszolgáltató létrehozása"
-
-msgid ""
-"The CA necessary for the OpenVPN server is being generated. The time "
-"required for generating CA may differ. It could take up to 30 minutes. "
-"Please try to reload this page later."
-msgstr ""
-"Az OpenVPN szerverhez szükséges CA létrehozás alatt van. Az elkészüléséhez "
-"szükséges idő eltérő lehet. Ez lehet akár 30 perc is. Később próbálja meg "
-"újratölteni ezt az oldalt."
-
-msgid "Loading..."
-msgstr "Betöltés..."
-
-msgid "Reload page"
-msgstr "Oldal újratöltése"
-
-msgid "Server configuration"
-msgstr "Kiszolgáló beállításai"
-
-msgid "To work properly OpenVPN plugin needs:"
-msgstr "OpenVPN bővítmény működéséhez szükséges:"
-
-msgid "public IP address (preferably static)"
-msgstr "nyilvános IP-címre (lehetőleg statikus)"
-
-msgid "standard network settings (WAN and LAN devices present)"
-msgstr "szabványos hálózati beállítások (WAN, LAN eszközök jelen)"
-
-msgid "Previous settings"
-msgstr "Előző beállítások"
-
-msgid ""
-"If you haven't tried to set up OpenVPN server on our router yet, you can "
-"safely proceed to <strong>\"Apply configuration\"</strong> button."
-msgstr ""
-"Ha még nem volt korábban beállítva OpenVPN szerver az útválasztón, nyugodtan "
-"nyomja meg a <strong>\"Beállítás alkalmazása\"</strong> gombot."
-
-msgid ""
-"Otherwise if you've tried to set up OpenVPN outside this plugin, there is a "
-"chance that your configuration might collide with the configuration created "
-"by this plugin. Therefore you might need to disable the old configuration "
-"first."
-msgstr ""
-"Ha már voltOpenVPN beállítva nem ezen a bővítményen keresztül, akkor van rá "
-"esély, hogy annak a beállítása ütközik ennek a bővítménynek a beállításával. "
-"Ezért lehet, hogy először le kell tiltani a régi beállításokat."
-
-msgid "Apply configuration"
-msgstr "Beállítás alkalmazása"
-
-msgid "Current settings"
-msgstr "Jelenlegi beállítások"
-
-msgid "Network:"
-msgstr "Hálózat:"
-
-msgid "Device:"
-msgstr "Eszköz:"
-
-msgid "Port:"
-msgstr "Port:"
-
-msgid "Route:"
-msgstr "Útvonal:"
-
-msgid "All traffic"
-msgstr "Minden forgalom"
-
-msgid ""
-"Note that when you trigger <strong>\"Apply configuration\"</strong> button "
-"you might lose the connection to the router for a while. This means that you "
-"might need to reopen this admin page again."
-msgstr ""
-"Vegyük figyelembe, hogy ha Ön rákattint a <strong>\"Beállítás alkalmazása\"</"
-"strong> gombra, lehet, hogy elveszti a kapcsolatot a routerrel egy darabig. "
-"Ez azt jelenti, hogy szükség lehet,  ennek az admin-oldalnak az újbóli "
-"megnyitására ."
-
-msgid "Client configuration"
-msgstr "Ügyfélbeállítás"
-
-msgid ""
-"Here you can create and revoke the client capability to connect to your "
-"OpenVPN network."
-msgstr ""
-"Itt lehet létrehozni és visszavonni az ügyfél OpenVPN hálózathoz való "
-"kapcsolódási képességét."
-
-msgid "Create"
-msgstr "Létrehozás"
-
-msgid ""
-"Be sure to check, that the server IP address provided in you configuration "
-"file actually matches the public IP address of your router."
-msgstr ""
-"Ellenőrizzük, hogy a kiszolgáló IP-címe a konfigurációs fájlban valóban "
-"megfelel az útválasztó nyilvános IP-címének."
-
-msgid "You can set this address manually when the autodetection fails."
-msgstr "A cím beállítható manuálisan, ha az automatikus felismerés sikertelen."
-
-msgid ""
-"To apply the client configuration you need to download it and put it into "
-"the OpenVPN config directory or you might try to open it using your OpenVPN "
-"client directly. You might need to restart your client afterwards."
-msgstr ""
-"Az ügyfélbeállítás alkalmazásához töltsük le, majd tegyük be az OpenVPN "
-"config könyvtárába, illetve megpróbálhatja megnyitni közvetlenül az OpenVPN "
-"ügyfél segítségével. Lehet, hogy újra kell indítani az ügyfelet utána."
-
-msgid "Delete CA"
-msgstr "CA törlése"
-
-msgid ""
-"You can't delete the CA while the OpenVPN server is enabled. To delete the "
-"CA you need to disable the server configuration first."
-msgstr ""
-"Nem törölhető a CA míg az OpenVPN szerver be van kapcsolva. A CA törléséhez "
-"előbb le kell tiltani a kiszolgáló beállítását."
-
-msgid ""
-"You can delete the whole CA. Note that all the cerificates issued by this CA "
-"will be useless and if you wanted to use this plugin, you'd need to generate "
-"a new CA first."
-msgstr ""
-"Törölheti az egész CA-t. Vegyük figyelembe, hogy a CA által kibocsátott "
-"tanúsítványok mint használhatatlanná válnak és  ha ezt a plugint használni "
-"akarjuk, elsőként új CA-t kell létrehozni."
+"Generated-By: Babel 2.6.0\n"
 
 msgid "valid"
 msgstr "érvényes"
@@ -209,33 +45,34 @@ msgid "Listen on IPv6"
 msgstr "Figyelés IPv6 címen"
 
 msgid ""
-"This option enables openvpn server to listen on IPv6 address. It could be "
-"beneficial for users who does not have a public IPv4 address and want to use "
-"openvpn server."
+"This option enables openvpn server to listen on IPv6 address. It could be"
+" beneficial for users who does not have a public IPv4 address and want to"
+" use openvpn server."
 msgstr ""
 "Ez a beállítás lehetővé teszi, hogy az openvpn kiszolgáló IPv6-címen "
-"figyeljen. Ez azon felhasználók részére lehet hasznos, akik nem rendelkeznek "
-"nyilvános IPv4-címmel, és szeretnének openvpn kiszolgálót  használni."
+"figyeljen. Ez azon felhasználók részére lehet hasznos, akik nem "
+"rendelkeznek nyilvános IPv4-címmel, és szeretnének openvpn kiszolgálót  "
+"használni."
 
 msgid "Protocol"
 msgstr "Protokoll"
 
 msgid ""
-"Choose a protocol which will be used when the clients are connecting to the "
-"server. "
+"Choose a protocol which will be used when the clients are connecting to "
+"the server. "
 msgstr ""
-"Válasszon ki egy protokollt, amelyet akkor fog használni, amikor az ügyfelek "
-"a kiszolgálóhoz csatlakoznak. "
+"Válasszon ki egy protokollt, amelyet akkor fog használni, amikor az "
+"ügyfelek a kiszolgálóhoz csatlakoznak. "
 
 msgid "OpenVPN network"
 msgstr "OpenVPN hálózat"
 
 msgid ""
-"This network should be different than any network directly reachable from "
-"the router and the clients."
+"This network should be different than any network directly reachable from"
+" the router and the clients."
 msgstr ""
-"Ennek a hálózatnak különböznie kell a  többi az útválasztó és az ügyfelek "
-"által közvetlenül elérhető hálózattól."
+"Ennek a hálózatnak különböznie kell a  többi az útválasztó és az ügyfelek"
+" által közvetlenül elérhető hálózattól."
 
 msgid "All traffic through vpn"
 msgstr "MInden forgalom vpn-en át"
@@ -254,8 +91,8 @@ msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
 msgstr ""
-"A beállítás engedélyezése után az ügyfélnek az útválasztó DNS-kiszolgálót "
-"kell kezdeni használnia."
+"A beállítás engedélyezése után az ügyfélnek az útválasztó DNS-kiszolgálót"
+" kell kezdeni használnia."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
@@ -290,8 +127,7 @@ msgid "Started to generate CA for the OpenVPN server."
 msgstr "Az OpenVPN szerverhez szükség CA létrehozása elkezdődött."
 
 msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
-"Az OpenVPN szerverhez szükség ügyféltanúsítvány létrehozása elkezdődött."
+msgstr "Az OpenVPN szerverhez szükség ügyféltanúsítvány létrehozása elkezdődött."
 
 msgid "The OpenVPN CA was successfully deleted."
 msgstr "Az OpenVPN CA sikeresen törölve."
@@ -312,12 +148,13 @@ msgid "Client name"
 msgstr "Ügyfélnév"
 
 msgid ""
-"The display name for the client. It must be shorter than 64 characters and "
-"must contain only alphanumeric characters, dots, dashes and underscores."
+"The display name for the client. It must be shorter than 64 characters "
+"and must contain only alphanumeric characters, dots, dashes and "
+"underscores."
 msgstr ""
 "Az ügyfél megjelenítendő neve. 64 karakternél rövidebbnek kell lennie és "
-"csak a következőkből állhat: alfanumerikus karakterek, pontok, kötőjelek és "
-"aláhúzásjelek."
+"csak a következőkből állhat: alfanumerikus karakterek, pontok, kötőjelek "
+"és aláhúzásjelek."
 
 msgid "Client name is invalid."
 msgstr "Érvénytelen ügyfélnév."
@@ -326,6 +163,174 @@ msgstr "Érvénytelen ügyfélnév."
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
 msgstr "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása elkezdődött."
 
+msgid "Revoking..."
+msgstr "Visszavonás..."
+
+msgid "Are you sure you want to delete the OpenVPN CA?"
+msgstr "Biztosan törli az OpenVPN CA-t?"
+
+msgid "Client"
+msgstr "Ügyfél"
+
+msgid "Status"
+msgstr "Állapot"
+
+msgid "Get Config"
+msgstr "Beállítás beszerzése"
+
+msgid "Revoke"
+msgstr "Visszavon"
+
+msgid "No certification authority"
+msgstr "Nincs hitelesítésszolgáltató"
+
+msgid ""
+"Currently there is no OpenVPN certificate authority(CA). A CA is required"
+" to generate client certificates to authenticate to the OpenVPN server. "
+"To proceed you need to generate it first."
+msgstr ""
+"Jelenleg nincs OpenVPN hitelesítésszolgáltató (CA). Egy CA szükséges az "
+"ügyfél tanúsítványok létrehozásához, hogy azokat hitelesíteni lehessen az"
+" OpenVPN szerver felé. A folytatáshoz először ezt létre kell hoznia."
+
+msgid "Generate CA"
+msgstr "CA létrehozása"
+
+msgid "Generating certificate authority"
+msgstr "Hitelesítésszolgáltató létrehozása"
+
+msgid ""
+"The CA necessary for the OpenVPN server is being generated. The time "
+"required for generating CA may differ. It could take up to 30 minutes. "
+"Please try to reload this page later."
+msgstr ""
+"Az OpenVPN szerverhez szükséges CA létrehozás alatt van. Az "
+"elkészüléséhez szükséges idő eltérő lehet. Ez lehet akár 30 perc is. "
+"Később próbálja meg újratölteni ezt az oldalt."
+
+msgid "Loading..."
+msgstr "Betöltés..."
+
+msgid "Reload page"
+msgstr "Oldal újratöltése"
+
+msgid "Server configuration"
+msgstr "Kiszolgáló beállításai"
+
+msgid "To work properly OpenVPN plugin needs:"
+msgstr "OpenVPN bővítmény működéséhez szükséges:"
+
+msgid "public IP address (preferably static)"
+msgstr "nyilvános IP-címre (lehetőleg statikus)"
+
+msgid "standard network settings (WAN and LAN devices present)"
+msgstr "szabványos hálózati beállítások (WAN, LAN eszközök jelen)"
+
+msgid "Previous settings"
+msgstr "Előző beállítások"
+
+msgid ""
+"If you haven't tried to set up OpenVPN server on our router yet, you can "
+"safely proceed to <strong>\"Apply configuration\"</strong> button."
+msgstr ""
+"Ha még nem volt korábban beállítva OpenVPN szerver az útválasztón, "
+"nyugodtan nyomja meg a <strong>\"Beállítás alkalmazása\"</strong> gombot."
+
+msgid ""
+"Otherwise if you've tried to set up OpenVPN outside this plugin, there is"
+" a chance that your configuration might collide with the configuration "
+"created by this plugin. Therefore you might need to disable the old "
+"configuration first."
+msgstr ""
+"Ha már voltOpenVPN beállítva nem ezen a bővítményen keresztül, akkor van "
+"rá esély, hogy annak a beállítása ütközik ennek a bővítménynek a "
+"beállításával. Ezért lehet, hogy először le kell tiltani a régi "
+"beállításokat."
+
+msgid "Apply configuration"
+msgstr "Beállítás alkalmazása"
+
+msgid "Current settings"
+msgstr "Jelenlegi beállítások"
+
+msgid "Network:"
+msgstr "Hálózat:"
+
+msgid "Device:"
+msgstr "Eszköz:"
+
+msgid "Port:"
+msgstr "Port:"
+
+msgid "Route:"
+msgstr "Útvonal:"
+
+msgid "All traffic"
+msgstr "Minden forgalom"
+
+msgid ""
+"Note that when you trigger <strong>\"Apply configuration\"</strong> "
+"button you might lose the connection to the router for a while. This "
+"means that you might need to reopen this admin page again."
+msgstr ""
+"Vegyük figyelembe, hogy ha Ön rákattint a <strong>\"Beállítás "
+"alkalmazása\"</strong> gombra, lehet, hogy elveszti a kapcsolatot a "
+"routerrel egy darabig. Ez azt jelenti, hogy szükség lehet,  ennek az "
+"admin-oldalnak az újbóli megnyitására ."
+
+msgid "Client configuration"
+msgstr "Ügyfélbeállítás"
+
+msgid ""
+"Here you can create and revoke the client capability to connect to your "
+"OpenVPN network."
+msgstr ""
+"Itt lehet létrehozni és visszavonni az ügyfél OpenVPN hálózathoz való "
+"kapcsolódási képességét."
+
+msgid "Create"
+msgstr "Létrehozás"
+
+msgid ""
+"Be sure to check, that the server IP address provided in you "
+"configuration file actually matches the public IP address of your router."
+msgstr ""
+"Ellenőrizzük, hogy a kiszolgáló IP-címe a konfigurációs fájlban valóban "
+"megfelel az útválasztó nyilvános IP-címének."
+
+msgid "You can set this address manually when the autodetection fails."
+msgstr "A cím beállítható manuálisan, ha az automatikus felismerés sikertelen."
+
+msgid ""
+"To apply the client configuration you need to download it and put it into"
+" the OpenVPN config directory or you might try to open it using your "
+"OpenVPN client directly. You might need to restart your client "
+"afterwards."
+msgstr ""
+"Az ügyfélbeállítás alkalmazásához töltsük le, majd tegyük be az OpenVPN "
+"config könyvtárába, illetve megpróbálhatja megnyitni közvetlenül az "
+"OpenVPN ügyfél segítségével. Lehet, hogy újra kell indítani az ügyfelet "
+"utána."
+
+msgid "Delete CA"
+msgstr "CA törlése"
+
+msgid ""
+"You can't delete the CA while the OpenVPN server is enabled. To delete "
+"the CA you need to disable the server configuration first."
+msgstr ""
+"Nem törölhető a CA míg az OpenVPN szerver be van kapcsolva. A CA "
+"törléséhez előbb le kell tiltani a kiszolgáló beállítását."
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+"Törölheti az egész CA-t. Vegyük figyelembe, hogy a CA által kibocsátott "
+"tanúsítványok mint használhatatlanná válnak és  ha ezt a plugint "
+"használni akarjuk, elsőként új CA-t kell létrehozni."
+
 #~ msgid "Can't apply the configuration. Certificates are missing."
 #~ msgstr "A beállítást nem lehet alkalmazni. Hiányoznak a tanúsítványok."
 
@@ -333,8 +338,8 @@ msgstr "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása elkezdő
 #~ msgstr "Az OpenVPN szerverhez szükség CA létrehozása nem sikerült."
 
 #~ msgid "Failed to generate client '%(name)s' for the OpenVPN server."
-#~ msgstr ""
-#~ "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása nem sikerült."
+#~ msgstr "Az OpenVPN szerverhez szükség %(name)s ügyfél létrehozása nem sikerült."
 
 #~ msgid "active"
 #~ msgstr "aktív"
+
