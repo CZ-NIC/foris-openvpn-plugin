@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-25 16:51+0200\n"
-"PO-Revision-Date: 2018-09-26 12:05+0000\n"
+"PO-Revision-Date: 2018-09-29 07:31+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris-openvpn-plugin/nb_NO/>\n"
@@ -45,20 +45,25 @@ msgstr "Oppsett påskrudd"
 msgid "Listen on IPv6"
 msgstr "Lytt på IPv6"
 
+#, fuzzy
 msgid ""
 "This option enables openvpn server to listen on IPv6 address. It could be"
 " beneficial for users who does not have a public IPv4 address and want to"
 " use openvpn server."
 msgstr ""
+"Dette valget lar OpenVPN-tjeneren lytte til en IPv6-adresse. Det kan være "
+"nyttig for brukere som ikke har en offentlig IPv4-adresse, og ønsker å bruke "
+"en OpenVPN-tjener."
 
 #, fuzzy
 msgid "Protocol"
 msgstr "Protokoll:"
 
+#, fuzzy
 msgid ""
 "Choose a protocol which will be used when the clients are connecting to "
 "the server. "
-msgstr ""
+msgstr "Velg en protokoll brukt når klientene kobler til tjeneren. "
 
 msgid "OpenVPN network"
 msgstr "OpenVPN-nettverk"
