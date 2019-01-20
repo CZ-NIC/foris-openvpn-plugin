@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Foris OpenVPN plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-25 16:51+0200\n"
-"PO-Revision-Date: 2019-01-20 01:21+0000\n"
+"PO-Revision-Date: 2019-01-21 18:21+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/turris/"
 "foris-openvpn-plugin/lt/>\n"
@@ -24,113 +24,121 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 
 msgid "valid"
-msgstr ""
+msgstr "galiojantis"
 
 msgid "revoked"
-msgstr ""
+msgstr "atšauktas"
 
 msgid "expired"
-msgstr ""
+msgstr "nebegaliojantis"
 
 msgid "generating"
-msgstr ""
+msgstr "generuojama"
 
 msgid "lost"
-msgstr ""
+msgstr "prarastas"
 
 msgid "OpenVPN"
-msgstr ""
+msgstr "OpenVPN"
 
 msgid "Configuration enabled"
-msgstr ""
+msgstr "Konfigūracija įjungta"
 
 msgid "Listen on IPv6"
-msgstr ""
+msgstr "Veikti per IPv6"
 
 msgid ""
 "This option enables openvpn server to listen on IPv6 address. It could be"
 " beneficial for users who does not have a public IPv4 address and want to"
 " use openvpn server."
 msgstr ""
+"Šis nustatymas prie openvpn serverio leidžia prisijungti per IPv6. Tai gali "
+"būti naudinga tiems naudotojams kurie neturi išorinio IPv4 adreso ir nori "
+"naudoti openvpn serverį."
 
 msgid "Protocol"
-msgstr ""
+msgstr "Protokolas"
 
 msgid ""
 "Choose a protocol which will be used when the clients are connecting to "
 "the server. "
 msgstr ""
+"Pasirinkite protokolą kurį klientai naudos prisijungimui prie serverio. "
 
 msgid "OpenVPN network"
-msgstr ""
+msgstr "OpenVPN tinklas"
 
 msgid ""
 "This network should be different than any network directly reachable from"
 " the router and the clients."
 msgstr ""
+"Šis tinkas turėtų būti atskiras nuo kitų tinklų tiesiogiai pasiekiamų per "
+"maršrutizatorių ar klientus."
 
 msgid "All traffic through vpn"
-msgstr ""
+msgstr "Visas srautas per VPN"
 
 msgid ""
 "After enabling this option all traffic from your client will be routed "
 "through the vpn."
-msgstr ""
+msgstr "Įjungus šį nustatymą visas klientų srautas bus nukreiptas per VPN."
 
 msgid "Use DNS from vpn"
-msgstr ""
+msgstr "DNS per VPN"
 
 msgid ""
 "After enabling this option your client should start to use DNS server on "
 "your router."
 msgstr ""
+"Įjungus šį nustatymą klientai naudos DNS serverį veikiantį šiame "
+"maršrutizatoriuje."
 
 #, python-format
 msgid "OpenVPN server configuration was successfully %s."
-msgstr ""
+msgstr "OpenVPN serverio konfigūracija sėkmingai %s."
 
 msgid "enabled"
-msgstr ""
+msgstr "įjungta"
 
 msgid "disabled"
-msgstr ""
+msgstr "išjungta"
 
 #, python-format
 msgid "Failed to %s OpenVPN server configuration."
-msgstr ""
+msgstr "Nepavyko %s OpenVPN serverio konfigūracijos."
 
 msgid "enable"
-msgstr ""
+msgstr "įjungti"
 
 msgid "disable"
-msgstr ""
+msgstr "išjungti"
 
 msgid "The client certificate was successfully revoked."
-msgstr ""
+msgstr "Kliento sertifikatas sėkmingai atšauktas."
 
 msgid "Failed to revoke the client certificate."
-msgstr ""
+msgstr "Nepavyko atšaukti kliento sertifikato."
 
 msgid "Unable to get OpenVPN client config."
-msgstr ""
+msgstr "Nepavyko gauti OpenVPN kliento konfigūracijos."
 
 msgid "Started to generate CA for the OpenVPN server."
-msgstr ""
+msgstr "Pradėtas kurti OpenVPN serverio CA."
 
 msgid "Started to generate client certificate for the OpenVPN server."
-msgstr ""
+msgstr "Pradėtas generuoti OpenVPN serverio kliento sertifikatas."
 
 msgid "The OpenVPN CA was successfully deleted."
-msgstr ""
+msgstr "OpenVPN CA sėkmingai pašalintas."
 
 msgid "Failed to delete the OpenVPN CA."
-msgstr ""
+msgstr "Nepavyko pašalinti OpenVPN CA."
 
 msgid "Router address"
-msgstr ""
+msgstr "Maršrutizatoriaus adresas"
 
 msgid "A server address which will be present in the client config."
-msgstr ""
+msgstr "Serverio adresas kuris bus įrašytas į kliento konfigūraciją."
 
 msgid "use autodetection"
 msgstr "naudoti auto-atpažinimą"
@@ -143,78 +151,90 @@ msgid ""
 "and must contain only alphanumeric characters, dots, dashes and "
 "underscores."
 msgstr ""
+"Kliento vardas naudojamas atvaizdavimui. Turi būti trumpesnis nei 64 "
+"simboliai, varde gali būti naudojamos raidės, skaičiai, taškas, brūkšnys ir "
+"pabraukimas."
 
 msgid "Client name is invalid."
-msgstr ""
+msgstr "Netinkamas kliento vardas."
 
 #, python-format
 msgid "Started to generate client '%(name)s' for the OpenVPN server."
-msgstr ""
+msgstr "Pradėtas generuoti OpenVPN serverio klientas '%(name)s'."
 
 msgid "Revoking..."
-msgstr ""
+msgstr "Atšaukiama..."
 
 msgid "Are you sure you want to delete the OpenVPN CA?"
-msgstr ""
+msgstr "Ar tikrai norite pašalinti OpenVPN CA?"
 
 msgid "Client"
-msgstr ""
+msgstr "Klientas"
 
 msgid "Status"
 msgstr "Būsena"
 
 msgid "Get Config"
-msgstr ""
+msgstr "Gauti Konfigūraciją"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Atšaukti"
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Nėra CA sertifikato"
 
 msgid ""
 "Currently there is no OpenVPN certificate authority(CA). A CA is required"
 " to generate client certificates to authenticate to the OpenVPN server. "
 "To proceed you need to generate it first."
 msgstr ""
+"OpenVPN neturi CA sertifikato. CA sertifikatas reikalingas klientų "
+"sertifikatų generavimui ir patvirtinimui OpenVPN serveryje. Norint tęsti "
+"reikia jį sugeneruoti."
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Sugeneruoti CA"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Generuojamas CA sertifikatas"
 
 msgid ""
 "The CA necessary for the OpenVPN server is being generated. The time "
 "required for generating CA may differ. It could take up to 30 minutes. "
 "Please try to reload this page later."
 msgstr ""
+"OpenVPN serverio CA yra generuojamas. Generavimo laikas gali būti labai "
+"įvairus. Tai gali užtrukti iki 30 minučių. Pabandykite atnaujinti šį puslapį "
+"vėliau."
 
 msgid "Loading..."
 msgstr "Kraunama..."
 
 msgid "Reload page"
-msgstr ""
+msgstr "Atnaujinti puslapį"
 
 msgid "Server configuration"
-msgstr ""
+msgstr "Serverio konfigūracija"
 
 msgid "To work properly OpenVPN plugin needs:"
-msgstr ""
+msgstr "Kad OpenVPN praplėtimas tinkamai veiktų reikia:"
 
 msgid "public IP address (preferably static)"
-msgstr ""
+msgstr "išorinio IP adreso (esant galimybei statinio)"
 
 msgid "standard network settings (WAN and LAN devices present)"
-msgstr ""
+msgstr "įprastų tinklo nustatymų (WAN ir LAN tinklai sukurti)"
 
 msgid "Previous settings"
-msgstr ""
+msgstr "Ankstesni nustatymai"
 
 msgid ""
 "If you haven't tried to set up OpenVPN server on our router yet, you can "
 "safely proceed to <strong>\"Apply configuration\"</strong> button."
 msgstr ""
+"Jei anksčiau nebandėte sukonfigūruoti OpenvPN serverio šiame "
+"maršrutizatoriuje, galite saugiai tęsti su <strong>\"Įjungti konfigūraciją\""
+"</strong> mygtuku."
 
 msgid ""
 "Otherwise if you've tried to set up OpenVPN outside this plugin, there is"
@@ -222,52 +242,64 @@ msgid ""
 "created by this plugin. Therefore you might need to disable the old "
 "configuration first."
 msgstr ""
+"Jeigu jau bandėte sukonfigūruoti OpenVPN ne per šį interfeisą tail gali "
+"sukelti problemų konfigūracijai kurią generuosite dabar. Gali reikėti "
+"išjungti seną serviso konfigūraciją."
 
 msgid "Apply configuration"
-msgstr ""
+msgstr "Įjungti konfigūraciją"
 
 msgid "Current settings"
-msgstr ""
+msgstr "Esami nustatymai"
 
 msgid "Network:"
-msgstr ""
+msgstr "Tinklas:"
 
 msgid "Device:"
-msgstr ""
+msgstr "Įrenginys:"
 
 msgid "Port:"
-msgstr ""
+msgstr "Portas:"
 
 msgid "Route:"
-msgstr ""
+msgstr "Maršrutas:"
 
 msgid "All traffic"
-msgstr ""
+msgstr "Visas srautas"
 
 msgid ""
 "Note that when you trigger <strong>\"Apply configuration\"</strong> "
 "button you might lose the connection to the router for a while. This "
 "means that you might need to reopen this admin page again."
 msgstr ""
+"Atkreipkite dėmesį kad paspaudus <strong>\"Įjungti konfigūraciją\"</strong> "
+"mygtuką galite trumpam prarasti ryšį su maršrutizatoriumi. Tai reiškia, kad "
+"gali teikti per naują prisijungti prie šio valdymo puslapio."
 
 msgid "Client configuration"
-msgstr ""
+msgstr "Kliento konfigūracija"
 
 msgid ""
 "Here you can create and revoke the client capability to connect to your "
 "OpenVPN network."
 msgstr ""
+"Čia galite suteikti ir atšaukti klientams galimybę prisijungti prie OpenVPN "
+"tinklo."
 
 msgid "Create"
-msgstr ""
+msgstr "Sukurti"
 
 msgid ""
 "Be sure to check, that the server IP address provided in you "
 "configuration file actually matches the public IP address of your router."
 msgstr ""
+"Įsitikinkite kad serverio IP adresas konfigūracijos faile sutampa su "
+"išoriniu maršrutizatoriaus IP adresu."
 
 msgid "You can set this address manually when the autodetection fails."
 msgstr ""
+"Galite šį adresą parinkti rankiniu būdu jei automatinis nustatymas "
+"nepavyksta."
 
 msgid ""
 "To apply the client configuration you need to download it and put it into"
@@ -275,17 +307,25 @@ msgid ""
 "OpenVPN client directly. You might need to restart your client "
 "afterwards."
 msgstr ""
+"Kad įjungtumėte kliento konfigūraciją reikia atsiųsti konfigūracijos failą "
+"ir įkelti jį į OpenVPN konfigūracijos katalogą arba bandyti jį atidaryti su "
+"OpenVPN klientu. Po šių veiksmų gali reikėti per naują paleisti klientą."
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Pašalinti CA"
 
 msgid ""
 "You can't delete the CA while the OpenVPN server is enabled. To delete "
 "the CA you need to disable the server configuration first."
 msgstr ""
+"Negalite pašalinti CA kol OpenVPN serveris įjungtas. Pirmiausia išjunkite "
+"serverio konfigūraciją, tik tuomet galėsite pašalinti CA."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this"
 " CA will be useless and if you wanted to use this plugin, you'd need to "
 "generate a new CA first."
 msgstr ""
+"Galite pašalinti visą CA. Atkreipkite dėmesį, kad sertifikatų kuriuos išdavė "
+"šis CA nebebus galima panaudoti, jei norėsite vėl naudoti OpenVPN reikės "
+"pirma sugeneruoti naują CA."
