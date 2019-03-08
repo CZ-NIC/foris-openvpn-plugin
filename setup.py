@@ -20,7 +20,7 @@ class BuildCmd(build_py):
 
 setup(
     name="Foris OpenVPN Plugin",
-    version="16.4",
+    version="16.5",
     description="OpenVPN plugin for foris web interfce",
     author="CZ.NIC, z. s. p. o.",
     author_email="stepan.henek@nic.cz",
