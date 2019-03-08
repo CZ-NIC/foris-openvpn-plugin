@@ -18,10 +18,10 @@ var renew_clients = function() {
     });
 };
 
-Foris.WS["openvpn"] = function (data) {
-  switch (data.action) {
+Foris.addWsHanlder("openvpn", (msg) => {
+  switch (msg.action) {
     case "generate_client":
-      if (data.data.status == "failed") {
+      if (msg.data.status == "failed") {
       }
     case "revoke":
       renew_clients();
@@ -31,7 +31,7 @@ Foris.WS["openvpn"] = function (data) {
       window.location.reload();
       return;
   };
-};
+});
 
 Foris.overrideOpenvpnRevoke = function() {
   $('#openvpn-clients button[name="revoke-client"]').click(function (event) {
