@@ -7,7 +7,7 @@
 {% if ca_status == "missing" %}
   <h3>{% trans %}No certification authority{% endtrans %}</h3>
   <p>
-  {% trans %}Currently there is no OpenVPN certificate authority(CA). A CA is required to generate client certificates to authenticate to the OpenVPN server. To proceed you need to generate it first.{% endtrans %}
+  {% trans %}Currently, there is no OpenVPN certificate authority(CA). A CA is required to generate client certificates to authenticate to the OpenVPN server. To proceed you need to generate it first.{% endtrans %}
   <form method='post' action="{{ url("config_action", page_name="openvpn", action="generate-ca") }}">
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     <button name="download-config" type="submit">{% trans %}Generate CA{% endtrans %}</button>
@@ -32,7 +32,7 @@
   </ul>
   <h4>{% trans %}Previous settings{% endtrans %}</h4>
   <p>{% trans %}If you haven't tried to set up OpenVPN server on our router yet, you can safely proceed to <strong>"Apply configuration"</strong> button.{% endtrans %}</p>
-  <p>{% trans %}Otherwise if you've tried to set up OpenVPN outside this plugin, there is a chance that your configuration might collide with the configuration created by this plugin. Therefore you might need to disable the old configuration first.{% endtrans %}</p>
+  <p>{% trans %}Otherwise, if you've tried to set up OpenVPN outside this plugin, there is a chance that your configuration might collide with the configuration created by this plugin. Therefore you might need to disable the old configuration first.{% endtrans %}</p>
   <table class="opevpn-settings">
     <tbody><tr><td>
       <form method='post' action='{{ url("config_page", page_name="openvpn") }}' class="config-form" id="openvpn-config-form">
@@ -86,7 +86,7 @@
       {% include 'openvpn/_clients.html.j2' %}
     <br />
     <div class="row">
-      {% trans %}Be sure to check, that the server IP address provided in you configuration file actually matches the public IP address of your router.{% endtrans %}
+      {% trans %}Be sure to check, that the server IP address provided in your configuration file actually matches the public IP address of your router.{% endtrans %}
       {% trans %}You can set this address manually when the autodetection fails.{% endtrans %}
     </div>
       {% for field in address_form.active_fields %}
@@ -105,7 +105,7 @@
   {% if config_form.data['enabled'] %}
       {% trans %}You can't delete the CA while the OpenVPN server is enabled. To delete the CA you need to disable the server configuration first.{% endtrans %}
   {% else %}
-      {% trans %}You can delete the whole CA. Note that all the cerificates issued by this CA will be useless and if you wanted to use this plugin, you'd need to generate a new CA first.{% endtrans %}
+      {% trans %}You can delete the whole CA. Note that all the certificates issued by this CA will be useless and if you wanted to use this plugin, you'd need to generate a new CA first.{% endtrans %}
     <form action="{{ url("config_action", page_name="openvpn", action="delete-ca") }}" method="post" id="delete-ca-form">
       <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
       <button type="submit" name="send" id="reset-ca-submit">{% trans %}Delete CA{% endtrans %}</button>
