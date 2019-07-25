@@ -1,22 +1,22 @@
 # Translations template for Foris OpenVPN Plugin.
-# Copyright (C) 2018 ORGANIZATION
+# Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the Foris OpenVPN
 # Plugin project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris OpenVPN Plugin 16.1\n"
+"Project-Id-Version: Foris OpenVPN Plugin 16.6\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-09-25 16:51+0200\n"
+"POT-Creation-Date: 2019-07-25 15:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 msgid "valid"
 msgstr ""
@@ -168,9 +168,9 @@ msgid "No certification authority"
 msgstr ""
 
 msgid ""
-"Currently there is no OpenVPN certificate authority(CA). A CA is required"
-" to generate client certificates to authenticate to the OpenVPN server. "
-"To proceed you need to generate it first."
+"Currently, there is no OpenVPN certificate authority(CA). A CA is "
+"required to generate client certificates to authenticate to the OpenVPN "
+"server. To proceed you need to generate it first."
 msgstr ""
 
 msgid "Generate CA"
@@ -183,9 +183,6 @@ msgid ""
 "The CA necessary for the OpenVPN server is being generated. The time "
 "required for generating CA may differ. It could take up to 30 minutes. "
 "Please try to reload this page later."
-msgstr ""
-
-msgid "Loading..."
 msgstr ""
 
 msgid "Reload page"
@@ -212,8 +209,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Otherwise if you've tried to set up OpenVPN outside this plugin, there is"
-" a chance that your configuration might collide with the configuration "
+"Otherwise, if you've tried to set up OpenVPN outside this plugin, there "
+"is a chance that your configuration might collide with the configuration "
 "created by this plugin. Therefore you might need to disable the old "
 "configuration first."
 msgstr ""
@@ -257,7 +254,7 @@ msgid "Create"
 msgstr ""
 
 msgid ""
-"Be sure to check, that the server IP address provided in you "
+"Be sure to check, that the server IP address provided in your "
 "configuration file actually matches the public IP address of your router."
 msgstr ""
 
@@ -280,8 +277,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"You can delete the whole CA. Note that all the cerificates issued by this"
-" CA will be useless and if you wanted to use this plugin, you'd need to "
-"generate a new CA first."
+"You can delete the whole CA. Note that all the certificates issued by "
+"this CA will be useless and if you wanted to use this plugin, you'd need "
+"to generate a new CA first."
 msgstr ""
 
